@@ -1,0 +1,4 @@
+<!--components/pages/index/main/index.wxml-->
+<view>
+{{username}}
+</view>

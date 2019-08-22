@@ -1,0 +1,20 @@
+<view class="base base-main" wx:if='{{!loading}}'>
+  <slot>main
+  </slot>
+</view>
+<view class="base base-load" wx:else>
+  <view class="base-load-page" wx:if='{{loading=="page"}}'>
+    <view class="base-load-title font-primary">页面加载</view>
+    <view class="load-dot">
+      <view class="dot1"></view>
+      <view class="dot2"></view>
+      <view class="dot3"></view>
+      <view class="dot4"></view>
+      <view class="dot4"></view>
+    </view>
+  </view>
+  <view style="text-align:center;" wx:elif='{{loading=="api"}}'>
+    <vant-loading type="spinner" color='#1989fa' vertical size='28px'></vant-loading>
+    <view class="base-load-text font-color3">接口请求...</view>
+  </view>
+</view>

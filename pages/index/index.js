@@ -7,7 +7,8 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    loading:'page'
   },
   //事件处理函数
   bindViewTap: function() {
@@ -15,10 +16,15 @@ Page({
       url: '../logs/logs'
     })
   },
+  loadchange(e){
+    this.setData({
+      loading: e.detail
+    })
+  },
   onLoad: function () {
-    if (app.globalData.userInfo) {
+    if (app.appData.userInfo) {
       this.setData({
-        userInfo: app.globalData.userInfo,
+        userInfo: app.appData.userInfo,
         hasUserInfo: true
       })
     } else if (this.data.canIUse){
@@ -34,7 +40,7 @@ Page({
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
-          app.globalData.userInfo = res.userInfo
+          app.appData.userInfo = res.userInfo
           this.setData({
             userInfo: res.userInfo,
             hasUserInfo: true

@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "vant-loading":"vant-weapp/loading"
+  }
+}
