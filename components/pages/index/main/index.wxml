@@ -1,4 +1,5 @@
 <!--components/pages/index/main/index.wxml-->
 <view>
-{{username}}
+main{{username}}
+<button>加载时点不到我</button>
 </view>
