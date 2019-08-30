@@ -1,0 +1,40 @@
+.category-bar {
+  height: 30px;
+  width: 100%;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 202, 206, 1);
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.category-bar .category-bar-item {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(247, 61, 61, 1);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-bar .category-bar-item span {
+  position: relative;
+  z-index: 1;
+}
+
+.category-bar .active {
+  color: white;
+}
+
+.category-bar .category-bar-item .highlight {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(252, 128, 135, 1) 0%, rgba(253, 74, 83, 1) 100%);
+  border-radius:16px;
+}

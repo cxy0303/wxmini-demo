@@ -1,17 +1,45 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/shop/index/index",
+    "pages/index/index/index",
     "pages/logs/logs",
-    "components/base/index"
+    "pages/account/index/index",
+    "pages/shop/detail/index"
   ],
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/index/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/shop/index/index",
+        "text": "商城"
+      },
+      {
+        "pagePath": "pages/account/index/index",
+        "text": "个人中心"
+      }
+    ]
+  },
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#000000",
+    "backgroundColorTop": "#FFFFFF",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "今日房网",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 200
   },
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
     "base": "/components/base/index"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "将使用的您的位置信息"
+    }
   }
 }

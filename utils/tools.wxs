@@ -1,0 +1,8 @@
+var format = function(value) {
+  return value + "-test";
+}
+
+
+module.exports = {
+  format: format
+}

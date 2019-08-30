@@ -1,12 +1,9 @@
 /**app.wxss**/
 
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+page {
+  background: rgba(248, 248, 248, 1);
   box-sizing: border-box;
+  padding-bottom: 64px;
 }
 
 .font-primary {
@@ -16,27 +13,33 @@
 .font-color1 {
   color: #303133;
 }
+
 .font-color2 {
   color: #606266;
 }
+
 .font-color3 {
   color: #909399;
 }
+
 .font-color4 {
-  color: #C0C4CC;
+  color: #c0c4cc;
 }
 
-.border-color1{
-  border-color: #DCDFE6;
+.border-color1 {
+  border-color: #dcdfe6;
 }
-.border-color2{
-  border-color: #E4E7ED;
+
+.border-color2 {
+  border-color: #e4e7ed;
 }
-.border-color3{
-  border-color: #EBEEF5;
+
+.border-color3 {
+  border-color: #ebeef5;
 }
-.border-color4{
-  border-color: #F2F6FC;
+
+.border-color4 {
+  border-color: #f2f6fc;
 }
 
 .flex-column {

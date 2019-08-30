@@ -1,3 +1,0 @@
-<base mustlogin='true' loading='{{loading}}' bind:loadchange='loadchange'>
-<main wx:if='{{!loading||loading=="api"}}' bind:loadchange='loadchange'>main</main>
-</base>

@@ -1,0 +1,16 @@
+<!--miniprogram/custom-tab-bar/index.wxml-->
+<view id='tabbar' class="tab-bar {{show?'tab-bar-show':''}}">
+  <view class="tab-bar-border">
+  </view>
+  <view class="tab-bar-item chat">
+    <view class="badge">{{qty}}</view>
+    <image src='/assets/images/msg.png'></image>
+    <view class="tab-bar-item-text">在线咨询</view>
+  </view>
+  <view class="tab-bar-item main">
+    <button bindtap="switchTab" data-url='/pages/index/index/index'>首页</button>
+  </view>
+  <view class="tab-bar-item house">
+    <button bindtap="switchTab" data-url='/pages/shop/index/index'>全部房源</button>
+  </view>
+</view>

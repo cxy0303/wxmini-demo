@@ -1,44 +1,35 @@
-//app.js
+import storage from '/utils/storage.js'
 App({
-  onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+  onLaunch: function() {
 
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
-
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        console.log(res);
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
-
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
-            },
-            fail:res=>{
-              console.log(res)
-            }
-          })
-        }
-      }
-    })
+    var userinfo = wx.getStorageSync(storage.keys.userInfo) || null;
+    if (userinfo)
+      this.setLogin(userinfo);
+  },
+  setLogin(userinfo) {
+    this.appData.userInfo = userinfo;
+    wx.setStorageSync(storage.keys.userInfo, this.appData.userInfo)
   },
   appData: {
-    userInfo:{}
+    userInfo: null,
+    // userInfo: {
+    //   'id': 146,
+    //   'phone': '',
+    //   'name': '戏子•辰',
+    //   'avatar': 'http://img.jrfw360.com/usertrend/image1557469080554.jpg',
+    //   'loginToken': '5c07bd525e42aa92da621345f7217b08041e1592',
+    //   'phone': '176****9486',
+    //   'type': 8,
+    //   'roles': 4,
+    //   companyName: '',
+    //   provinceName: '',
+    //   cityName: '',
+    //   districtName: '',
+    //   wxAccount: '',
+    //   'authenticationFlag': 1
+    // },
+    tabBarInfo: {
+      qty: 8
+    }
   }
 })

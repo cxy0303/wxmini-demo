@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-      "van-button": "vant-weapp/button/index",
-      "main":"../../components/pages/index/main/index"
-  }
-}

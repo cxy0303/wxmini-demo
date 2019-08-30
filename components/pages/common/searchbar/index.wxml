@@ -1,0 +1,7 @@
+<view class="search-bar">
+  <image src="../../../../assets/images/search.png" class="search-icon"></image>
+  <input type="text" placeholder="搜索" value='{{keywords}}' bindinput='keywords_input' bindconfirm='keyword_confirm'></input>
+  <view class="search-close" wx:if="{{keywords}}" bindtap="keywords_clear">
+    <image src='../../../../assets/images/close.png'></image>
+  </view>
+</view>

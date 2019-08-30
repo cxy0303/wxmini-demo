@@ -1,0 +1,24 @@
+<view class="building-full-item">
+  <view class="content">
+    <image></image>
+    <view class="word-spec">
+      <view class="title">齐河花苑</view>
+      <view class="sub-title">一室一厅/59.2m</view>
+      <view class="tag">
+        <span>全装全配</span>
+        <span>近地铁</span>
+        <span>随时看房</span>
+      </view>
+      <view class="price">
+        347.9
+        <span>万</span>
+      </view>
+    </view>
+  </view>
+  <view class="address">
+    地址：上海市松江区人民北路134号
+  </view>
+  <view class="foot">
+    <image src='../../../../assets/images/fire.png'></image>内环内临水独栋 | 领包入住 | 精装修 | 附赠停车位
+  </view>
+</view>

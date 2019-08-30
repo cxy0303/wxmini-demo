@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "咨询",
+  "usingComponents": {
+    "van-button": "vant-weapp/button/index"
+  }
+}
