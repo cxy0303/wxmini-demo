@@ -54,3 +54,7 @@ page {
 .flex-just-content-center {
   justify-content: center;
 }
+
+.d-flex{
+  display: flex;
+}

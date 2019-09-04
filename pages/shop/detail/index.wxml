@@ -1,2 +1,4 @@
-<!--pages/shop/detail/index.wxml-->
-<text>pages/shop/detail/index.wxml</text>
+<base loading='{{loading}}' bind:pageloaded='pageloaded'>
+<main  wx:if='{{!loading||loading=="api"}}' bind:pageloaded='pageloaded'>
+</main>
+</base>

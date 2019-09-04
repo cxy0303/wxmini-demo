@@ -1,0 +1,165 @@
+<view class="shop-detail">
+  <view class="back">
+    <image mode='aspectFit' src="../../../../../assets/images/back.png"></image>
+  </view>
+  <view class="silder">
+    <swiper indicator-color="white" indicator-active-color="blue" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" circular="{{true}}" bindchange='sidechange'>
+      <block>
+        <swiper-item>
+          <image class="slide-image" style="background-color:red;" />
+        </swiper-item>
+        <swiper-item>
+          <image class="slide-image" style="background-color:grey;" />
+        </swiper-item>
+        <swiper-item>
+          <image class="slide-image" style="background-color:green;" />
+        </swiper-item>
+        <swiper-item>
+          <image class="slide-image" style="background-color:yellow;" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="imgcount">
+      <span>共42张</span>
+    </view>
+  </view>
+  <view class="content">
+    <view class="name">
+      <view class="container">
+        海伦堡观澜
+        <span class='blue'>住宅</span>
+        <span class='red'>别墅</span>
+        <span class='yellow'>商铺</span>
+        <label>在售</label>
+      </view>
+    </view>
+    <view class="prices">
+      <view class="price-item blue">
+        <view class="price-item-cell">
+          <span>住宅均价</span>
+          <label>2.4万元/㎡</label>
+        </view>
+        <view class="price-item-cell">
+          <span>住宅总价</span>
+          <label>100万元起</label>
+        </view>
+        <view class="price-item-cell">
+          <span>建筑面积</span>
+          <label>100-300/㎡</label>
+        </view>
+      </view>
+      <view class="price-item red">
+        <view class="price-item-cell">
+          <span>别墅均价</span>
+          <label>2.4万元/㎡</label>
+        </view>
+        <view class="price-item-cell">
+          <span>别墅总价</span>
+          <label>100万元起</label>
+        </view>
+        <view class="price-item-cell">
+          <span>别墅面积</span>
+          <label>100-300/㎡</label>
+        </view>
+      </view>
+      <view class="price-item yellow">
+        <view class="price-item-cell">
+          <span>商铺均价</span>
+          <label>2.4万元/㎡</label>
+        </view>
+        <view class="price-item-cell">
+          <span>商铺总价</span>
+          <label>100万元起</label>
+        </view>
+        <view class="price-item-cell">
+          <span>建筑面积</span>
+          <label>100-300/㎡</label>
+        </view>
+      </view>
+    </view>
+    <view class="detail">
+      <view class="detail-item">
+        <span>开盘时间</span>
+        <label>：</label>
+        <p>2019年11月18日 2期 首开 109# 201# 202#</p>
+      </view>
+      <view class="detail-item">
+        <span>交付时间</span>
+        <label>：</label>
+        <p>2019年11月18日 2期 首开 109# 201# 202#</p>
+      </view>
+      <view class="detail-item">
+        <span>房型</span>
+        <label>：</label>
+        <p>2019年11月18日 2期 首开 109# 201# 202#</p>
+      </view>
+      <view class="detail-item">
+        <span>售楼地址</span>
+        <label>：</label>
+        <p>2019年11月18日 2期 首开 109# 201# 202#</p>
+      </view>
+      <view class="detail-tag">
+        <a>团购优惠</a>
+        <a>高层住宅</a>
+        <a>景区房</a>
+        <a>精品</a>
+        <a>团购优惠</a>
+        <a>高层住宅</a>
+        <a>景区房</a>
+        <a>精品</a>
+        <a>团购优惠</a>
+        <a>高层住宅</a>
+        <a>景区房</a>
+        <a>精品</a>
+      </view>
+      <view class="detail-more">
+        更多详情
+        <van-icon name='arrow-down'></van-icon>
+      </view>
+    </view>
+    <view class="toolbar">
+      <view>
+        <image src='../../../../../assets/images/tag.png'></image>优惠通知我</view>
+      <view>
+        <image src='../../../../../assets/images/bell.png'></image>开盘通知我</view>
+    </view>
+    <view class="content-block border-bottom">
+      <view class="header">
+        优惠活动
+        <a>详情
+          <van-icon name='arrow'></van-icon>
+        </a>
+      </view>
+      <view class="subject">
+        <view>
+          海伦堡观澜
+          <span>[xxxxxxxxxxxxxxx优惠活动]</span>
+        </view>
+        <a>团购优惠</a>
+      </view>
+      <image></image>
+      <view class="remark">
+        大盘点，高级楼盘大甩卖，不容错过，大盘点，高级楼盘大甩卖高级楼盘大甩卖高级楼盘大甩卖
+      </view>
+      <view class="remark">
+        <span>已有109289人参与</span>
+        <span>剩余时间：10天 10小时 10分钟
+          <a class='btn'>立即报名</a>
+        </span>
+      </view>
+    </view>
+    <view class="content-block">
+      <view class="header">
+        楼盘动态
+        <span class='bdage'>1</span>
+      </view>
+      <view class="msg-item">
+        <image></image>
+        <view class="msg-item-content">
+          光明金山府开盘日期待定，价格待定。项目主力户型为99平3居。共3766户。光明金山光明金山府开盘日期待定，价格待定。光明金山光明日期待定…
+        </view>
+      </view>
+      <view class="subrice">订阅动态</view>
+    </view>
+  </view>
+</view>

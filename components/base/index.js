@@ -25,10 +25,13 @@ Component({
         this.setData({
           wxauthed: 1
         })
-        this.getTabBar().setData({
-          show: true
-        })
-            
+        var tabbar = this.getTabBar();
+        if (tabbar) {
+          tabbar.setData({
+            show: true
+          })
+        }
+
         this.checklogin();
       } else {
         this.setData({
@@ -40,11 +43,11 @@ Component({
   methods: {
     async checklogin() {
       if (app.appData.userInfo) {
-        
+
         var userinfores = await this.getuserinfo(app.appData.userInfo);
         if (userinfores && userinfores.data.code == 1) {
           this.setLogin(userinfores.data.content.account);
-          
+
           this.triggerEvent('pageloaded', "");
           return;
         }

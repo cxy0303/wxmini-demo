@@ -1,26 +1,47 @@
 .building-full-item {
   width: 100%;
   padding: 15px 0px;
+  position: relative;
 }
 
 .building-full-item .content {
   display: flex;
+  width: 100%;
 }
 
 .building-full-item .content image {
   width: 105px;
   height: 80px;
   background-color: #eee;
+  flex-shrink: 0;
 }
 
 .building-full-item .content .word-spec {
   padding-left: 15px;
+  flex: 1;
+  width: 0;
+}
+
+.building-full-item .content .word-spec .category {
+  position: absolute;
+  right: 5px;
+  top: 15px;
+  border-radius: 2px;
+  border: 1px solid rgba(247, 61, 61, 1);
+  font-weight: 400;
+  color: rgba(247, 61, 61, 1);
+  font-size: 11px;
+  padding: 1px 3px;
 }
 
 .building-full-item .content .word-spec .title {
   font-size: 16px;
   font-weight: 400;
   color: rgba(51, 51, 51, 1);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-right: 40px
 }
 
 .building-full-item .content .word-spec .sub-title {

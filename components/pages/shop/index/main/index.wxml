@@ -12,7 +12,7 @@
   </view>
   <view class="shop-index-content" bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd'>
     <block wx:for='{{[1,2,3,4,5,6,7,8,9,10]}}'>
-      <building-full-item class='building-full-item'></building-full-item>
+      <building-full-item class='building-full-item' bindview='view'></building-full-item>
     </block>
   </view>
 </view>

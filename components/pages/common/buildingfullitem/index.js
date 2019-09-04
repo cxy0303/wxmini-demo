@@ -4,7 +4,14 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    showaddress: {
+      type: Boolean,
+      value: true
+    },
+    showfoot: {
+      type: Boolean,
+      value: true
+    }
   },
 
   /**
@@ -18,6 +25,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    clickhandle() {
+      this.triggerEvent("view");
+    }
   }
 })

@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/shop/index/index",
+    "pages/shop/detail/index",
     "pages/index/index/index",
+    "pages/shop/index/index",
     "pages/logs/logs",
-    "pages/account/index/index",
-    "pages/shop/detail/index"
+    "pages/account/index/index"
   ],
   "tabBar": {
     "custom": true,

@@ -1,8 +1,9 @@
-<view class="building-full-item">
+<view class="building-full-item" bindtap="clickhandle">
   <view class="content">
     <image></image>
     <view class="word-spec">
-      <view class="title">齐河花苑</view>
+      <view class="category">住宅</view>
+      <view class="title">齐河花苑11111111111111111111111111111111112</view>
       <view class="sub-title">一室一厅/59.2m</view>
       <view class="tag">
         <span>全装全配</span>
@@ -15,10 +16,10 @@
       </view>
     </view>
   </view>
-  <view class="address">
+  <view class="address" wx:if='{{showaddress}}'>
     地址：上海市松江区人民北路134号
   </view>
-  <view class="foot">
+  <view class="foot" wx:if='{{showfoot}}'>
     <image src='../../../../assets/images/fire.png'></image>内环内临水独栋 | 领包入住 | 精装修 | 附赠停车位
   </view>
 </view>

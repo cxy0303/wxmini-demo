@@ -1,5 +1,4 @@
 <base loading='{{loading}}' bind:pageloaded='pageloaded'>
 <main hide='{{hidefilter}}' wx:if='{{!loading||loading=="api"}}' bind:pageloaded='pageloaded'>
-  {{scrollTop}}
 </main>
 </base>

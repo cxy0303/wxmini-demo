@@ -26,11 +26,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    godetail() {
-      wx.startPullDownRefresh();
-      // wx.navigateTo({
-      //   url: '/pages/shop/detail/index',
-      // })
+    view() {
+      wx.navigateTo({
+        url: '/pages/shop/detail/index',
+      })
     },
     touchStart: function(e) {
       let sx = e.touches[0].pageX
