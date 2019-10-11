@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "户型详情",
+  "usingComponents": {
+    "main": "../../components/pages/shop/apartment/main/index"
+  }
+}

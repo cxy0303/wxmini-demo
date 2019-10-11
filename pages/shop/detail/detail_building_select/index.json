@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "选择楼盘",
+  "usingComponents": {
+    "main": "../../../components/pages/shop/detail/detail_building_select/main/index"
+  }
+}

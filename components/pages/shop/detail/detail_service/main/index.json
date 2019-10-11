@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-tabs": "vant-weapp/tabs",
+    "van-tab": "vant-weapp/tab",
+    "van-datetime-picker": "vant-weapp/datetime-picker",
+    "van-popup": "vant-weapp/popup",
+    "van-picker": "vant-weapp/picker"
+  }
+}

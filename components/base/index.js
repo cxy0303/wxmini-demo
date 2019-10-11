@@ -43,17 +43,21 @@ Component({
   methods: {
     async checklogin() {
       if (app.appData.userInfo) {
-
-        var userinfores = await this.getuserinfo(app.appData.userInfo);
-        if (userinfores && userinfores.data.code == 1) {
-          this.setLogin(userinfores.data.content.account);
-
+        if (!app.appData.userInfo["sync"]) {
+          var userinfores = await this.getuserinfo(app.appData.userInfo);
+          if (userinfores && userinfores.data.code == 1) {
+            this.setLogin(userinfores.data.content.account);
+            this.triggerEvent('pageloaded', "");
+            this.connect();
+          }
+        } else {
           this.triggerEvent('pageloaded', "");
-          return;
+          this.connect();
         }
+        return;
       }
-
-      var wxloginres = await this.wxlogin(); //微信授权---------|未授权，通过wx.login获取code顺便授权，然后获取信息
+      var wxloginres = await this.wxlogin();
+      //微信授权---------|未授权，通过wx.login获取code顺便授权，然后获取信息
       if (wxloginres && wxloginres.code) { //利用微信用户信息登录
         var ures = await this.getwxuserinfo();
         if (ures && ures.rawData) {
@@ -67,10 +71,49 @@ Component({
           });
           if (loginres && loginres.data && loginres.data.code) { //登录成功
             this.setLogin(loginres.data.content.yyAccount);
+            this.connect();
             this.triggerEvent('pageloaded', "");
           }
         }
       }
+    },
+    //websocket
+    connect() {
+      var that = this;
+      return new Promise((reslove, reject) => {
+        let chatInfo = app.appData.chat;
+        let socket = app.appData.chat.socketTask;
+        if (!chatInfo.connected) {
+          this.getChatMsnList().then((res) => {
+            socket = wx.connectSocket({
+              url: api.socket + "/" + res.data.content.groupId + "/" + app.appData.userInfo.id
+            })
+            wx.onSocketOpen((res) => {
+              app.appData.chat.connected = true;
+              app.appData.chat.loadMore = this.getChatMsnList;
+              if (app.appData.chat.onConnected) {
+                app.appData.chat.onConnected(app.appData.chat.msglist)
+              }
+            })
+            wx.onSocketMessage((evt) => {
+              if (evt.data) {
+                let msg = JSON.parse(evt.data);
+                app.appData.chat.msglist.push(msg);
+                if (onMessage) {
+                  onMessage(msg);
+                }
+              }
+            })
+            wx.onSocketError((res) => {
+              app.appData.chat.connected = false;
+            })
+            wx.onSocketClose((res) => {
+              app.appData.chat.connected = false;
+              app.appData.chat.socket = null;
+            })
+          })
+        }
+      })
     },
     setLogin(userinfo) {
       var logininfo = {
@@ -87,7 +130,8 @@ Component({
         cityName: userinfo.company.city.name,
         districtName: userinfo.company.district.name,
         phone: userinfo.hiddenPhone,
-        wxAccount: ''
+        wxAccount: '',
+        sync: true
       }
       app.setLogin(logininfo);
     },
@@ -183,6 +227,48 @@ Component({
         })
         this.checklogin();
       }
+    },
+    getChatMsnList() {
+      return new Promise((resolve, reject) => {
+        let userinfo = app.appData.userInfo;
+        let shopinfo = app.appData.shopInfo;
+        let chatinfo = app.appData.chat;
+        if (chatinfo.loadAll) {
+          if (chatinfo.onLoadAll) {
+            chatinfo.onLoadAll();
+          }
+          resolve();
+        }
+        // let data = {
+        //   'accountId': userinfo.id,
+        //   'loginToken': userinfo.loginToken,
+        //   'otherAccountId': shopinfo.accountId,
+        //   'pageNo': 1,
+        //   'pageSize': 10
+        // }
+        let data = {
+          'accountId': 146,
+          'loginToken': userinfo.loginToken,
+          'groupId': 452,
+          'pageNo': chatinfo.pageIndex + 1,
+          'pageSize': chatinfo.pageSize
+        }
+        api.getChatMsnList(data).then((res) => {
+          if (res.data.code == 1) {
+            let content = res.data.content;
+            chatinfo.groupId = content.groupId;
+            chatinfo.loadAll = content.msnList.length < chatinfo.pageSize;
+            chatinfo.msglist.splice(0, 0, ...content.msnList);
+            if (chatinfo.onMessage)
+              chatinfo.onMessage(chatinfo.msglist);
+            if (chatinfo.loadAll && chatinfo.onLoadAll) {
+              chatinfo.onLoadAll();
+            }
+            chatinfo.pageIndex++;
+            resolve(res);
+          }
+        })
+      })
     }
   }
 })

@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "building-full-item": "../../../common/buildingfullitem/index",
+    "vant-checkbox": "vant-weapp/checkbox"
+  }
+}

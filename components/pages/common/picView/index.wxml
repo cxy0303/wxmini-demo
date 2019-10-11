@@ -1,0 +1,7 @@
+  <movable-area class='picview' wx:if='{{url}}' scale-area>
+    <view class="overlay" bindtap='view_close_handle'>
+    </view>
+    <movable-view scale direction="all" out-of-bounds>
+      <image src='{{url}}'></image>
+    </movable-view>
+  </movable-area>

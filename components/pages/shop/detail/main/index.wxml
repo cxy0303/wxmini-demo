@@ -1,79 +1,63 @@
+<wxs src='../../../../../utils/tools.wxs' module="tools" />
+<wxs module='util'>
+  var getbuildingtypeclass = function(value) {
+    switch (value) {
+      case "住宅":
+        return "blue";
+      case "商铺":
+        return "yellow";
+      case "别墅":
+        return "red";
+    }
+  };
+  var formattime = function(value) {
+    var date = getDate(value);
+    return date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
+  };
+
+  module.exports = {
+    getbuildingtypeclass: getbuildingtypeclass,
+    formattime: formattime
+  }
+</wxs>
 <view class="shop-detail">
-  <view class="back">
-    <image mode='aspectFit' src="../../../../../assets/images/back.png"></image>
-  </view>
   <view class="silder">
-    <swiper indicator-color="white" indicator-active-color="blue" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" circular="{{true}}" bindchange='sidechange'>
+    <swiper bindtap='goablum' indicator-color="white" indicator-active-color="blue" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" circular="{{true}}" bindchange='sidechange'  bindtap='goAlbum'>
       <block>
-        <swiper-item>
-          <image class="slide-image" style="background-color:red;" />
-        </swiper-item>
-        <swiper-item>
-          <image class="slide-image" style="background-color:grey;" />
-        </swiper-item>
-        <swiper-item>
-          <image class="slide-image" style="background-color:green;" />
-        </swiper-item>
-        <swiper-item>
-          <image class="slide-image" style="background-color:yellow;" />
+        <swiper-item wx:for='{{buildingInfo.attachment}}'>
+          <image class="slide-image" src='{{item.picPath}}'/>
         </swiper-item>
       </block>
     </swiper>
     <view class="imgcount">
-      <span>共42张</span>
+      <span>共{{buildingInfo.attachment.length}}张</span>
     </view>
   </view>
   <view class="content">
     <view class="name">
       <view class="container">
-        海伦堡观澜
-        <span class='blue'>住宅</span>
-        <span class='red'>别墅</span>
-        <span class='yellow'>商铺</span>
-        <label>在售</label>
+        {{buildingInfo.name}}
+        <block wx:for="{{tools.split(buildingInfo.buildingType,'-')}}">
+          <span class='blue' wx:if='{{item=="住宅"}}'>住宅</span>
+          <span class='red' wx:elif='{{item=="别墅"}}'>别墅</span>
+          <span class='yellow' wx:elif='{{item=="商铺"}}'>商铺</span>
+        </block>
+        <label wx:if='buildingInfo.saleType'>在售</label>
       </view>
     </view>
     <view class="prices">
-      <view class="price-item blue">
+      <view class="price-item {{util.getbuildingtypeclass(item.typeName)}}" wx:for='{{buildTypeList}}'>
         <view class="price-item-cell">
-          <span>住宅均价</span>
+          <span>{{item.typeName}}均价</span>
           <label>2.4万元/㎡</label>
         </view>
         <view class="price-item-cell">
-          <span>住宅总价</span>
-          <label>100万元起</label>
+          <span>{{item.typeName}} 总价</span>
+          <label>{{item.totalPrice}}万元起</label>
         </view>
         <view class="price-item-cell">
           <span>建筑面积</span>
-          <label>100-300/㎡</label>
-        </view>
-      </view>
-      <view class="price-item red">
-        <view class="price-item-cell">
-          <span>别墅均价</span>
-          <label>2.4万元/㎡</label>
-        </view>
-        <view class="price-item-cell">
-          <span>别墅总价</span>
-          <label>100万元起</label>
-        </view>
-        <view class="price-item-cell">
-          <span>别墅面积</span>
-          <label>100-300/㎡</label>
-        </view>
-      </view>
-      <view class="price-item yellow">
-        <view class="price-item-cell">
-          <span>商铺均价</span>
-          <label>2.4万元/㎡</label>
-        </view>
-        <view class="price-item-cell">
-          <span>商铺总价</span>
-          <label>100万元起</label>
-        </view>
-        <view class="price-item-cell">
-          <span>建筑面积</span>
-          <label>100-300/㎡</label>
+          <label>{{item.area}}/㎡</label>
         </view>
       </view>
     </view>
@@ -81,49 +65,38 @@
       <view class="detail-item">
         <span>开盘时间</span>
         <label>：</label>
-        <p>2019年11月18日 2期 首开 109# 201# 202#</p>
+        <p>{{util.formattime(buildingInfo.beginSellDate)}}</p>
       </view>
       <view class="detail-item">
         <span>交付时间</span>
         <label>：</label>
-        <p>2019年11月18日 2期 首开 109# 201# 202#</p>
+        <p>{{buildingInfo.dealTimeInfo}}</p>
       </view>
       <view class="detail-item">
         <span>房型</span>
         <label>：</label>
-        <p>2019年11月18日 2期 首开 109# 201# 202#</p>
+        <p>{{buildingInfo.roomType}}</p>
       </view>
       <view class="detail-item">
         <span>售楼地址</span>
         <label>：</label>
-        <p>2019年11月18日 2期 首开 109# 201# 202#</p>
+        <p>{{buildingInfo.cityName+buildingInfo.districtName}}</p>
       </view>
       <view class="detail-tag">
-        <a>团购优惠</a>
-        <a>高层住宅</a>
-        <a>景区房</a>
-        <a>精品</a>
-        <a>团购优惠</a>
-        <a>高层住宅</a>
-        <a>景区房</a>
-        <a>精品</a>
-        <a>团购优惠</a>
-        <a>高层住宅</a>
-        <a>景区房</a>
-        <a>精品</a>
+        <a wx:for="{{tools.split(buildingInfo.tags,'-')}}">{{item}}</a>
       </view>
-      <view class="detail-more">
+      <view class="detail-more" bindtap="gomore">
         更多详情
         <van-icon name='arrow-down'></van-icon>
       </view>
     </view>
     <view class="toolbar">
-      <view>
+      <view bindtap='togglecoupon'>
         <image src='../../../../../assets/images/tag.png'></image>优惠通知我</view>
-      <view>
+      <view bindtap='togglecoupon'>
         <image src='../../../../../assets/images/bell.png'></image>开盘通知我</view>
     </view>
-    <view class="content-block border-bottom">
+    <!-- <view class="content-block border-bottom">
       <view class="header">
         优惠活动
         <a>详情
@@ -137,7 +110,7 @@
         </view>
         <a>团购优惠</a>
       </view>
-      <image></image>
+      <image class="side-image"></image>
       <view class="remark">
         大盘点，高级楼盘大甩卖，不容错过，大盘点，高级楼盘大甩卖高级楼盘大甩卖高级楼盘大甩卖
       </view>
@@ -147,19 +120,157 @@
           <a class='btn'>立即报名</a>
         </span>
       </view>
-    </view>
-    <view class="content-block">
+    </view> -->
+    <view class="content-block" wx:if='{{buildingInfo.houseServiceIds&&buildingInfo.houseServiceIds.length>0}}'>
       <view class="header">
-        楼盘动态
-        <span class='bdage'>1</span>
+        看房服务
       </view>
-      <view class="msg-item">
-        <image></image>
-        <view class="msg-item-content">
-          光明金山府开盘日期待定，价格待定。项目主力户型为99平3居。共3766户。光明金山光明金山府开盘日期待定，价格待定。光明金山光明日期待定…
+      <image src='./images/self.png' class="service-img" bindtap='goservice' wx:if="{{tools.indexOf(buildingInfo.houseServiceIds,113)>=0}}"></image>
+      <image src='./images/freebus.png' class="service-img" bindtap='goservice' wx:if="{{tools.indexOf(buildingInfo.houseServiceIds,114)>=0}}"></image>
+      <image src='./images/freespecial.png' class="service-img" bindtap='goservice' wx:if="{{tools.indexOf(buildingInfo.houseServiceIds,115)>=0}}"></image>
+    </view>
+    <view class="content-block border-bottom " wx:if='{{buildingNews&&buildingNews.length>0}}'>
+      <view class="header ">
+        楼盘动态
+        <!-- <span class='bdage'>1</span> -->
+      </view>
+      <view class="msg-item " wx:for='{{buildingNews}}'>
+        <image src="{{item.picPath || 'http://img.jrfw360.com/upload-file1555654572075'}} "></image>
+        <view class="msg-item-content ">
+          {{item.content}}
         </view>
       </view>
-      <view class="subrice">订阅动态</view>
+      <view class="subrice ">订阅动态</view>
+    </view>
+    <view class="content-block ">
+      <view class="header ">
+        全部户型
+      </view>
+      <view class="apartment-item " wx:for='{{buildingModelType}}'>
+        <apartment-item item='{{item}}' bindclick='apartment_click_handler'></apartment-item>
+      </view>
+    </view>
+    <view class="content-block" bindtap='goHouseTypeDetail'>
+      <view class="header ">
+        楼栋信息
+      </view>
+      <image class="side-image " src='{{buildingInfo.panorama}}'></image>
+    </view>
+    <view class="content-block" bindtap='gomap'>
+      <view class="header">
+        周边信息
+      </view>
+      <image src='{{buildingInfo.peripheryPic}}' class="side-image "></image>
+      <!-- <map id="map " longitude="113.324520 " latitude="23.099994 " scale="14 "></map> -->
+      <view class="map-item ">
+        <image src="./images/train.png "></image>
+        <label>地铁：</label>
+        <span>{{buildingInfo.metro||'无'}}</span>
+      </view>
+      <view class="map-item ">
+        <image src="./images/bus.png "></image>
+        <label>公交：</label>
+        <span>{{buildingInfo.bus||'无'}}</span>
+      </view>
+      <view class="map-item ">
+        <image src="./images/food.png "></image>
+        <label>餐饮：</label>
+        <span>{{buildingInfo.restaurant||'无'}}</span>
+      </view>
+      <view class="map-item ">
+        <image src="./images/market.png "></image>
+        <label>商场：</label>
+        <span>{{buildingInfo.market||'无'}}</span>
+      </view>
+    </view>
+    <view class="content-block border-bottom ">
+      <view class="header ">
+        点评
+      </view>
+      <view class="star-container ">
+        <view class="star-rate ">
+          <view class="star-rate-item ">
+            <label>价格</label>
+            <van-rate size="16 " value='{{buildScore.priceScore}}' disabled-color='#FF8000' disabled></van-rate>
+            <label>{{buildScore.priceScore}}分</label>
+          </view>
+          <view class="star-rate-item ">
+            <label>地段</label>
+            <van-rate size="16 " value='{{buildScore.sectionScore}}' disabled-color='#FF8000' disabled></van-rate>
+            <label>{{buildScore.sectionScore}}分</label>
+          </view>
+          <view class="star-rate-item ">
+            <label>交通</label>
+            <van-rate size="16 " value='{{buildScore.trafficScore}}' disabled-color='#FF8000' disabled></van-rate>
+            <label>{{buildScore.trafficScore}}分</label>
+          </view>
+          <view class="star-rate-item ">
+            <label>配套</label>
+            <van-rate size="16 " value='{{buildScore.matchingScore}}' disabled-color='#FF8000' disabled></van-rate>
+            <label>{{buildScore.matchingScore}}分</label>
+          </view>
+          <view class="star-rate-item ">
+            <label>环境</label>
+            <van-rate size="16 " value='{{buildScore.environmentScore}}' disabled-color='#FF8000' disabled></van-rate>
+            <label>{{buildScore.environmentScore}}分</label>
+          </view>
+        </view>
+        <view>
+          <div class='star-circle' style='display:{{showcoupon?"none":"black"}}'>
+            <canvas canvas-id='starCanvas'></canvas>
+          </div>
+        </view>
+      </view>
+    </view>
+    <view class="content-block ">
+      <view class="tab border-bottom ">
+        <view class='{{tabindex==0?"active ":" "}}' bindtap="settab" data-key='0'>同价格</view>
+        <view class='{{tabindex==1?"active ":" "}}' bindtap="settab" data-key='1'>同区域</view>
+      </view>
+      <view class="tab-price " wx:if='{{tabindex==0}}'>
+        <building-full-item showfoot='{{false}}' buildingInfo='{{item}}' wx:key='{{item.id}}' wx:for='{{samePriceList}}'></building-full-item>
+      </view>
+      <view class="tab-area " wx:if='{{tabindex==1}}' wx:key='area-{{index}} '>
+        <building-full-item showfoot='{{false}}' buildingInfo='{{item}}' wx:key='{{item.id}}' wx:for='{{nearBuildingList}}'></building-full-item>
+      </view>
     </view>
   </view>
 </view>
+<cover-view class="shop-detail-foot-bar" wx:if='{{!showcoupon}}'>
+  <cover-view class="flex-box">
+    <cover-image src='./images/share.png'></cover-image>
+    <cover-view class="text">微信分享</cover-view>
+  </cover-view>
+  <cover-view class="flex-box" bindtap='togglecoupon'>
+    <cover-image src='./images/sub.png'></cover-image>
+    <cover-view class="text">订阅</cover-view>
+  </cover-view>
+  <cover-view class="flex-box" bindtap='addstar'>
+    <cover-image src='{{isFavorite?"./images/collected.png":"./images/collect.png"}}'></cover-image>
+    <cover-view class="text">收藏</cover-view>
+  </cover-view>
+  <cover-view class="flex-box chat" bindtap='chat_handle'>
+    <cover-view class="text">在线咨询</cover-view>
+  </cover-view>
+  <cover-view class="flex-box report" bindtap='report_handle'>
+    <cover-view class="text">报备客户</cover-view>
+  </cover-view>
+</cover-view>
+<vant-popup show='{{showcoupon}}' position='bottom' bind:close='close_coupon_popup'>
+  <view class="popup-item " bindtap='toggle_coupon_check' data-key='0'>
+    <p class='text-center'>优惠通知我</p>
+    <vant-checkbox value='{{couponcheck[0]}}'></vant-checkbox>
+  </view>
+  <view class="popup-item " bindtap='toggle_coupon_check' data-key='1'>
+    <p class='text-center'>开盘通知我</p>
+    <vant-checkbox value='{{couponcheck[1]}}'></vant-checkbox>
+  </view>
+  <view class="popup-item " bindtap='toggle_coupon_check' data-key='2'>
+    <p class='text-center'>订阅动态</p>
+    <vant-checkbox value='{{couponcheck[2]}}'></vant-checkbox>
+  </view>
+  <view class="popup-foot ">
+    <view class="cancel " bindtap='close_coupon_popup'>取消</view>
+    <view class="sure " bindtap="coupon_sure">确定</view>
+  </view>
+</vant-popup>

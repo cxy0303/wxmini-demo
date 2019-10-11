@@ -1,0 +1,18 @@
+<view class="apartment-item" bindtap='click_handler'>
+  <image src='{{item.picPath}}'></image>
+  <view class="apartment-item-content">
+    <p>
+      <b>{{item.modelTypeName}}
+        <span>{{item.area}}㎡</span>
+      </b>
+      <label>剩余{{item.roomNum}}套</label>
+    </p>
+    <p class='price'>
+      {{item.price}}万元起
+    </p>
+    <p class='foot'>
+      <span>{{item.title}}</span>
+      <label class="tag red">{{item.saleType}}</label>
+    </p>
+  </view>
+</view>

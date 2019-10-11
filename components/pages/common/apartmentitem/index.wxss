@@ -1,0 +1,89 @@
+.apartment-item {
+  display: flex;
+  padding: 10px 0px;
+}
+
+.apartment-item {
+}
+
+.apartment-item  image {
+  width: 168rpx;
+  height: 168rpx;
+  flex-shrink: 0;
+  flex-grow: 0;
+  background-color: #eee;
+}
+
+.apartment-item .apartment-item-content {
+  padding-left: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.apartment-item .apartment-item-content p {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.apartment-item .apartment-item-content p b {
+  font-weight: bolder;
+  font-size: 14px;
+  color: #333;
+  flex: 1;
+}
+
+.apartment-item .apartment-item-content p span {
+  font-size: 12px;
+  color: #999;
+  margin-left: 5px;
+}
+
+.apartment-item .apartment-item-content p label {
+  width: 67px;
+  font-size: 12px;
+  color: #999;
+  text-align: right;
+}
+
+.apartment-item .apartment-item-content .price {
+  font-size: 12px;
+  color: #3349d1;
+  margin-top: 10px;
+}
+
+.apartment-item .apartment-item-content  .foot {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  font-size: 12px;
+  color: #999;
+}
+
+.apartment-item .apartment-item-content  .foot span {
+  flex: 1;
+}
+
+.apartment-item .apartment-item-content  .foot label {
+  display: inline-block;
+  width: 30px;
+  height: 15px;
+  text-align: center;
+  line-height: 15px;
+  vertical-align: middle;
+  color: white;
+  font-size: 12px;
+}
+
+.apartment-item .apartment-item-content  .foot label.blue {
+  background-color: blue;
+}
+
+.apartment-item .apartment-item-content  .foot label.red {
+  background-color: #d14e33;
+}
+
+.apartment-item .apartment-item-content  .foot label.gret {
+  background-color: grey;
+}

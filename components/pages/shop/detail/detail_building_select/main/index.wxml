@@ -1,0 +1,43 @@
+<view class="detail_building_select">
+  <view class="tab-menu">
+    <a class='{{activename=="all"?"active":""}}' bindtap='tabclick_handler' data-key='all'>全部</a>
+    <a class='{{activename=="sameArea"?"active":""}}' bindtap='tabclick_handler' data-key='sameArea'>同区域</a>
+    <a class='{{activename=="samePrice"?"active":""}}' bindtap='tabclick_handler' data-key='samePrice'>同价格</a>
+    <a class='{{activename=="collect"?"active":""}}' bindtap='tabclick_handler' data-key='collect'>收藏</a>
+  </view>
+  <view class="tab-panel" wx:if='{{activename=="all"}}'>
+    <view class="building-item" wx:key='{{item.id}}' wx:for='{{all.list}}'>
+      <view class="checkbox">
+        <vant-checkbox value='{{selects[item.id]}}'></vant-checkbox>
+      </view>
+      <building-full-item bindclick='clickHandler' defaultClickHandler='{{false}}' showfoot='{{false}}' buildingInfo='{{item}}'></building-full-item>
+    </view>
+  </view>
+  <view class="tab-panel" wx:if='{{activename=="sameArea"}}'>
+    <view class="building-item" wx:key='{{item.id}}' wx:for='{{sameArea.list}}'>
+      <view class="checkbox">
+        <vant-checkbox value='{{selects[item.id]}}'></vant-checkbox>
+      </view>
+      <building-full-item bindclick='clickHandler' defaultClickHandler='{{false}}' showfoot='{{false}}' buildingInfo='{{item}}'></building-full-item>
+    </view>
+  </view>
+  <view class="tab-panel" wx:if='{{activename=="samePrice"}}'>
+    <view class="building-item" wx:key='{{item.id}}' wx:for='{{samePrice.list}}'>
+      <view class="checkbox">
+        <vant-checkbox value='{{selects[item.id]}}'></vant-checkbox>
+      </view>
+      <building-full-item bindclick='clickHandler' defaultClickHandler='{{false}}' showfoot='{{false}}' buildingInfo='{{item}}'></building-full-item>
+    </view>
+  </view>
+  <view class="tab-panel" wx:if='{{activename=="collect"}}'>
+    <view class="building-item" wx:key='{{item.id}}' wx:for='{{collect.list}}'>
+      <view class="checkbox">
+        <vant-checkbox value='{{selects[item.id]}}'></vant-checkbox>
+      </view>
+      <building-full-item bindclick='clickHandler' defaultClickHandler='{{false}}' showfoot='{{false}}' buildingInfo='{{item}}'></building-full-item>
+    </view>
+  </view>
+  <view class="detail_building_select-sure" bindtap='sure_handler'>
+    <a>确定</a>
+  </view>
+</view>

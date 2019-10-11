@@ -1,3 +1,0 @@
-<base must-login='true' loading='{{loading}}' bind:loadchange='loadchange'>
-  account======
-</base>

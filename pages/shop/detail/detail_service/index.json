@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "main": "../../../components/pages/shop/detail/detail_service/main/index"
+  }
+}

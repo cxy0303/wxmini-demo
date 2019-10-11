@@ -1,13 +1,12 @@
-// pages/shop/detail/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    buildingId: 1,
     loading: 'page'
   },
-
   pageloaded(e) {
     this.setData({
       loading: e.detail
@@ -17,7 +16,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    this.setData({
+      buildingId: options.buildingId
+    })
   },
 
   /**

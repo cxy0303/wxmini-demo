@@ -1,0 +1,29 @@
+<view class="message">
+  <view id='msg_{{item.id}}' class="message-item {{item.accountId==accountId?'reverse':''}}" wx:for='{{msglist}}' wx:key='{{item.id}}'>
+    <image src='{{item.avatar}}'></image>
+    <view class="content">
+      <block wx:if='{{item.targetType==1}}'>
+        {{item.content}}
+      </block>
+      <block wx:elif='{{item.targetType==2}}'>
+        <image src='{{item.picPath}}' bindtap='view_pic' data-key='{{item.picPath}}'></image>
+      </block>
+      <block wx:else>
+        <a>
+          您收到一条多媒体消息，请
+          <span>点击下载app</span>进行查看</a>
+      </block>
+    </view>
+  </view>
+</view>
+<view class="message-bottom {{showbottom?'showbottom':''}}">
+  <view class="flex-box">
+    <input type="text" value='{{content}}' confirm-type='send' bindconfirm='send'></input>
+    <van-icon name="add-o" size="56rpx" color='grey' bindtap='showbottom' />
+  </view>
+  <view class="flex-box menu ">
+    <van-icon name="photo-o" size="25px" color='grey' bindtap='chose_img'/>
+    <van-icon name="photograph" size="25px" color='grey'  bindtap='chose_img'/>
+  </view>
+</view>
+<pic-view url='{{viewurl}}' bindclose='close_pic_view' wx:if='{{viewurl}}'></pic-view>

@@ -1,8 +1,49 @@
-var format = function(value) {
-  return value + "-test";
+var split = function(value, speator) {
+  var result = [];
+  if (value && value.split(speator)) {
+    result = value.split(speator);
+  }
+  return result;
 }
 
+var formatdate = function(value) {
+  var date = getDate(value);
+  return date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
+};
+
+var formattime = function(value) {
+  if (!value) {
+    return '';
+  }
+  var date = getDate(value);
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1
+  var day = date.getDate();
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  var result = [];
+  result.push(year);
+  result.push('年');
+  result.push(month);
+  result.push('月');
+  result.push(day);
+  result.push('日');
+  result.push(' ');
+  result.push(hour);
+  result.push(':');
+  result.push(minute);
+  return result.join('');
+};
+
+var indexOf = function(value, keyword) {
+  if (value) {
+    return value.indexOf(keyword);
+  }
+  return -1;
+}
 
 module.exports = {
-  format: format
+  split: split,
+  formattime: formattime,
+  indexOf: indexOf
 }

@@ -1,10 +1,24 @@
 {
   "pages": [
-    "pages/shop/detail/index",
     "pages/index/index/index",
-    "pages/shop/index/index",
-    "pages/logs/logs",
-    "pages/account/index/index"
+    "pages/index/shop/index",
+    "pages/map/index/index",
+    "pages/webview/index",
+    "pages/chat/user/index"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/shop",
+      "pages": [
+        "detail/index",
+        "detail/detail_remark/index",
+        "detail/detail_service/index",
+        "detail/detail_building_select/index",
+        "detail/detail_album/index",
+        "apartment/index",
+        "detail/detail_report/index"
+      ]
+    }
   ],
   "tabBar": {
     "custom": true,
@@ -14,12 +28,8 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/shop/index/index",
-        "text": "商城"
-      },
-      {
-        "pagePath": "pages/account/index/index",
-        "text": "个人中心"
+        "pagePath": "pages/index/shop/index",
+        "text": "全部房源"
       }
     ]
   },

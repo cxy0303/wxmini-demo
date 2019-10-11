@@ -4,6 +4,21 @@
   position: relative;
 }
 
+.building-full-item .blue {
+  color: #3347d1 !important;
+  border-color: #3347d1 !important;
+}
+
+.building-full-item .red {
+  color: #d14e33 !important;
+  border-color: #d14e33 !important;
+}
+
+.building-full-item .yellow {
+  color: #d19b33 !important;
+  border-color: #d19b33 !important;
+}
+
 .building-full-item .content {
   display: flex;
   width: 100%;
@@ -41,7 +56,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  padding-right: 40px
+  padding-right: 40px;
 }
 
 .building-full-item .content .word-spec .sub-title {
@@ -73,6 +88,13 @@
 .building-full-item .content .word-spec .price span {
   font-size: 11px;
   font-weight: 400;
+}
+
+.building-full-item .content .word-spec .price label {
+  font-size: 12px;
+  color: #999;
+  font-weight: normal;
+  margin-left: 5px;
 }
 
 .building-full-item .address {

@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "ali-oss": "^6.1.1",
     "vant-weapp": "^0.5.19"
   },
   "devDependencies": {},

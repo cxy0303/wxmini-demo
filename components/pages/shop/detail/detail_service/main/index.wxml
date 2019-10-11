@@ -1,0 +1,63 @@
+<wxs src='../../../../../../utils/tools.wxs' module="tools" />
+<view class="detial_service">
+  <van-tabs active='{{active}}' animated bindchange='tabs_change_handle'>
+    <van-tab title="自驾补贴" wx:if='{{service.s113.id>0}}'>
+      <view class="from">
+        <span></span>{{address.detail}}</view>
+      <view class="to">
+        <span></span>{{buildingGroupName}}</view>
+      <view class="form">
+        <view class="fieldname">
+          车牌号码
+        </view>
+        <view>
+          <input type="text" value='{{reportData.carNo}}' placeholder="请输入车牌号码" bindinput='carNO_confirm_handle'></input>
+        </view>
+        <view class="tips">
+          注：{{service.s113.tip||"完成报备后将会自动生成申请代码，并发消息提示申请人。凭申请代码到案场对接人领取自驾补贴。"}}
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="免费专车" wx:if='{{service.s115.id>0}}'>
+      <view class="from">
+        <span></span>{{address.detail}}</view>
+      <view class="to">
+        <span></span>{{buildingGroupName}}</view>
+      <view class="to time" bindtap='showtime'>
+        <span></span>{{reportData.specialCarTime?'出发时间':'请选择出发时间'}}
+        <p>{{tools.formattime(reportData.specialCarTime)}}</p>
+      </view>
+      <view class="form">
+        <view class="tips">
+          注：{{service.s115.tip||"完成报备后将会自动生成申请代码，并将发车时间和发车地址一起由消息发送给申请人。我们安排对接专车为您服务。"}}
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="免费班车" wx:if='{{service.s114.id>0}}'>
+      <view class="from">
+        <span></span>{{address.detail}}</view>
+      <view class="to">
+        <span></span>{{buildingGroupName}}</view>
+      <view class="to time" bindtap='showbus'>
+        <span></span>
+        {{reportData.visitDetailId?'班车':'请选择班车'}}
+        <p>{{reportData.visitBusAddress}}</p>
+      </view>
+      <view class="form">
+        <view class="tips">
+          注：{{service.s114.tip||"完成报备后将会自动生成申请代码，并将发车时间和发车地址一起由消息发送给申请人。我们将为您做好对接服务。"}}
+        </view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>
+<view class="detial_service_bottom" bindtap='report_click_handle'>
+  <a>立即报备</a>
+</view>
+<van-popup show='{{timevisible}}' position='bottom' bind:close='close_time_popup'>
+  <van-datetime-picker currentDate='{{currentDate}}'  minDate='{{minDate}}' bindconfirm='time_confirm'></van-datetime-picker>
+</van-popup>
+
+<van-popup show='{{busvisible}}' position='bottom' bind:close='close_bus_popup'>
+  <van-picker show-toolbar columns='{{busAddress}}' value-key='address' bindconfirm='bus_confirm_handle'></van-picker>
+</van-popup>

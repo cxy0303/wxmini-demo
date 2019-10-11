@@ -1,0 +1,84 @@
+<wxs src='../../../../../../utils/tools.wxs' module="tools" />
+<view class="detail_report">
+  <view class="form">
+    <block wx:for='{{reportlist}}' wx:key='{{item.buildingGroupId}}'>
+      <view class="form-item border-bottom high" bindtap="report_handle">
+        <span>*</span>
+        <label>报备楼盘
+          <i class='num'>{{index+1}}</i>
+        </label>
+        <a>{{item.buildingGroupName}}</a>
+      </view>
+      <view class="form-item" bindtap='showtime' data-key='{{index}}' data-time='{{item.visitTime}}'>
+        <span></span>
+        <label>预计到访时间</label>
+        <a wx:if='{{item.visitTime}}'>{{tools.formattime(item.visitTime)}}</a>
+        <a wx:else>选择预计到访时间</a>
+      </view>
+      <view class="form-item">
+        <span></span>
+        <label>是否本人跟进带看</label>
+        <van-radio-group value='{{item.oneself}}' data-key="{{index}}" bind:change="onRadioChange">
+          <van-radio name="{{true}}">是</van-radio>
+          <van-radio name="{{false}}">否</van-radio>
+        </van-radio-group>
+      </view>
+      <view class="group-item">
+        报备提示：{{item.reportRemark||'无'}}
+      </view>
+    </block>
+    <view class="form-item">
+      <span>*</span>
+      <label>客户姓名</label>
+    </view>
+    <view class="form-item input-item">
+      <span></span>
+      <view class="flex-box">
+        <input type="text" value='{{name}}' placeholder="请输入客户姓名" bindinput='name_input_handle'></input>
+        <van-radio-group value='{{gender}}' bind:change="gender_handle">
+          <van-radio name="1">先生</van-radio>
+          <van-radio name="0">女士</van-radio>
+        </van-radio-group>
+      </view>
+    </view>
+    <view class="form-item flex-box custome-phone">
+      <span>*</span>
+      <label>客户电话{{!mustFull&&isHidden?"ishidden":""}}</label>
+      <view class='{{isHidden?"ishidden":""}}' wx:if='{{!mustFull}}' bindtap='switch_handle'>
+        <van-switch checked='{{isHidden}}' size='20px'></van-switch>
+        <div>隐号报备</div>
+      </view>
+    </view>
+    <view class="form-item input-item">
+      <span></span>
+      <view class="cutome-phone-input">
+        <input bindblur='blur_handle' bindinput='input_handle' hold-keyboard='{{true}}' focus="{{focusIndex>=0&&focusIndex<=10}}" id='custome-phone' type='number' />
+        <label wx:key='{{item}}' wx:for='{{[0,1,2,3,4,5,6,7,8,9,10]}}' class=" {{focusIndex==index?'active':''}} {{!mustFull&&isHidden&&item>2&&item<7?'disabled':'normal'}}" for='custome-phone' data-key='{{item}}' bindtap='custome_input_handle'>{{phone[index]||''}}</label>
+      </view>
+    </view>
+    <view class="form-item">
+      <span>*</span>
+      <label>到访人数</label>
+    </view>
+    <view class="form-item input-item">
+      <span></span>
+      <view>
+        <input type="number" value='{{num}}' placeholder="请输入到访人数" bindinput='num_input_handle'></input>
+      </view>
+    </view>
+    <view class="form-item cell" bindtap='houseservice_handle' wx:if='{{houseServiceIds&&houseServiceIds.length>0&&reportlist.length==1}}'>
+      <label>看房服务</label>
+      <a>{{serviceData.visitDetailId?serviceData.visitText:'请选择看房服务'}}</a>
+    </view>
+    <view class="form-item">
+      <textarea value='{{remark}}' placeholder="请输入备注" bindinput='remark_input_handel'></textarea>
+    </view>
+  </view>
+  <cover-view class="submit">
+    <button bindtap='submit_handle'>确定</button>
+  </cover-view>
+</view>
+
+<van-popup show='{{timevisible}}' position='bottom' bind:close='close_time_popup'>
+  <van-datetime-picker value='{{visitTime}}' type="datetime" minDate='{{minDate}}' bindconfirm='time_confirm' bind:cancel='close_time_popup'></van-datetime-picker>
+</van-popup>

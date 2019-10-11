@@ -1,0 +1,163 @@
+/* pages/shop/detail/detail_album/index.wxss */
+
+page, .album-pic, .album-video {
+  height: 100%;
+  width: 100%;
+}
+
+.album-pic .tag, .album-video .tag {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  margin-left: -20px;
+  background-color: #ddd;
+  border-radius: 10px;
+  color: white;
+  padding: 0px 8px;
+}
+
+.album-footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  height: 100rpx;
+  width: 100%;
+}
+
+.album-footer .flex-box {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100rpx;
+  border-top: 1px solid #eee;
+}
+
+.album-footer scroll-view {
+  position: absolute;
+  top: -80rpx;
+  left: 0px;
+  width: 100%;
+  height: 80rpx;
+}
+
+.album-footer .flex-box  view {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.album-footer .flex-box .active {
+  color: #26a2ff;
+}
+
+.album-footer view {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+}
+
+.album-footer .small-menu {
+  height: 80rpx;
+}
+
+.album-footer .small-menu .text-center {
+  text-align: center;
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.album-footer .small-menu view {
+  display: inline-block;
+  white-space: nowrap;
+  word-break: keep-all;
+  height: 80rpx;
+}
+
+.album-footer .small-menu view a {
+  font-size: 13px;
+  padding: 5px 10px;
+  margin: 0px 5px;
+  background-color: rgb(190, 189, 189);
+  color: white;
+  border-radius: 30rpx;
+}
+
+.album-footer .small-menu view a.active {
+  background-color: #26a2ff;
+}
+
+.album-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.album-swiper swiper-item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.album-swiper swiper-item image, .album-swiper swiper-item video {
+  width: 100%;
+}
+
+.pic-view {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.pic-view .overlay {
+  background-color: black;
+  opacity: 0.9;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.pic-view movable-area {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1000;
+  color: white;
+}
+
+.pic-view movable-area movable-view {
+  background-color: green;
+  width: 50px;
+  height: 50px;
+}
+
+.pic-view movable-area movable-view image {
+  width: 100vw;
+}
+
+.pic-view .close {
+  border-radius: 50%;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  z-index: 1001;
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  text-align: center;
+  line-height: 30px;
+  vertical-align: middle;
+  color: #ddd;
+  opacity: 0.8;
+}

@@ -1,0 +1,47 @@
+<view class="album-pic" wx:if='{{type==1}}'>
+  <a class='tag'>{{picIndex+1}}/{{picQty}}</a>
+  <swiper current='{{picIndex}}' bindchange='pic_change_handle' class="album-swiper">
+    <block wx:for="{{picList}}" wx:key='{{item.id}}'>
+      <swiper-item>
+        <image src="{{item.picPath}}" class="slide-image" bindtap='view_img_handle' data-key='{{item.picPath}}' />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class="album-video" wx:if='{{type==2}}'>
+  <a class='tag'>{{videoIndex+1}}/{{videoQty}}</a>
+  <swiper current='{{videoIndex}}' class="album-swiper" bindchange='video_change_handle'>
+    <block wx:for="{{videoList}}" wx:key='{{item.id}}'>
+      <swiper-item>
+        <!-- <image src="{{item.picPath}}" class="slide-image" /> -->
+        <video src='{{item.video}}'></video>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<view class="pic-view" wx:if='{{imgview}}'>
+  <view class="overlay"></view>
+  <cover-view class='close' bindtap='close_imgview_handle'>x</cover-view>
+  <movable-area scale-area>
+    <movable-view x='{{imgview_x}}' y='{{imgview_y}}' direction="all" out-of-bounds scale>
+      <image src='{{imgview}}'></image>
+    </movable-view>
+  </movable-area>
+</view>
+
+
+<view class="album-footer">
+  <scroll-view class="small-menu" scroll-x='{{true}}'>
+    <view class="text-center" wx:if='{{type==1}}'>
+      <a bindtap='goPic' data-key='{{key}}' class='{{picList[picIndex].picTypeId==key?"active":""}}' wx:for='{{picTypeList}}' wx:for-index='key'>{{item}}</a>
+    </view>
+    <view class="text-center" wx:if='{{type==2}}'>
+      <a bindtap='goPic' data-key='{{key}}' class='{{videoList[videoIndex].picTypeId==key?"active":""}}' wx:for='{{videoTypeList}}' wx:for-index='key'>{{item}}</a>
+    </view>
+  </scroll-view>
+  <view class="flex-box">
+    <view class="{{type==1?'active':''}}" bindtap='setType' data-key='1'>图片</view>
+    <view class="{{type==2?'active':''}}" bindtap='setType' data-key='2'>视频</view>
+  </view>
+</view>

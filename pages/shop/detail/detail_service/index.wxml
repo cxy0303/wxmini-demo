@@ -1,0 +1,4 @@
+<base loading='{{loading}}' bind:pageloaded='pageloaded'>
+<main id='main' sureRedirect='{{sureRedirect}}' buildingId="{{buildingId}}" wx:if='{{!loading||loading=="api"}}' bind:pageloaded='pageloaded'>
+</main>
+</base>

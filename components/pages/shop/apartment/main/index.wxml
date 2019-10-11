@@ -1,0 +1,55 @@
+<view class="apartment">
+  <swiper indicator-color="white" indicator-active-color="blue" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" circular="{{true}}" bindchange='sidechange'>
+    <block>
+      <swiper-item wx:for='{{buildingModelType.attachment}}'>
+        <image class="slide-image" src='{{item.picPath}}' bindtap='view_pic_handler' data-key='{{item.picPath}}' />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="header">
+    <view class="title">
+      {{buildingModelType.modelTypeName}}
+      <span>{{buildingModelType.price}}万元起</span>
+      <label class="{{buildingModelType.saleType=='在售'?'active':''}}">{{buildingModelType.saleType}}</label>
+    </view>
+    <view class="info">
+      <view class="info-item">
+        <label>楼栋：</label>
+        <span>
+          <block wx:for='{{buildingList}}'>{{item.buildingName}}</block>
+        </span>
+      </view>
+      <view class="info-item">
+        <label>楼盘：</label>
+        <span>{{buildingModelType.buildingGroupName}}</span>
+      </view>
+      <view class="info-item">
+        <label>数量：</label>
+        <span>{{buildingModelType.roomNum}}</span>
+      </view>
+      <view class="info-item">
+        <label>面积：</label>
+        <span>{{buildingModelType.area}}㎡</span>
+      </view>
+    </view>
+  </view>
+  <view class="bar">
+    <a bindtap='gowebview'>
+      <image src='../imgs/dkjs.png'></image>房贷计算器</a>
+    <a bindtap='booking_handler'>
+      <image src='../imgs/bell.png'></image>降价通知我</a>
+  </view>
+  <view class="else">
+    <p>其他户型</p>
+    <view class="apartment-item " wx:for='{{othertype}}' wx:key='{{item.id}}'>
+      <apartment-item item='{{item}}' bindclick='item_click_handler'></apartment-item>
+    </view>
+  </view>
+  <movable-area wx:if='{{viewPic}}' scale-area>
+    <view class="overlay" bindtap='view_close_handle'>
+    </view>
+    <movable-view scale direction="all" out-of-bounds>
+      <image src='{{viewPic}}'></image>
+    </movable-view>
+  </movable-area>
+</view>

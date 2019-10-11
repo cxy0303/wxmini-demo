@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "房源报备",
+  "usingComponents": {
+    "main": "../../components/pages/shop/detail/detail_report/main/index"
+  }
+}

@@ -26,11 +26,6 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    view() {
-      wx.navigateTo({
-        url: '/pages/shop/detail/index',
-      })
-    },
     touchStart: function(e) {
       let sx = e.touches[0].pageX
       let sy = e.touches[0].pageY

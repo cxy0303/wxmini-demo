@@ -1,6 +1,11 @@
 {
   "component": true,
   "usingComponents": {
-    "van-icon": "vant-weapp/icon"
+    "van-icon": "vant-weapp/icon",
+    "apartment-item": "../../common/apartmentitem/index",
+    "van-rate": "vant-weapp/rate",
+    "building-full-item": "../../../common/buildingfullitem/index",
+    "vant-popup": "vant-weapp/popup",
+    "vant-checkbox":"vant-weapp/checkbox"
   }
 }

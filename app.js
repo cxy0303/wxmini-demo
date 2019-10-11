@@ -1,17 +1,73 @@
 import storage from '/utils/storage.js'
+var bmap = require('/utils/bmap-wx.min.js');
 App({
   onLaunch: function() {
-
     var userinfo = wx.getStorageSync(storage.keys.userInfo) || null;
+    userinfo["sycned"] = false;
     if (userinfo)
       this.setLogin(userinfo);
+    this.getlocation();
+  },
+  getlocation() {
+    var that = this;
+    var BMap = new bmap.BMapWX({
+      ak: this.bMap_Key
+    });
+    var fail = function(data) {
+      console.log(data)
+    };
+    var success = function(data) {
+      console.log(data);
+      var addressobj = data.originalData.result.addressComponent;
+      var location = data.originalData.result.location;
+
+      that.appData.location = {
+        cityId: addressobj.adcode,
+        province: addressobj.province,
+        city: addressobj.city,
+        district: addressobj.district,
+        street: addressobj.street,
+        lat: location.lat,
+        lng: location.lng
+      }
+    }
+    BMap.regeocoding({
+      fail: fail,
+      success: success
+    });
   },
   setLogin(userinfo) {
     this.appData.userInfo = userinfo;
     wx.setStorageSync(storage.keys.userInfo, this.appData.userInfo)
   },
+  bMap_Key: 'uP9sskI3WPQEW7MglaOLTosK4k12rG7h',
   appData: {
     userInfo: null,
+    shopInfo: {
+      accountId: 146
+    },
+    location: {
+      cityId: 0,
+      province: '上海',
+      city: '上海市',
+      district: '',
+      street: '',
+      lat: 0,
+      lng: 0
+    },
+    chat: {
+      connected: false,
+      socketTask: null,
+      groupId: 0,
+      msglist: [],
+      onMessage: null,
+      onConnected: null,
+      onLoadAll: null,
+      loadMore: null,
+      pageIndex: 0,
+      pageSize: 10,
+      loadAll: false
+    },
     // userInfo: {
     //   'id': 146,
     //   'phone': '',

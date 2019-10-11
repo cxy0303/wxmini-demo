@@ -4,6 +4,8 @@ page {
   background: rgba(248, 248, 248, 1);
   box-sizing: border-box;
   padding-bottom: 64px;
+  /* height: 100%;
+  overflow: auto; */
 }
 
 .font-primary {
@@ -55,6 +57,49 @@ page {
   justify-content: center;
 }
 
-.d-flex{
+.d-flex {
   display: flex;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.popup-item {
+  flex: 1;
+  display: flex;
+  width: 100%;
+  padding: 13px 5px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eee;
+}
+
+.popup-item .van-checkbox {
+  width: 50px;
+  flex: none;
+}
+
+.popup-item p {
+  flex: 1;
+}
+
+.popup-foot {
+  border-top: 5px solid #eee;
+  display: flex;
+  padding: 13px 5px;
+}
+
+.popup-foot view {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-foot view:first-child {
+  border-right: 1px solid #eee;
+}
+
+.popup-foot .sure {
+  color: blue;
 }

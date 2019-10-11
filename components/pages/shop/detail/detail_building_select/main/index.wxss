@@ -1,0 +1,80 @@
+/* components/pages/shop/detail/detail_building_select/main/index.wxss */
+
+.detail_building_select {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: white;
+  min-height: 100vh;
+}
+
+.detail_building_select .tab-menu {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  background-color: white;
+  z-index: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.detail_building_select .tab-menu a {
+  flex: 1;
+  text-align: center;
+  font-size: 15px;
+  color: #333;
+  position: relative;
+}
+
+.detail_building_select .tab-menu a.active {
+  color: #3347d1;
+}
+
+.detail_building_select .tab-menu a.active::after {
+  content: ' ';
+  position: absolute;
+  bottom: -2px;
+  left: 0px;
+  width: 100%;
+  height: 3px;
+  background-color: #3347d1;
+}
+
+.detail_building_select .tab-panel .building-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.detail_building_select .tab-panel .building-item .checkbox {
+  width: 20px;
+  flex-grow: 0;
+  padding: 0px 20px;
+}
+
+.detail_building_select .tab-panel .building-item building-full-item {
+  flex: 1;
+}
+
+.detail_building_select-sure {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  background-color: white;
+  border-top: 1px solid #ddd;
+}
+
+.detail_building_select-sure a {
+  display: block;
+  background-color: #3347d1;
+  color: white;
+  text-align: center;
+  padding: 12px 10px;
+  border-radius: 3px;
+}
