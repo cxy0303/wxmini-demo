@@ -51,16 +51,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    setTimeout(() => {
-      wx.stopPullDownRefresh();
-    }, 3000)
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    this.selectComponent("#main").loadData();
   },
 
   /**
@@ -68,8 +66,5 @@ Page({
    */
   onShareAppMessage: function() {
 
-  },
-  startRresh() {
-    wx.startPullDownRefresh();
   }
 })

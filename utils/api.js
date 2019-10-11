@@ -63,6 +63,10 @@ var getChatMsnList = function(data) {
   return post("/group/getChatMsnList", data);
 }
 
+var getMyBuilding = function(data) {
+  return post("/shop/myBuilding", data);
+}
+
 export default {
   url: remote,
   socket: socketUrl,
@@ -86,5 +90,6 @@ export default {
   getApartmentDetail: getApartmentDetail,
   houseTypeSubscribe: houseTypeSubscribe,
   getQuestionMsnList: getQuestionMsnList,
-  getChatMsnList: getChatMsnList
+  getChatMsnList: getChatMsnList,
+  getMyBuilding: getMyBuilding
 }

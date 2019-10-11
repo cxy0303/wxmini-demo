@@ -1,7 +1,9 @@
 // components/pages/chat/user/main/index.js
 import api from '../../../../../utils/api.js'
 var app = getApp();
-import { uploadFile } from '../../../../../utils/alioss/alioss.js'
+import {
+  uploadFile
+} from '../../../../../utils/alioss/alioss.js'
 Component({
   /**
    * 组件的属性列表
@@ -55,17 +57,23 @@ Component({
    */
   methods: {
     chose_img() {
-      // console.log(new OSS());
-      // wx.chooseImage({
-      //   count: 1,
-      //   success: function(res) {
-      //     wx.showModal({
-      //       title: 'test',
-      //       content: res.tempFiles[0].path,
-      //     })
-
-      //   },
-      // })
+      wx.chooseImage({
+        count: 1,
+        success: (res) => {
+          uploadFile(res.tempFiles[0].path).then((os_res) => {
+            this.sendmsg({
+              picPath: os_res.data.url,
+              targetType: 2
+            })
+            this.setData({
+              showbottom: false
+            })
+            wx.pageScrollTo({
+              scrollTop: 10000
+            })
+          })
+        },
+      })
     },
     view_pic(e) {
       this.setData({
@@ -89,9 +97,6 @@ Component({
         content: e.detail.value,
         targetType: 1
       })
-    },
-    sendfile(data) {
-      this.sendmsg(data);
     },
     sendmsg(data) {
       if (!app.appData.chat.connected) {

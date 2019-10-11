@@ -27,14 +27,13 @@ Component({
       })
     },
     keyword_confirm(e) {
-      wx.showToast({
-        title: e.detail.value
-      })
+      this.triggerEvent("search", e.detail.value);
     },
     keywords_clear(e) {
       this.setData({
         keywords: ''
       })
+      this.triggerEvent("search",'');
     }
   }
 })
