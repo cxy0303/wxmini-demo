@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "apartment-item": "../../common/apartmentitem/index"
+    "apartment-item": "../../../../common/apartmentitem/index"
   }
 }

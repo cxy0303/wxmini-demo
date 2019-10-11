@@ -9,11 +9,11 @@
     </view>
     <view class="tab-bar-item-text">在线咨询</view>
   </view>
-  <view class="tab-bar-item" bindtap="switchTab" data-url='/pages/index/index/index'>
+  <view class="tab-bar-item" bindtap="switchTab" data-url='/home/index/index/index'>
     <van-icon size="25px" color='grey' name="wap-home" />
     <view class="tab-bar-item-text">首页</view>
   </view>
-  <view class="tab-bar-item" bindtap="switchTab" data-url='/pages/index/shop/index'>
+  <view class="tab-bar-item" bindtap="switchTab" data-url='/home/index/shop/index'>
     <van-icon size="25px" color='grey' name="search" />
     <view class="tab-bar-item-text">全部房源</view>
   </view>

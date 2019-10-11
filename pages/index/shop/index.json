@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "全部房源",
-  "usingComponents": {
-    "van-button": "vant-weapp/button/index",
-    "main": "../../components/pages/shop/index/main/index"
-  }
-}

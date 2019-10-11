@@ -1,0 +1,28 @@
+<wxs src='../../../utils/tools.wxs' module="tools" />
+<view class="building-full-item" bindtap="clickhandle" data-id='{{buildingInfo.id}}'>
+  <view class="content">
+    <image src="{{buildingInfo.logo}}"></image>
+    <view class="word-spec">
+      <view class="category blue" wx:if='{{buildingInfo.buildingType=="住宅"}}'>{{buildingInfo.buildingType}}</view>
+      <view class="category yellow" wx:if='{{buildingInfo.buildingType=="商铺"}}'>{{buildingInfo.buildingType}}</view>
+      <view class="category red" wx:if='{{buildingInfo.buildingType=="别墅"}}'>{{buildingInfo.buildingType}}</view>
+      <view class="title">{{buildingInfo.name}}</view>
+      <view class="sub-title">{{buildingInfo.roomType}}
+        <span wx:if='{{buildingInfo.roomType&&buildingInfo.roomArea}}'> / </span>{{buildingInfo.roomArea}}</view>
+      <view class="tag">
+        <span wx:for='{{tools.split(buildingInfo.tags,"-")}}'>{{item}}</span>
+      </view>
+      <view class="price">
+        {{buildingInfo.totalPrice}}
+        <!-- <span>万</span> -->
+        <label>{{buildingInfo.price}}元/㎡</label>
+      </view>
+    </view>
+  </view>
+  <view class="address" wx:if='{{showaddress}}'>
+    地址：{{buildingInfo.address}}
+  </view>
+  <view class="foot" wx:if='{{showfoot}}'>
+    <image src='../../../assets/images/fire.png'></image>内环内临水独栋 | 领包入住 | 精装修 | 附赠停车位
+  </view>
+</view>

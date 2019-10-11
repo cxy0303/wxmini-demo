@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "首页",
-  "usingComponents": {
-    "van-button": "vant-weapp/button/index",
-    "main": "../../components/pages/index/index/main/index"
-  }
-}

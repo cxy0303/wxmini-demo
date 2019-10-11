@@ -1,22 +1,22 @@
 {
   "pages": [
-    "pages/index/index/index",
-    "pages/index/shop/index",
-    "pages/map/index/index",
-    "pages/webview/index",
-    "pages/chat/user/index"
+    "home/index/index/index",
+    "home/index/shop/index"
   ],
-  "subPackages": [
+  "subpackages": [
     {
-      "root": "pages/shop",
+      "root": "pages",
       "pages": [
-        "detail/index",
-        "detail/detail_remark/index",
-        "detail/detail_service/index",
-        "detail/detail_building_select/index",
-        "detail/detail_album/index",
-        "apartment/index",
-        "detail/detail_report/index"
+        "shop/detail/index/index",
+        "shop/detail/detail_remark/index",
+        "shop/detail/detail_service/index",
+        "shop/detail/detail_building_select/index",
+        "shop/detail/detail_album/index",
+        "shop/apartment/index",
+        "shop/detail/detail_report/index",
+        "map/index/index",
+        "webview/index",
+        "chat/user/index"
       ]
     }
   ],
@@ -24,11 +24,11 @@
     "custom": true,
     "list": [
       {
-        "pagePath": "pages/index/index/index",
+        "pagePath": "home/index/index/index",
         "text": "首页"
       },
       {
-        "pagePath": "pages/index/shop/index",
+        "pagePath": "home/index/shop/index",
         "text": "全部房源"
       }
     ]
