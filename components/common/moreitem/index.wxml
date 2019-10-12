@@ -1,0 +1,13 @@
+<wxs src='../../../utils/tools.wxs' module="tools" />
+<view class="more-item-container">
+  <view class="more-item-group" wx:for='{{items.list}}' wx:key='{{item.type}}'>
+    <p>
+      <span>{{item.name}}</span>
+      <label></label>
+      <span bindtap='clear_group' data-key='{{index}}'>清除</span>
+    </p>
+    <view class="more-items">
+      <a bindtap="setactive" data-key='{{cell.id}}' class='{{tools.indexOf(select_Value,cell.id)>=0?"active":""}}' wx:for='{{item.list}}' wx:for-item="cell" wx:key='{{cell.id}}'>{{cell.name}}</a>
+    </view>
+  </view>
+</view>

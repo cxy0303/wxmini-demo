@@ -11,43 +11,24 @@ Component({
    * 组件的初始数据
    */
   data: {
-    items: [{
-      // 导航名称
-      text: '区域',
-      // 该导航下所有的可选项
-      children: [{
-        id: 11,
-        text: '松江区'
-      }, {
-        id: 12,
-        text: '闵行区'
-      }, {
-        id: 13,
-        text: '长宁区'
-      }]
-    }, {
-      // 导航名称
-      text: '地铁',
-      // 该导航下所有的可选项
-      children: [{
-          // 名称
-          text: '1号线',
-          // id，作为匹配选中状态的标识
-          id: 1
-        },
-        {
-          text: '2号线',
-          id: 2
-        }
-      ]
-    }],
-    activeIndex: 0
+    activeIndex: 0,
+    items_area: [],
+    items_trafic: {}
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-
+    click_nav(e) {
+      this.setData({
+        activeIndex: e.detail.index
+      })
+    },
+    setactive(e) {
+      this.setData({
+        activeIndex: e.currentTarget.dataset.key
+      })
+    }
   }
 })

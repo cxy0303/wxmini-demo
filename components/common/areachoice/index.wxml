@@ -1,3 +1,9 @@
-<view>
-  <van-tree-select items="{{items}}" main-active-index="{{activeIndex}}"></van-tree-select>
+<view class="areachoice">
+  <view class="content">
+    <view class='left'>
+      <a class='{{activeIndex==0?"active":""}}' bindtap='setactive' data-key='0'>区域</a>
+      <a class='{{activeIndex==1?"active":""}}' bindtap='setactive' data-key='1'>地铁</a>
+    </view>
+    <view class='right'></view>
+  </view>
 </view>

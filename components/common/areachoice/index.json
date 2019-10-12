@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "van-tree-select": "vant-weapp/tree-select"
+    "van-tree-select": "vant-weapp/tree-select",
+    "van-button":"vant-weapp/button"
   }
 }

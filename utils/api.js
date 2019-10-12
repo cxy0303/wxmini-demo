@@ -1,3 +1,5 @@
+var bmap = require('./bmap-wx.min.js');
+
 const remote = 'http://119.3.36.212:8599';
 const socketUrl = 'wss://api.jrfw360.com/websocket/';
 
@@ -67,6 +69,28 @@ var getMyBuilding = function(data) {
   return post("/shop/myBuilding", data);
 }
 
+var getCondition = function(data) {
+  return post("/buildingGroup/findCondition", data);
+}
+
+var getLocation = function(data) {
+  return new Promise((resolve, reject) => {
+    var BMap = new bmap.BMapWX({
+      ak: "uP9sskI3WPQEW7MglaOLTosK4k12rG7h"
+    });
+    var fail = function(data) {
+      reject(data);
+    };
+    var success = function(data) {
+      resolve(data);
+    }
+    BMap.regeocoding({
+      fail: fail,
+      success: success
+    });
+  })
+}
+
 export default {
   url: remote,
   socket: socketUrl,
@@ -91,5 +115,7 @@ export default {
   houseTypeSubscribe: houseTypeSubscribe,
   getQuestionMsnList: getQuestionMsnList,
   getChatMsnList: getChatMsnList,
-  getMyBuilding: getMyBuilding
+  getMyBuilding: getMyBuilding,
+  getCondition: getCondition,
+  getLocation: getLocation
 }

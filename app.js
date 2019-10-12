@@ -1,5 +1,6 @@
 import storage from '/utils/storage.js'
 var bmap = require('/utils/bmap-wx.min.js');
+import api from '/utils/api.js'
 App({
   onLaunch: function() {
     var userinfo = wx.getStorageSync(storage.keys.userInfo) || null;
@@ -9,19 +10,10 @@ App({
     this.getlocation();
   },
   getlocation() {
-    var that = this;
-    var BMap = new bmap.BMapWX({
-      ak: this.bMap_Key
-    });
-    var fail = function(data) {
-      console.log(data)
-    };
-    var success = function(data) {
-      console.log(data);
+    api.getLocation((data) => {
       var addressobj = data.originalData.result.addressComponent;
       var location = data.originalData.result.location;
-
-      that.appData.location = {
+      this.appData.location = {
         cityId: addressobj.adcode,
         province: addressobj.province,
         city: addressobj.city,
@@ -30,17 +22,12 @@ App({
         lat: location.lat,
         lng: location.lng
       }
-    }
-    BMap.regeocoding({
-      fail: fail,
-      success: success
-    });
+    })
   },
   setLogin(userinfo) {
     this.appData.userInfo = userinfo;
     wx.setStorageSync(storage.keys.userInfo, this.appData.userInfo)
   },
-  bMap_Key: 'uP9sskI3WPQEW7MglaOLTosK4k12rG7h',
   appData: {
     userInfo: null,
     shopInfo: {

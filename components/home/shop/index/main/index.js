@@ -24,7 +24,24 @@ Component({
     pageIndex: 0,
     pageSize: 10,
     list: [],
-    loadAll: false
+    loadAll: false,
+    condition: {
+      price: {
+        id: 0,
+        activeIndex: 0,
+        type: '',
+        text: ''
+      },
+      houseType: {
+        id: 0,
+        name: ''
+      },
+      moreitems: [],
+      sort: {
+        id: 0,
+        name: ''
+      }
+    }
   },
   attached() {
     this.loadData();
@@ -33,6 +50,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    filter_Search(e) {
+      console.log(e);
+      this.setData({
+        condition: e.detail
+      })
+      this.reload();
+    },
     key_Search(e) {
       this.setData({
         key: e.detail
@@ -53,6 +77,7 @@ Component({
       }
 
       let userInfo = app.appData.userInfo;
+      let condition = this.data.condition;
       let data = {
         "accountId": 52,
         "app": 0,
@@ -64,9 +89,9 @@ Component({
         "lat": "",
         "lineId": 0,
         "lng": "",
-        "moduleType": "",
-        "moreIds": "",
-        "orderBy": 0,
+        "moduleType": condition.houseType.name,
+        "moreIds": condition.moreitems.join(','),
+        "orderBy": condition.sort.id || 0,
         "pageNo": this.data.pageIndex + 1,
         "pageSize": this.data.pageSize,
         "stepIds": "",
@@ -74,10 +99,13 @@ Component({
         "totalPrice": "",
         "type": 0
       }
+      if (data.hasOwnProperty(condition.price.type))
+        data[condition.price.type] = condition.price.text;
+
       api.getMyBuilding(data).then((res) => {
         if (res.data.code == 1) {
           let content = res.data.content;
-          this.data.list.splice(0, 0, ...content.list)
+          this.data.list.push(...content.list)
           this.setData({
             list: this.data.list,
             pageIndex: this.data.pageIndex + 1,

@@ -7,7 +7,7 @@
       <category-bar></category-bar>
     </view>
     <view class="filter">
-      <filter-bar></filter-bar>
+      <filter-bar bindsearch='filter_Search'></filter-bar>
     </view>
   </view>
   <view class="shop-index-content" bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd'>

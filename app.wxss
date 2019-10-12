@@ -3,7 +3,7 @@
 page {
   background: rgba(248, 248, 248, 1);
   box-sizing: border-box;
-  padding-bottom: 64px;
+  padding-bottom: 50px;
   /* height: 100%;
   overflow: auto; */
 }

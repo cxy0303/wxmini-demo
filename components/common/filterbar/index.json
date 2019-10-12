@@ -1,6 +1,13 @@
 {
   "component": true,
   "usingComponents": {
-    "area-choice": "../areachoice"
+    "more-item":"../moreitem",
+    "area-choice": "../areachoice",
+    "van-tree-select": "vant-weapp/tree-select",
+    "van-button": "vant-weapp/button",
+    "van-radio-group": "vant-weapp/radio-group",
+    "van-cell-group": "vant-weapp/cell-group",
+    "van-cell": "vant-weapp/cell",
+    "van-radio": "vant-weapp/radio"
   }
 }

@@ -5,7 +5,13 @@
     </span>
     <view class="drop-down" wx:if='{{showindex==1}}'>
       <view class="drop-down-container">
-        <area-choice></area-choice>
+        <scroll-view scroll-y='true'>
+          <area-choice></area-choice>
+        </scroll-view>
+        <view class="footer">
+          <van-button type="default" size="small" bindtap='search_Clear' data-key='housetype'>清空</van-button>
+          <van-button type="info" size="small" bindtap='search_Confirm' data-key='housetype'>搜索</van-button>
+        </view>
       </view>
       <view class="overlay" catchtap="dropdownclose"></view>
     </view>
@@ -15,7 +21,21 @@
       <image src="{{showindex==2?iconactive:icon}}"></image>
     </span>
     <view class="drop-down" wx:if='{{showindex==2}}'>
-      <view class="drop-down-container">222222222222</view>
+      <view class="drop-down-container">
+        <scroll-view scroll-y='true'>
+          <van-radio-group value="{{confirm_Value.houseType.id}}">
+            <van-cell-group>
+              <van-cell data-key='{{item}}' bindtap='housetype_change' title="{{item.name}}" clickable wx:for='{{condition.data_HouseType.list}}' wx:key='{{item.id}}'>
+                <van-radio slot="right-icon" name="{{item.id}}"></van-radio>
+              </van-cell>
+            </van-cell-group>
+          </van-radio-group>
+        </scroll-view>
+        <view class="footer">
+          <van-button type="default" size="small" bindtap='search_Clear' data-key='housetype'>清空</van-button>
+          <van-button type="info" size="small" bindtap='search_Confirm' data-key='housetype'>搜索</van-button>
+        </view>
+      </view>
       <view class="overlay" catchtap="dropdownclose"></view>
     </view>
   </view>
@@ -24,7 +44,15 @@
       <image src="{{showindex==3?iconactive:icon}}"></image>
     </span>
     <view class="drop-down" wx:if='{{showindex==3}}'>
-      <view class="drop-down-container">333333333333333</view>
+      <view class="drop-down-container">
+        <van-tree-select bindclickitem='price_nav_item' bindclicknav='price_nav_change' active-id='{{confirm_Value.price.id}}' main-active-index='{{confirm_Value.price.activeIndex}}' max='1' items='{{condition.data_Price.list}}'>
+
+        </van-tree-select>
+        <view class="footer">
+          <van-button type="default" size="small" bindtap='search_Clear' data-key='price'>清空</van-button>
+          <van-button type="info" size="small" bindtap='search_Confirm' data-key='price'>搜索</van-button>
+        </view>
+      </view>
       <view class="overlay" catchtap="dropdownclose"></view>
     </view>
   </view>
@@ -33,7 +61,15 @@
       <image src="{{showindex==4?iconactive:icon}}"></image>
     </span>
     <view class="drop-down" wx:if='{{showindex==4}}'>
-      <view class="drop-down-container">44444444444444444</view>
+      <view class="drop-down-container">
+        <scroll-view scroll-y='true'>
+          <more-item bindchange='more_Change' value='{{confirm_Value.moreitems}}' items='{{condition.data_More}}'></more-item>
+        </scroll-view>
+        <view class="footer">
+          <van-button type="default" size="small" bindtap='search_Clear' data-key='more'>清空</van-button>
+          <van-button type="info" size="small" bindtap='search_Confirm' data-key='more'>搜索</van-button>
+        </view>
+      </view>
       <view class="overlay" catchtap="dropdownclose"></view>
     </view>
   </view>
@@ -42,7 +78,17 @@
       <image src="../../../assets/images/sort.png"></image>
     </span>
     <view class="drop-down" wx:if='{{showindex==5}}'>
-      <view class="drop-down-container">55555555555</view>
+      <view class="drop-down-container">
+        <scroll-view scroll-y='true'>
+          <van-radio-group value="{{confirm_Value.sort.id}}">
+            <van-cell-group>
+              <van-cell data-key='{{item}}' bindtap='sort_change' title="{{item.name}}" clickable wx:for='{{condition.data_Sort.list}}' wx:key='{{item.id}}'>
+                <van-radio slot="right-icon" name="{{item.id}}"></van-radio>
+              </van-cell>
+            </van-cell-group>
+          </van-radio-group>
+        </scroll-view>
+      </view>
       <view class="overlay" catchtap="dropdownclose"></view>
     </view>
   </view>

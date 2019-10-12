@@ -1,1 +1,35 @@
 /* components/pages/common/areachoice/index.wxss */
+
+.areachoice {
+  width: 100%;
+  height: 100%;
+}
+
+.areachoice .content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.areachoice .content .left {
+  width: 100px;
+  flex: none;
+  padding: 5px;
+}
+
+.areachoice .content .left a {
+  display: block;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  margin-bottom: 5px;
+}
+
+.areachoice .content .left a.active {
+  color: #1989fa;
+}
+
+.areachoice .content .right {
+  flex: 1;
+}
