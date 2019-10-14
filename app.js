@@ -2,7 +2,10 @@ import storage from '/utils/storage.js'
 var bmap = require('/utils/bmap-wx.min.js');
 import api from '/utils/api.js'
 App({
-  onLaunch: function() {
+  onLaunch: function(options) {
+    if (options.query["shopAccountId"]) {
+      this.appData.shopInfo.accountId = options.query.shopAccountId;
+    }
     var userinfo = wx.getStorageSync(storage.keys.userInfo) || null;
     userinfo["sycned"] = false;
     if (userinfo)
@@ -26,12 +29,17 @@ App({
   },
   setLogin(userinfo) {
     this.appData.userInfo = userinfo;
+    if (!this.appData.shopInfo.accountId) {
+      this.appData.shopInfo.accountId = userinfo.id;
+    }
     wx.setStorageSync(storage.keys.userInfo, this.appData.userInfo)
   },
   appData: {
     userInfo: null,
     shopInfo: {
-      accountId: 146
+      accountId: 0,
+      name: '',
+      companyName: ''
     },
     location: {
       cityId: 0,
@@ -72,7 +80,8 @@ App({
     //   'authenticationFlag': 1
     // },
     tabBarInfo: {
-      qty: 8
+      qty: 0,
+      active: 'home'
     }
   }
 })

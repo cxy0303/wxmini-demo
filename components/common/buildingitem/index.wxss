@@ -5,12 +5,13 @@
 }
 
 .building-item image {
-  width: 156px;
-  height: 117px;
-  background-color: #EEEEEE;
+  width: 312rpx;
+  height: 234rpx;
+  background-color: #eee;
 }
 
 .building-item .subject {
+  width: 312rpx;
   overflow: hidden;
   text-overflow: ellipsis;
 }

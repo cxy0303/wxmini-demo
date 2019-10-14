@@ -145,7 +145,7 @@ Component({
     },
     gomore() {
       wx.navigateTo({
-        url: '/pages/shop/detail/detail_remark/index?id=' + this.data.buildingId,
+        url: '/pages/webview/index?url=https://h5.jrfw360.com/propertyBaseInfoDetail/' + this.data.buildingId,
       })
     },
     settab(e) {

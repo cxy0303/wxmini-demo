@@ -2,8 +2,19 @@
   <view class="content">
     <view class='left'>
       <a class='{{activeIndex==0?"active":""}}' bindtap='setactive' data-key='0'>区域</a>
-      <a class='{{activeIndex==1?"active":""}}' bindtap='setactive' data-key='1'>地铁</a>
+      <a class='{{activeIndex==1?"active":""}}' bindtap='setactive' data-key='1' wx:if='{{items.list.length>=2}}'>地铁</a>
     </view>
-    <view class='right'></view>
+    <view class='right'>
+      <view wx:if='{{activeIndex==0}}'>
+        <van-tree-select bindclickitem='area_nav_item' bindclicknav='area_nav_change' active-id='{{select.id}}' main-active-index='{{select.type}}' max='1' items='{{items.list[0].children}}'>
+
+        </van-tree-select>
+      </view>
+      <view wx:if='{{activeIndex==1}}&&items.list.length>=2'>
+        <van-tree-select bindclickitem='traffic_nav_item' bindclicknav='traffic_nav_change' active-id='{{select.id}}' main-active-index='{{select.type}}' max='1' items='{{items.list[1].children}}'>
+
+        </van-tree-select>
+      </view>
+    </view>
   </view>
 </view>

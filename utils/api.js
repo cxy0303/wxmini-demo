@@ -73,6 +73,10 @@ var getCondition = function(data) {
   return post("/buildingGroup/findCondition", data);
 }
 
+var getMyIndex = function(data) {
+  return post("/shop/myIndex", data);
+}
+
 var getLocation = function(data) {
   return new Promise((resolve, reject) => {
     var BMap = new bmap.BMapWX({
@@ -117,5 +121,6 @@ export default {
   getChatMsnList: getChatMsnList,
   getMyBuilding: getMyBuilding,
   getCondition: getCondition,
-  getLocation: getLocation
+  getLocation: getLocation,
+  getMyIndex: getMyIndex
 }

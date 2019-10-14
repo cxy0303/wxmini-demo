@@ -7,6 +7,10 @@ Component({
     title: {
       type: String,
       value: ''
+    },
+    items: {
+      type: Array,
+      value: []
     }
   },
 

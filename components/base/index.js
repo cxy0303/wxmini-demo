@@ -85,32 +85,34 @@ Component({
         let socket = app.appData.chat.socketTask;
         if (!chatInfo.connected) {
           this.getChatMsnList().then((res) => {
-            socket = wx.connectSocket({
-              url: api.socket + "/" + res.data.content.groupId + "/" + app.appData.userInfo.id
-            })
-            wx.onSocketOpen((res) => {
-              app.appData.chat.connected = true;
-              app.appData.chat.loadMore = this.getChatMsnList;
-              if (app.appData.chat.onConnected) {
-                app.appData.chat.onConnected(app.appData.chat.msglist)
-              }
-            })
-            wx.onSocketMessage((evt) => {
-              if (evt.data) {
-                let msg = JSON.parse(evt.data);
-                app.appData.chat.msglist.push(msg);
-                if (onMessage) {
-                  onMessage(msg);
+            if (res.data.code == 1) {
+              socket = wx.connectSocket({
+                url: api.socket + "/" + res.data.content.groupId + "/" + app.appData.userInfo.id
+              })
+              wx.onSocketOpen((res) => {
+                app.appData.chat.connected = true;
+                app.appData.chat.loadMore = this.getChatMsnList;
+                if (app.appData.chat.onConnected) {
+                  app.appData.chat.onConnected(app.appData.chat.msglist)
                 }
-              }
-            })
-            wx.onSocketError((res) => {
-              app.appData.chat.connected = false;
-            })
-            wx.onSocketClose((res) => {
-              app.appData.chat.connected = false;
-              app.appData.chat.socket = null;
-            })
+              })
+              wx.onSocketMessage((evt) => {
+                if (evt.data) {
+                  let msg = JSON.parse(evt.data);
+                  app.appData.chat.msglist.push(msg);
+                  if (onMessage) {
+                    onMessage(msg);
+                  }
+                }
+              })
+              wx.onSocketError((res) => {
+                app.appData.chat.connected = false;
+              })
+              wx.onSocketClose((res) => {
+                app.appData.chat.connected = false;
+                app.appData.chat.socket = null;
+              })
+            }
           })
         }
       })
@@ -233,26 +235,39 @@ Component({
         let userinfo = app.appData.userInfo;
         let shopinfo = app.appData.shopInfo;
         let chatinfo = app.appData.chat;
+        if (userinfo.id == shopinfo.accountId) { //自己跟自己聊天忽略
+          resolve({
+            data: {
+              code: -1
+            }
+          });
+          return;
+        }
         if (chatinfo.loadAll) {
           if (chatinfo.onLoadAll) {
             chatinfo.onLoadAll();
           }
-          resolve();
+          resolve({
+            data: {
+              code: -1
+            }
+          });
+          return;
+        }
+        let data = {
+          'accountId': userinfo.id,
+          'loginToken': userinfo.loginToken,
+          'otherAccountId': shopinfo.accountId,
+          'pageNo': 1,
+          'pageSize': 10
         }
         // let data = {
-        //   'accountId': userinfo.id,
+        //   'accountId': 146,
         //   'loginToken': userinfo.loginToken,
-        //   'otherAccountId': shopinfo.accountId,
-        //   'pageNo': 1,
-        //   'pageSize': 10
+        //   'groupId': 452,
+        //   'pageNo': chatinfo.pageIndex + 1,
+        //   'pageSize': chatinfo.pageSize
         // }
-        let data = {
-          'accountId': 146,
-          'loginToken': userinfo.loginToken,
-          'groupId': 452,
-          'pageNo': chatinfo.pageIndex + 1,
-          'pageSize': chatinfo.pageSize
-        }
         api.getChatMsnList(data).then((res) => {
           if (res.data.code == 1) {
             let content = res.data.content;

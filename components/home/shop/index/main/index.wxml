@@ -3,9 +3,9 @@
     <view class="search">
       <search-bar bindsearch='key_Search'></search-bar>
     </view>
-    <view class="category">
+    <!-- <view class="category">
       <category-bar></category-bar>
-    </view>
+    </view> -->
     <view class="filter">
       <filter-bar bindsearch='filter_Search'></filter-bar>
     </view>

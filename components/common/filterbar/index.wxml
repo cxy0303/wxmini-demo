@@ -6,11 +6,11 @@
     <view class="drop-down" wx:if='{{showindex==1}}'>
       <view class="drop-down-container">
         <scroll-view scroll-y='true'>
-          <area-choice></area-choice>
+          <area-choice  value='{{confirm_Value.area}}' bindchange='area_select_change' items='{{condition.data_Area}}'></area-choice>
         </scroll-view>
         <view class="footer">
-          <van-button type="default" size="small" bindtap='search_Clear' data-key='housetype'>清空</van-button>
-          <van-button type="info" size="small" bindtap='search_Confirm' data-key='housetype'>搜索</van-button>
+          <van-button type="default" size="small" bindtap='search_Clear' data-key='area'>清空</van-button>
+          <van-button type="info" size="small" bindtap='search_Confirm' data-key='area'>搜索</van-button>
         </view>
       </view>
       <view class="overlay" catchtap="dropdownclose"></view>

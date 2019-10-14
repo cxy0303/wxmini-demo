@@ -1,14 +1,13 @@
-<view class="building-item">
-  <image></image>
+<view class="building-item" bindtap="click_handler">
+  <image src='{{item.logo}}'></image>
   <view class="subject">
-    <span>齐河花园</span>
-    <span>上海市松江区1111</span>
+    <span>{{item.name}}</span>
+    <span>{{item.areaAddress}}</span>
   </view>
   <view class="spec">
-    2室-4室 | 85-100m
+    {{item.roomType}} | {{item.roomArea}}
   </view>
   <view class="price">
-    347.9
-    <span>万</span>
+    {{item.totalPrice}}
   </view>
 </view>

@@ -17,11 +17,17 @@ Page({
 
   },
   onShow() {
-
+    this.getTabBar().setData({
+      active: 'home'
+    })
   },
   onReachBottom() {
-    wx.showToast({
-      title: 'bottom',
-    })
+
+  },
+  onShareAppMessage() {
+    return {
+      title: app.appData.shopInfo.name + app.appData.shopInfo.companyName,
+      path: '/home/index/index/index?shopAccountId=146'
+    }
   }
 })

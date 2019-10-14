@@ -1,14 +1,21 @@
+<wxs src='../../../../utils/tools.wxs' module="tools" />
 <view class="index" scroll-y="{{true}}">
   <image class=" main-bg" src="../../../../assets/images/main-bg.png"></image>
   <view class="index-header">
     <image src="{{avatar}}" class="userlogo"></image>
     <view class="share">
+      <button open-type="share"></button>
       <image src="../../../../assets/images/share.png"></image>
       分享名片
     </view>
     <view class="username">
       <span>{{username}}</span>
-      <span>买卖经纪人</span>
+      <span wx:if='{{type==1}}'>游客</span>
+      <span wx:elif='{{type==2}}'>会员</span>
+      <span wx:elif='{{type==3}}'>vip会员</span>
+      <span wx:elif='{{type==4}}'>推客</span>
+      <span wx:elif='{{type==8&&tools.indexOf(roles,4)>=0}}'>经纪人</span>
+      <span wx:elif='{{type==8}}'>城市合伙人</span>
     </view>
     <view class="company">
       {{companyName}}
@@ -27,45 +34,39 @@
   </view>
   <view class="index-group">
     <view class="title">推荐新房</view>
-    <scroll-sider title=''></scroll-sider>
+    <scroll-sider items='{{newhouselist}}'></scroll-sider>
   </view>
-  <view class="index-group">
+  <!-- <view class="index-group">
     <view class="title">推荐二手房</view>
     <scroll-sider></scroll-sider>
-  </view>
+  </view> -->
   <view class="index-group">
     <view class="title">个人简介</view>
-    <view class="content">背靠浦东世博新CBD，前滩CBD，坐拥东明建材，家居市场、同福易家巴黎春天、家乐福大卖场。背靠浦东世博新CBD，前滩CBD，坐拥东明建材，家居市场、同福易家巴黎春天、家乐福大卖场。</view>
-    <view class="more">查看更多
+    <view class="content">{{message}}</view>
+    <!-- <view class="more">查看更多
       <van-icon name='arrow-down'></van-icon>
-    </view>
+    </view> -->
   </view>
   <view class="index-group">
     <view class="title">公司简介</view>
-    <view class="more">查看更多</view>
+    <view class="content">{{companyIntroduction}}</view>
+    <!-- <view class="more">查看更多</view> -->
   </view>
   <view class="index-group artical">
     <view class="title">文章推荐</view>
     <view class="content">
-      <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" circular="{{true}}" bindchange='sidechange'>
+      <swiper indicator-dots="{{false}}" autoplay="{{true}}" interval="{{5000}}" circular="{{true}}" bindchange='sidechange'>
         <block>
-          <swiper-item>
-            <image class="slide-image" style="background-color:red;" />
-          </swiper-item>
-          <swiper-item>
-            <image class="slide-image" />
-          </swiper-item>
-          <swiper-item>
-            <image class="slide-image" style="background-color:green;" />
-          </swiper-item>
-          <swiper-item>
-            <image class="slide-image" style="background-color:yellow;" />
+          <swiper-item wx:for='{{news}}' wx:key='{{item.id}}' bindtap='godetail' data-key='{{item.id}}'>
+            <view class="headline">{{item.headline}}</view>
+            <image class="slide-image" src='{{item.picPath}}' />
+            <view class="zhaiyao">{{item.zhaiyao}}</view>
           </swiper-item>
         </block>
       </swiper>
-      <!-- <view class="side-nav">
+      <view class="side-nav">
         <span>{{sideindex+1}}/8</span>
-      </view> -->
+      </view>
     </view>
   </view>
 </view>

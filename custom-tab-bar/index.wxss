@@ -66,3 +66,12 @@
   font-size: 10px;
   z-index: 1;
 }
+
+.active {
+  transition: transform 0.3s ease;
+  transform: scale(1.1);
+}
+
+.active .tab-bar-item-text {
+  color: rgba(94, 150, 248, 1);
+}

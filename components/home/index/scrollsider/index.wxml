@@ -1,10 +1,7 @@
 <view class="scroll-side">
-
   <scroll-view scroll-x="{{true}}">
     <div class="container">
-      <building-item></building-item>
-      <building-item></building-item>
-      <building-item></building-item>
+      <building-item item='{{item}}' wx:for='{{items}}' wx:key='{{item.id}}'></building-item>
     </div>
   </scroll-view>
 </view>

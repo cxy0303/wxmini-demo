@@ -12,7 +12,11 @@ Component({
     value: {
       type: Object,
       value: {
-        area: '',
+        area: {
+          activeIndex: 0,
+          type: 0,
+          id: 0
+        },
         houseType: {
           id: 0,
           name: ''
@@ -49,6 +53,12 @@ Component({
       }
     },
     confirm_Value: {
+      area: {
+        activeIndex: 0,
+        activetype: '',
+        type: 0,
+        id: 0
+      },
       price: {
         id: 0,
         activeIndex: 0,
@@ -83,6 +93,16 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    area_select_change(e) {
+      this.setData({
+        'confirm_Value.area': {
+          type: e.detail.select.type,
+          activetype: e.detail.select.activetype,
+          id: e.detail.select.id[0],
+          activeIndex: e.detail.activeIndex
+        }
+      })
+    },
     search_Clear(e) {
       var key = e.currentTarget.dataset.key;
       if ("price" == key) {
@@ -108,6 +128,16 @@ Component({
           'confirm_Value.moreitems': []
         })
         this.data.value.moreitems = this.data.confirm_Value.moreitems;
+      } else if ("area" == key) {
+        this.setData({
+          'confirm_Value.area': {
+            id: 0,
+            activeIndex: 0,
+            activeType: '',
+            type: ''
+          }
+        })
+        this.data.value.area = this.data.confirm_Value.area;
       }
       this.triggerEvent("search", this.data.value);
       this.setData({
@@ -122,6 +152,8 @@ Component({
         this.data.value.houseType = this.data.confirm_Value.houseType;
       } else if ("more" == key) {
         this.data.value.moreitems = this.data.confirm_Value.moreitems;
+      } else if ("area" == key) {
+        this.data.value.area = this.data.confirm_Value.area;
       }
       this.triggerEvent("search", this.data.value);
       this.setData({
@@ -177,17 +209,18 @@ Component({
       api.getLocation().then((res) => {
         var cityid = res.originalData.result.addressComponent.adcode;
         api.getCondition({
-          cityIds: cityid
+          cityIds:cityid
         }).then((res) => {
           if (res.data.code == 1) {
             var condition = res.data.content;
             this.setData({
-              'condition.data_Area': condition[0],
+              'condition.data_Area': this.getFormatTree(condition[0]),
               'condition.data_Price': this.getFormatTree(condition[1]),
               'condition.data_HouseType': condition[2],
               'condition.data_More': condition[3],
               'condition.data_Sort': condition[4]
             })
+            console.log(this.data.condition.data_Area);
           }
         })
       })
@@ -209,8 +242,18 @@ Component({
             let subnode = {
               text: subitem.name,
               id: subitem.id,
+              children: []
             }
             node.children.push(subnode);
+            if (subitem.child) {
+              subitem.child.forEach((seconditem) => {
+                let secondnode = {
+                  text: seconditem.name,
+                  id: seconditem.id
+                }
+                subnode.children.push(secondnode);
+              })
+            }
           })
         }
         obj.list.push(node);

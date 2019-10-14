@@ -3,7 +3,8 @@ module.exports = Behavior({
   attached: function() {
     this.getTabBar().setData({
       qty: app.appData.tabBarInfo.qty,
-      show: true
+      show: true,
+      active: app.appData.tabBarInfo.active
     })
   }
 })

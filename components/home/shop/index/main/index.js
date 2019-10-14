@@ -26,6 +26,12 @@ Component({
     list: [],
     loadAll: false,
     condition: {
+      area: {
+        activeIndex: 0,
+        activetype: '',
+        id: 0,
+        type: 0
+      },
       price: {
         id: 0,
         activeIndex: 0,
@@ -79,7 +85,7 @@ Component({
       let userInfo = app.appData.userInfo;
       let condition = this.data.condition;
       let data = {
-        "accountId": 52,
+        "accountId": app.appData.shopInfo.accountId,
         "app": 0,
         "buildingGroupName": this.data.key,
         "cityIds": "",
@@ -99,6 +105,13 @@ Component({
         "totalPrice": "",
         "type": 0
       }
+
+      if (condition.area.activetype == "area") {
+        data["streetIds"] = condition.area.id;
+      } else if (condition.area.activetype == "traffic") {
+        data["stepIds"] = condition.area.id;
+      }
+
       if (data.hasOwnProperty(condition.price.type))
         data[condition.price.type] = condition.price.text;
 
