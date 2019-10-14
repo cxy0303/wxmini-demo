@@ -1,6 +1,6 @@
 <wxs src='../../../../utils/tools.wxs' module="tools" />
 <view class="index" scroll-y="{{true}}">
-  <image class=" main-bg" src="../../../../assets/images/main-bg.png"></image>
+  <image class=" main-bg" src="http://img.jrfw360.com/1571050345103..png"></image>
   <view class="index-header">
     <image src="{{avatar}}" class="userlogo"></image>
     <view class="share">

@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "van-icon": "vant-weapp/icon",
-    "scroll-sider": "../scrollsider/index"
-  }
-}

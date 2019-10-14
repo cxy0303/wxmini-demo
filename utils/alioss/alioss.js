@@ -52,7 +52,7 @@ export function uploadFile(filePath) {
       success: function(res) {
         console.log(res);
         if (res.errMsg === 'uploadFile:ok') {
-          let url = aliyunServerURL + '/' + aliyunFileKey;
+          let url =  'http://img.jrfw360.com/' + aliyunFileKey;
           resolve({
             status: true,
             data: {

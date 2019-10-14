@@ -61,6 +61,7 @@ Component({
         count: 1,
         success: (res) => {
           uploadFile(res.tempFiles[0].path).then((os_res) => {
+            debugger
             this.sendmsg({
               picPath: os_res.data.url,
               targetType: 2
