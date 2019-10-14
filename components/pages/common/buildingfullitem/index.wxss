@@ -1,0 +1,81 @@
+.building-full-item {
+  width: 100%;
+  padding: 15px 0px;
+}
+
+.building-full-item .content {
+  display: flex;
+}
+
+.building-full-item .content image {
+  width: 105px;
+  height: 80px;
+  background-color: #eee;
+}
+
+.building-full-item .content .word-spec {
+  padding-left: 15px;
+}
+
+.building-full-item .content .word-spec .title {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+}
+
+.building-full-item .content .word-spec .sub-title {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(163, 169, 176, 1);
+}
+
+.building-full-item .content .word-spec  .tag {
+  width: 100%;
+}
+
+.building-full-item .content .word-spec  .tag span {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(137, 159, 177, 1);
+  background: rgba(244, 248, 251, 1);
+  border-radius: 2px;
+  margin-right: 5px;
+  padding: 0px 5px;
+}
+
+.building-full-item .content .word-spec .price {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(247, 61, 61, 1);
+}
+
+.building-full-item .content .word-spec .price span {
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.building-full-item .address {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  margin: 10px 0px;
+}
+
+.building-full-item .foot {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  background: rgba(244, 248, 251, 1);
+  width: auto;
+  padding: 2px 10px;
+  display: inline-flex;
+  height: 20px;
+  align-items: center;
+}
+
+.building-full-item .foot image {
+  width: 14px;
+  height: 15px;
+  vertical-align: middle;
+  margin-right: 5px;
+}

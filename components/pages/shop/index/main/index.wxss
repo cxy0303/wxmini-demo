@@ -1,0 +1,39 @@
+.shop-index-filter {
+  background-color: white;
+  padding: 15px;
+  padding-bottom: 0px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  width: 100%;
+  box-sizing: border-box;
+  transform: translateY(0px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.shop-index-filter .search {
+  margin-bottom: 15px;
+}
+
+.shop-index-filter .category {
+  margin-bottom: 10px;
+}
+
+.shop-index-content {
+  margin-top: 167px;
+  transform: translateY(0px);
+  transition: transform 0.3s ease-in-out;
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.shop-index-hide .shop-index-filter, .shop-index-hide .shop-index-content {
+  transform: translateY(-108px);
+}
+
+.shop-index-content .building-full-item {
+  display: block;
+  border-bottom: 1px solid rgba(248, 248, 248, 1);
+}

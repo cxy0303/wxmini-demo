@@ -1,0 +1,70 @@
+.filter-bar {
+  display: flex;
+  align-items: stretch;
+  height: 44px;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.filter-bar .filter-bar-item {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  width: 100%;
+  height: 100%;
+}
+
+.filter-bar .filter-bar-item span {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-bar .filter-bar-item .drop-down {
+  position: absolute;
+  top: 100%;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid #eee;
+}
+
+.filter-bar .filter-bar-item .drop-down .drop-down-container {
+  position: relative;
+  z-index: 1000;
+  background-color: white;
+  width: 100%;
+  height: 340px;
+}
+
+.filter-bar .filter-bar-item .drop-down .overlay {
+  content: ' ';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 1000px;
+  background-color: black;
+  opacity: 0.5;
+}
+
+.filter-bar .else {
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.filter-bar .filter-bar-item image {
+  width: 10px;
+  height: 10px;
+}
+
+.filter-bar .else image {
+  width: 22px;
+  height: 22px;
+}

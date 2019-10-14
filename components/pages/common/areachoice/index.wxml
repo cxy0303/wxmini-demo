@@ -1,0 +1,3 @@
+<view>
+  <van-tree-select items="{{items}}" main-active-index="{{activeIndex}}"></van-tree-select>
+</view>

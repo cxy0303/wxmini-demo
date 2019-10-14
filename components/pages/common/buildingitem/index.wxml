@@ -1,0 +1,14 @@
+<view class="building-item">
+  <image></image>
+  <view class="subject">
+    <span>齐河花园</span>
+    <span>上海市松江区1111</span>
+  </view>
+  <view class="spec">
+    2室-4室 | 85-100m
+  </view>
+  <view class="price">
+    347.9
+    <span>万</span>
+  </view>
+</view>
