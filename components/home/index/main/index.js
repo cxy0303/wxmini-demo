@@ -39,7 +39,7 @@ Component({
   methods: {
     godetail(e) {
       wx.navigateTo({
-        url: '/pages/webview/index?url=https://h5.jrfw360.com/newsDetail/' + e.currentTarget.dataset.key,
+        url: '/pages/webview/index?title=文章详情&url=http://localhost:8080/newsDetail/' + e.currentTarget.dataset.key,
       })
     },
     sidechange(e) {
@@ -71,18 +71,22 @@ Component({
             roles: content.account.roles,
             type: parseInt(content.account.type),
             username: account.userName,
-            companyName: company.companyname,
-            companyIntroduction: company.introduction,
             avatar: account.avatar,
-            address: company.address,
-            phone: company.phone,
             wx: '',
             message: account.message,
             news: content.news,
             newhouselist: content.list
           });
+          if (company) {
+            this.setData({
+              companyName: company.companyname,
+              companyIntroduction: company.introduction,
+              address: company.address,
+              phone: company.phone
+            })
+            app.appData.shopInfo.companyName = this.data.companyName;
+          }
           app.appData.shopInfo.name = this.data.username;
-          app.appData.shopInfo.companyName = this.data.companyName;
         }
       })
     }

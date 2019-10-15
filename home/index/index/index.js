@@ -27,7 +27,7 @@ Page({
   onShareAppMessage() {
     return {
       title: app.appData.shopInfo.name + app.appData.shopInfo.companyName,
-      path: '/home/index/index/index?shopAccountId=146'
+      path: '/home/index/index/index?shopAccountId=' + app.appData.shopInfo.accountId
     }
   }
 })

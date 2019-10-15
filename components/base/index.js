@@ -127,13 +127,17 @@ Component({
         type: userinfo.type,
         inviteId: userinfo.inviteId,
         inviteImg: userinfo.inviteImg,
-        companyName: userinfo.company.companyname,
-        provinceName: userinfo.company.province.name,
-        cityName: userinfo.company.city.name,
-        districtName: userinfo.company.district.name,
         phone: userinfo.hiddenPhone,
         wxAccount: '',
         sync: true
+      }
+      if (userinfo.company) {
+        this.setData({
+          companyName: userinfo.company.companyname,
+          provinceName: userinfo.company.province.name,
+          cityName: userinfo.company.city.name,
+          districtName: userinfo.company.district.name
+        })
       }
       app.setLogin(logininfo);
     },

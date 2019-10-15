@@ -3,6 +3,14 @@ var bmap = require('/utils/bmap-wx.min.js');
 import api from '/utils/api.js'
 App({
   onLaunch: function(options) {
+    this.init(options);
+  },
+  onShow: function(options) {
+    if (options.query["shopAccountId"] != this.appData.shopInfo.accountId) {
+      this.init(options);
+    }
+  },
+  init(options) {
     if (options.query["shopAccountId"]) {
       this.appData.shopInfo.accountId = options.query.shopAccountId;
     }
