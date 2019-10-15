@@ -45,7 +45,7 @@ VantComponent({
         onSelectItem(event) {
             const { item } = event.currentTarget.dataset;
             if (!item.disabled) {
-                this.$emit('click-item', item);
+                this.$emit('clickitem', item);
             }
         },
         // 当一个导航被点击时
@@ -53,7 +53,7 @@ VantComponent({
             const { index } = event.currentTarget.dataset;
             const item = this.data.items[index];
             if (!item.disabled) {
-                this.$emit('click-nav', { index });
+                this.$emit('clicknav', { index });
             }
         },
         // 更新子项列表
