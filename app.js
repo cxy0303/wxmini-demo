@@ -65,8 +65,8 @@ App({
               if (evt.data) {
                 let msg = JSON.parse(evt.data);
                 this.appData.chat.msglist.push(msg);
-                if (this.appData.chat.onMessage.onMessage) {
-                  this.appData.chat.onMessage.onMessage(msg);
+                if (this.appData.chat.onMessage) {
+                  this.appData.chat.onMessage(msg);
                 }
               }
             })
