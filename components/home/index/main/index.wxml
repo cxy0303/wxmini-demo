@@ -65,7 +65,7 @@
         </block>
       </swiper>
       <view class="side-nav">
-        <span>{{sideindex+1}}/8</span>
+        <span>{{sideindex+1}}/{{news.length}}</span>
       </view>
     </view>
   </view>

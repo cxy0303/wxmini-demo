@@ -71,7 +71,7 @@ Component({
           });
           if (loginres && loginres.data && loginres.data.code) { //登录成功
             this.setLogin(loginres.data.content.yyAccount);
-            this.connect();
+            app.connect();
             this.triggerEvent('pageloaded', "");
           }
         }
