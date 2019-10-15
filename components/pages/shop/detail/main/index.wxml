@@ -22,10 +22,10 @@
 </wxs>
 <view class="shop-detail">
   <view class="silder">
-    <swiper bindtap='goablum' indicator-color="white" indicator-active-color="blue" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" circular="{{true}}" bindchange='sidechange'  bindtap='goAlbum'>
+    <swiper bindtap='goablum' indicator-color="white" indicator-active-color="blue" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" circular="{{true}}" bindchange='sidechange' bindtap='goAlbum'>
       <block>
         <swiper-item wx:for='{{buildingInfo.attachment}}'>
-          <image class="slide-image" src='{{item.picPath}}'/>
+          <image class="slide-image" src='{{item.picPath}}' />
         </swiper-item>
       </block>
     </swiper>
@@ -238,9 +238,10 @@
 </view>
 <cover-view class="shop-detail-foot-bar" wx:if='{{!showcoupon}}'>
   <cover-view class="flex-box">
-    <cover-image src='./images/share.png'></cover-image>
-    <cover-view class="text">微信分享</cover-view>
-    <button open-type="share" data-key='{{shareInfo}}'></button>
+    <button open-type="share" data-key='{{shareInfo}}'>
+      <cover-image src='./images/share.png'></cover-image>
+    </button>
+    <button class="text"  open-type="share" data-key='{{shareInfo}}' class="text">微信分享</button>
   </cover-view>
   <cover-view class="flex-box" bindtap='togglecoupon'>
     <cover-image src='./images/sub.png'></cover-image>
