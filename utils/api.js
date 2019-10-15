@@ -1,6 +1,7 @@
 var bmap = require('./bmap-wx.min.js');
 
 const remote = 'http://119.3.36.212:8599';
+// const remote = 'https://api.jrfw360.com';
 const socketUrl = 'wss://api.jrfw360.com/websocket/';
 
 
@@ -77,6 +78,10 @@ var getMyIndex = function(data) {
   return post("/shop/myIndex", data);
 }
 
+var getHouseDetail = function(data) {
+  return post('/house/detail', data);
+}
+
 var getLocation = function(data) {
   return new Promise((resolve, reject) => {
     var BMap = new bmap.BMapWX({
@@ -122,5 +127,6 @@ export default {
   getMyBuilding: getMyBuilding,
   getCondition: getCondition,
   getLocation: getLocation,
-  getMyIndex: getMyIndex
+  getMyIndex: getMyIndex,
+  getHouseDetail: getHouseDetail
 }

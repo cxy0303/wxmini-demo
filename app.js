@@ -9,6 +9,9 @@ App({
     if (options.query["shopAccountId"] != this.appData.shopInfo.accountId) {
       this.init(options);
     }
+    // wx.navigateTo({
+    //   url: '/pages/shop/detail/second/house/index',
+    // })
   },
   init(options) {
     if (options.query["shopAccountId"]) {
