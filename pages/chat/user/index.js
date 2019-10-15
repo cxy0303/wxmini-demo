@@ -47,9 +47,11 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    app.appData.chat.loadMore().then(() => {
-      wx.stopPullDownRefresh();
-    })
+    if (app.getChatMsnList) {
+      app.getChatMsnList().then(() => {
+        wx.stopPullDownRefresh();
+      })
+    }
   },
 
   /**
