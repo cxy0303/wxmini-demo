@@ -240,6 +240,7 @@
   <cover-view class="flex-box">
     <cover-image src='./images/share.png'></cover-image>
     <cover-view class="text">微信分享</cover-view>
+    <button open-type="share" data-key='{{shareInfo}}'></button>
   </cover-view>
   <cover-view class="flex-box" bindtap='togglecoupon'>
     <cover-image src='./images/sub.png'></cover-image>

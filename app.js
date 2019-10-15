@@ -18,7 +18,6 @@ App({
       this.appData.shopInfo.accountId = options.query.shopAccountId;
     }
     var userinfo = wx.getStorageSync(storage.keys.userInfo) || null;
-    userinfo["sycned"] = false;
     if (userinfo)
       this.setLogin(userinfo);
     this.getlocation();
@@ -52,6 +51,7 @@ App({
       let chatInfo = this.appData.chat;
       let socket = this.appData.chat.socketTask;
       if (!chatInfo.connected) {
+        this.appData.chat.msglist = [];
         this.getChatMsnList().then((res) => {
           if (res.data.code == 1) {
             socket = wx.connectSocket({
@@ -63,6 +63,7 @@ App({
               if (this.appData.chat.onConnected) {
                 this.appData.chat.onConnected(this.appData.chat.msglist)
               }
+              reslove(res);
             })
             wx.onSocketMessage((evt) => {
               if (evt.data) {
@@ -75,10 +76,15 @@ App({
             })
             wx.onSocketError((res) => {
               this.appData.chat.connected = false;
+              this.appData.chat.socket = null;
+              this.appData.chat.loadAll = false;
+              this.appData.chat.pageIndex = 0;
             })
             wx.onSocketClose((res) => {
               this.appData.chat.connected = false;
               this.appData.chat.socket = null;
+              this.appData.chat.loadAll = false;
+              this.appData.chat.pageIndex = 0;
             })
           }
         })

@@ -66,7 +66,11 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
-
+  onShareAppMessage: function(res) {
+    var shareInfo = res.target.dataset.key;
+    return {
+      imageUrl: shareInfo.imageUrl,
+      title: shareInfo.title
+    }
   }
 })

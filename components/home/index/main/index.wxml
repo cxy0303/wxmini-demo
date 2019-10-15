@@ -4,7 +4,7 @@
   <view class="index-header">
     <image src="{{avatar}}" class="userlogo"></image>
     <view class="share">
-      <button open-type="share"></button>
+      <button open-type="share" data-key='{{shareInfo}}'></button>
       <image src="../../../../assets/images/share.png"></image>
       分享名片
     </view>

@@ -26,7 +26,8 @@ Component({
     buildingModelType: [], //房型
     buildScore: {}, //评分
     nearBuildingList: [], //同区域
-    samePriceList: [] //同价格
+    samePriceList: [], //同价格
+    shareInfo: {}
   },
   attached() {
     this.getbuildingdetail(this.data.buildingId);
@@ -35,7 +36,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    goHouseTypeDetail(){
+    goHouseTypeDetail() {
       wx.navigateTo({
         url: '/pages/webview/index?url=https://h5.jrfw360.com/building/' + this.data.buildingId,
       })
@@ -207,7 +208,8 @@ Component({
             buildScore: res.data.content.buildScore,
             nearBuildingList: res.data.content.nearBuildingList,
             samePriceList: res.data.content.samePriceList,
-            isFavorite: res.data.content.isFavorite
+            isFavorite: res.data.content.isFavorite,
+            shareInfo: res.data.content.shareInfo
           })
           this.drawCircle(this.data.buildScore.scoreNum / 5);
         }

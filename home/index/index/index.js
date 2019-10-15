@@ -24,9 +24,11 @@ Page({
   onReachBottom() {
 
   },
-  onShareAppMessage() {
+  onShareAppMessage(e) {
+    var shareInfo=e.target.dataset.key;
     return {
-      title: app.appData.shopInfo.name + app.appData.shopInfo.companyName,
+      title: shareInfo.title,
+      imageUrl: shareInfo.imageUrl,
       path: '/home/index/index/index?shopAccountId=' + app.appData.shopInfo.accountId
     }
   }

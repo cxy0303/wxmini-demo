@@ -27,7 +27,8 @@ Component({
     message: '',
     sideindex: 0,
     news: [],
-    newhouselist: []
+    newhouselist: [],
+    shareInfo:{}
   },
   attached() {
     var userinfo = app.appData.userInfo;
@@ -75,7 +76,8 @@ Component({
             wx: '',
             message: account.message,
             news: content.news,
-            newhouselist: content.list
+            newhouselist: content.list,
+            shareInfo:content.shareInfo
           });
           if (company) {
             this.setData({

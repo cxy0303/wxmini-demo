@@ -112,6 +112,11 @@ Component({
       this.setData({
         content: ''
       })
+      setTimeout(() => {
+        wx.pageScrollTo({
+          scrollTop: 10000
+        })
+      }, 100)
     },
     showbottom() {
       this.setData({
