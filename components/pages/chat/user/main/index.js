@@ -98,42 +98,9 @@ Component({
         targetType: 1
       })
     },
-    connect() {
-      return new Promise((resolve, reject) => {
-        this.getChatMsnList().then((res) => {
-          if (res.data.code == 1) {
-            app.appData.chat.socketTask = wx.connectSocket({
-              url: api.socket + "/" + res.data.content.groupId + "/" + app.appData.userInfo.id
-            })
-            wx.onSocketOpen((res) => {
-              app.appData.chat.connected = true;
-              resolve()
-            })
-            wx.onSocketMessage((evt) => {
-              if (evt.data) {
-                let msg = JSON.parse(evt.data);
-                app.appData.chat.msglist.push(msg);
-                if (onMessage) {
-                  onMessage(msg);
-                }
-              }
-            })
-            wx.onSocketError((res) => {
-              app.appData.chat.connected = false;
-              reject();
-            })
-            wx.onSocketClose((res) => {
-              app.appData.chat.connected = false;
-              app.appData.chat.socket = null;
-              reject();
-            })
-          }
-        })
-      })
-    },
     async sendmsg(data) {
       if (!app.appData.chat.connected) {
-        await this.connect()
+        await app.connect()
       }
       let msg = {
         'accountId': app.appData.userInfo.id,
@@ -149,44 +116,6 @@ Component({
     showbottom() {
       this.setData({
         showbottom: !this.data.showbottom
-      })
-    },
-    getChatMsnList() {
-      return new Promise((resolve, reject) => {
-        app.appData.chat.loadAll = false;
-        let userinfo = app.appData.userInfo;
-        let shopinfo = app.appData.shopInfo;
-        let chatinfo = app.appData.chat;
-
-        if (userinfo.id == shopinfo.accountId) { //自己跟自己聊天忽略
-          resolve({
-            data: {
-              code: -1
-            }
-          });
-          return;
-        }
-        let data = {
-          'accountId': userinfo.id,
-          'loginToken': userinfo.loginToken,
-          'otherAccountId': shopinfo.accountId,
-          'pageNo': 1,
-          'pageSize': 10
-        }
-        api.getChatMsnList(data).then((res) => {
-          if (res.data.code == 1) {
-
-            let content = res.data.content;
-            chatinfo.groupId = content.groupId;
-            chatinfo.loadAll = content.msnList.length < chatinfo.pageSize;
-            chatinfo.msglist.splice(0, 0, ...content.msnList);
-            if (chatinfo.onMessage)
-              chatinfo.onMessage(chatinfo.msglist);
-
-            chatinfo.pageIndex++;
-            resolve(res);
-          }
-        })
       })
     }
   }

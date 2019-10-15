@@ -42,6 +42,101 @@ App({
     }
     wx.setStorageSync(storage.keys.userInfo, this.appData.userInfo)
   },
+  //websocket
+  connect() {
+    var that = this;
+    return new Promise((reslove, reject) => {
+      let chatInfo = this.appData.chat;
+      let socket = this.appData.chat.socketTask;
+      if (!chatInfo.connected) {
+        this.getChatMsnList().then((res) => {
+          if (res.data.code == 1) {
+            socket = wx.connectSocket({
+              url: api.socket + "/" + res.data.content.groupId + "/" + this.appData.userInfo.id
+            })
+            wx.onSocketOpen((res) => {
+              this.appData.chat.connected = true;
+              this.appData.chat.loadMore = this.getChatMsnList;
+              if (this.appData.chat.onConnected) {
+                this.appData.chat.onConnected(this.appData.chat.msglist)
+              }
+            })
+            wx.onSocketMessage((evt) => {
+              if (evt.data) {
+                let msg = JSON.parse(evt.data);
+                this.appData.chat.msglist.push(msg);
+                if (onMessage) {
+                  onMessage(msg);
+                }
+              }
+            })
+            wx.onSocketError((res) => {
+              this.appData.chat.connected = false;
+            })
+            wx.onSocketClose((res) => {
+              this.appData.chat.connected = false;
+              this.appData.chat.socket = null;
+            })
+          }
+        })
+      }
+    })
+  },
+  getChatMsnList() {
+    return new Promise((resolve, reject) => {
+      let userinfo = this.appData.userInfo;
+      let shopinfo = this.appData.shopInfo;
+      let chatinfo = this.appData.chat;
+      if (userinfo.id == shopinfo.accountId) { //自己跟自己聊天忽略
+        resolve({
+          data: {
+            code: -1
+          }
+        });
+        return;
+      }
+      if (chatinfo.loadAll) {
+        if (chatinfo.onLoadAll) {
+          chatinfo.onLoadAll();
+        }
+        resolve({
+          data: {
+            code: -1
+          }
+        });
+        return;
+      }
+      let data = {
+        'accountId': userinfo.id,
+        'loginToken': userinfo.loginToken,
+        'otherAccountId': shopinfo.accountId,
+        'pageNo': 1,
+        'pageSize': 10
+      }
+      // let data = {
+      //   'accountId': 146,
+      //   'loginToken': userinfo.loginToken,
+      //   'groupId': 452,
+      //   'pageNo': chatinfo.pageIndex + 1,
+      //   'pageSize': chatinfo.pageSize
+      // }
+      api.getChatMsnList(data).then((res) => {
+        if (res.data.code == 1) {
+          let content = res.data.content;
+          chatinfo.groupId = content.groupId;
+          chatinfo.loadAll = content.msnList.length < chatinfo.pageSize;
+          chatinfo.msglist.splice(0, 0, ...content.msnList);
+          if (chatinfo.onMessage)
+            chatinfo.onMessage(chatinfo.msglist);
+          if (chatinfo.loadAll && chatinfo.onLoadAll) {
+            chatinfo.onLoadAll();
+          }
+          chatinfo.pageIndex++;
+          resolve(res);
+        }
+      })
+    })
+  },
   appData: {
     userInfo: null,
     shopInfo: {
