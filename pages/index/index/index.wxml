@@ -1,3 +1,0 @@
-<base loading='{{loading}}' bind:pageloaded='pageloaded'>
-<main wx:if='{{!loading||loading=="api"}}' bind:pageloaded='pageloaded'>main</main>
-</base>
