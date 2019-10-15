@@ -185,7 +185,8 @@
 }
 
 .index .index-group swiper {
-  height: 350rpx;
+  height: 345rpx;
+  margin-bottom: 40rpx;
 }
 
 .index .index-group swiper-item {
