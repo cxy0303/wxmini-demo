@@ -152,7 +152,7 @@ Component({
         }
       })
     },
-    clickHandler(e) {
+    clickHandler(e) {debugger
       var item = e.detail;
       var selects = this.data.selects;
       if (item.id == this.data.buildingId) {

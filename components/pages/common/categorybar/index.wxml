@@ -1,6 +1,0 @@
-<view class='category-bar'>
-  <view class="category-bar-item {{item.value==highkey?'active':''}}" wx:for='{{list}}' bindtap='item_tap' data-key='{{item.value}}'>
-    <span>{{item.text}}</span>
-    <view class="highlight" wx:if='{{item.value==highkey}}'></view>
-  </view>
-</view>
