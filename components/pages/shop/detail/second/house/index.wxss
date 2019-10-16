@@ -141,8 +141,122 @@
   margin: 10px 0px;
 }
 
-.house-detail .area .subsubject {
+.house-detail  .subsubject {
   font-size: 16px;
   color: rgba(51, 51, 51, 1);
   font-weight: bolder;
+}
+
+.house-detail .steps .step {
+  padding-left: 50px;
+  position: relative;
+  margin: 10px 0px;
+}
+
+.house-detail .steps .step::before {
+  content: ' ';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  background-color: #2f71f6;
+  z-index: 1;
+}
+
+.house-detail .steps .step::after {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  left: 19px;
+  width: 1px;
+  height: 50%;
+  border-radius: 20px;
+  background-color: rgba(153, 153, 153, 1);
+}
+
+.house-detail .steps .step view:first-child {
+  font-size: 16px;
+  font-weight: bolder;
+  color: rgba(51, 51, 51, 1);
+}
+
+.house-detail .steps .step view:last-child {
+  font-size: 13px;
+  color: rgba(153, 153, 153, 1);
+}
+
+.house-detail .card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.house-detail .card .logo {
+  width: 108rpx;
+  height: 108rpx;
+  margin: 20px 10px;
+  border-radius: 108rpx;
+}
+
+.house-detail .card .flex-row image {
+  width: 22px;
+  height: 17px;
+  margin-right: 5px;
+}
+
+.house-detail .card p {
+  color: rgba(51, 51, 51, 1);
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.house-detail .card .flex-row {
+  margin: 5px 0px;
+}
+
+.house-detail .card .flex-row view {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  color: rgba(47, 113, 246, 1);
+  font-size: 12px;
+}
+
+.house-detail .card div {
+  font-size: 14px;
+  color: rgba(153, 153, 153, 1);
+}
+
+.house-detail .card .right {
+  flex: 1;
+}
+
+.house-detail .desc {
+  border-top: 1px solid rgba(229, 229, 229, 1);
+  border-bottom: 1px solid rgba(229, 229, 229, 1);
+  padding: 20px 0px;
+}
+
+.house-detail .desc p {
+  margin-bottom: 5px;
+}
+
+.house-detail .desc view {
+  font-size: 15px;
+  color: rgba(102, 102, 102, 1);
+  margin-bottom: 10px;
+}
+
+.house-detail .more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(102, 102, 102, 1);
+  font-size: 13px;
+  padding: 10px;
+  padding-bottom: 5px;
+  padding-top: 15px;
 }

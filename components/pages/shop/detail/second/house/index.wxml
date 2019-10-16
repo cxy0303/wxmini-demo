@@ -60,7 +60,36 @@
     <p class='subject'>小区信息</p>
     <image src='{{house.peripheryPic}}' bindtap='gomap'></image>
     <p class='subsubject'>房源动态</p>
-    <van-steps direction="vertical">
-    </van-steps>
+    <view class="steps" wx:if='{{news}}'>
+      <view class="step">
+        <view>{{news.zhaiyao}}</view>
+        <view>{{news.createDateFormat}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="box">
+    <p class='subject'>房源描述</p>
+    <view class="card">
+      <image class="logo" src='{{account.avatar}}'></image>
+      <view class="right">
+        <p>{{account.userName}}</p>
+        <view class="flex-row">
+          <view>
+            <image src='./images/idcard.png'></image>实名认证</view>
+          <view>
+            <image src='./images/idcard.png'></image>公司认证</view>
+          <view>
+            <image src='./images/idcard.png'></image>经纪认证</view>
+        </view>
+        <div>{{account.companyName}}</div>
+      </view>
+    </view>
+    <view class="desc">
+      <p class="subsubject">核心卖点</p>
+      <view>{{house.saying}}</view>
+      <p class="subsubject">业主心态</p>
+      <view>{{house.remark}}</view>
+    </view>
+    <view class="more">查看更多 <van-icon name="arrow-down" /></view>
   </view>
 </view>

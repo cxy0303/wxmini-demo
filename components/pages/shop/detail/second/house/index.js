@@ -16,8 +16,10 @@ Component({
    * 组件的初始数据
    */
   data: {
+    account: {},
     housePic: [],
-    house: {}
+    house: {},
+    news: []
   },
   attached() {
     this.getHouseDetail();
@@ -31,7 +33,7 @@ Component({
         url: "/pages/shop/detail/detail_album/index",
       })
     },
-    gomap(){
+    gomap() {
       wx.navigateTo({
         url: `/pages/map/index/index?lat=${this.data.house.lat}&lng=${this.data.house.lng}`,
       })
@@ -42,9 +44,13 @@ Component({
       }).then((res) => {
         if (res.data.code == 1) {
           var content = res.data.content;
+          var houseNews = content.houseNews;
+
           this.setData({
+            account: content.account,
             house: content.house,
-            housePic: content.housePic
+            housePic: content.housePic,
+            news: houseNews
           })
         }
       })

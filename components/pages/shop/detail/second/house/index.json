@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "van-steps": "vant-weapp/steps"
+    "van-icon": "vant-weapp/icon"
   }
 }
