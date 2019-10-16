@@ -101,7 +101,7 @@
   font-size: 12px;
   font-weight: 400;
   color: rgba(153, 153, 153, 1);
-  margin: 10px 0px;
+  margin-top: 10px;
 }
 
 .building-full-item .foot {
@@ -114,6 +114,7 @@
   display: inline-flex;
   height: 20px;
   align-items: center;
+  margin-top: 10px;
 }
 
 .building-full-item .foot image {

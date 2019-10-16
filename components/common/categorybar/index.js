@@ -7,25 +7,27 @@ Component({
     list: {
       type: Array,
       value: [{
-        value: '1',
-        text: '一手房'
-      }, {
-        value: '2',
-        text: '二手房'
-      }, {
-        value: '3',
-        text: '租赁'
-      }, {
-        value: '4',
-        text: '商铺'
-      }, {
-        value: '5',
-        text: '商务楼'
-      }]
+          value: '1',
+          text: '一手房'
+        }, {
+          value: '2',
+          text: '二手房'
+        }
+        // , {
+        //   value: '3',
+        //   text: '租赁'
+        // }, {
+        //   value: '4',
+        //   text: '商铺'
+        // }, {
+        //   value: '5',
+        //   text: '商务楼'
+        // }
+      ]
     },
     highkey: {
       type: String,
-      value: "-1"
+      value: "1"
     }
   },
 
@@ -44,6 +46,7 @@ Component({
       this.setData({
         highkey: e.currentTarget.dataset.key
       })
+      this.triggerEvent("change", parseInt(this.data.highkey));
     }
   }
 })

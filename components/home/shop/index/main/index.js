@@ -25,6 +25,7 @@ Component({
     pageSize: 10,
     list: [],
     loadAll: false,
+    searchType: 1,
     condition: {
       area: {
         activeIndex: 0,
@@ -56,6 +57,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    category_change_handler(e) {
+      this.setData({
+        searchType: e.detail
+      })
+      this.reload();
+    },
     filter_Search(e) {
       console.log(e);
       this.setData({
@@ -105,7 +112,6 @@ Component({
         "totalPrice": "",
         "type": 0
       }
-
       if (condition.area.activeType == "area") {
         data["streetIds"] = condition.area.id;
       } else if (condition.area.activeType == "traffic") {
@@ -115,14 +121,18 @@ Component({
       if (data.hasOwnProperty(condition.price.type))
         data[condition.price.type] = condition.price.text;
 
-      api.getMyBuilding(data).then((res) => {
+      var loadfunc = api.getMyBuilding;
+      if (this.data.searchType == 2) {
+        loadfunc = api.getSecondBuilding;
+      }
+      loadfunc(data).then((res) => {
         if (res.data.code == 1) {
-          let content = res.data.content;
-          this.data.list.push(...content.list)
+          let list = res.data.content.list || res.data.content;
+          this.data.list.push(...list)
           this.setData({
             list: this.data.list,
             pageIndex: this.data.pageIndex + 1,
-            loadAll: content.list.length < this.data.pageSize
+            loadAll: list.length < this.data.pageSize
           })
         }
       })

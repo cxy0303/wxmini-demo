@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "房源详情",
+  "usingComponents": {
+    "main": "../../components/pages/shop/detail/second/house/index"
+  }
+}

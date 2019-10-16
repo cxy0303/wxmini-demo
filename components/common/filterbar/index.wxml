@@ -6,7 +6,7 @@
     <view class="drop-down" wx:if='{{showindex==1}}'>
       <view class="drop-down-container">
         <scroll-view scroll-y='true'>
-          <area-choice  value='{{confirm_Value.area}}' bindchange='area_select_change' items='{{condition.data_Area}}'></area-choice>
+          <area-choice value='{{confirm_Value.area}}' bindchange='area_select_change' items='{{condition.data_Area}}'></area-choice>
         </scroll-view>
         <view class="footer">
           <van-button type="default" size="small" bindtap='search_Clear' data-key='area'>清空</van-button>
@@ -45,9 +45,23 @@
     </span>
     <view class="drop-down" wx:if='{{showindex==3}}'>
       <view class="drop-down-container">
-        <van-tree-select bindclickitem='price_nav_item' bindclicknav='price_nav_change' active-id='{{confirm_Value.price.id}}' main-active-index='{{confirm_Value.price.activeIndex}}' max='1' items='{{condition.data_Price.list}}'>
+        <!------------------一手房价格 支持总价，首付 二级联动----------------------------->
+        <van-tree-select wx:if='{{searchType==1}}' bindclickitem='price_nav_item' bindclicknav='price_nav_change' active-id='{{confirm_Value.price.id}}' main-active-index='{{confirm_Value.price.activeIndex}}' max='1' items='{{condition.data_Price.list}}'>
 
         </van-tree-select>
+        <!------------------一手房价格 支持总价，首付 二级联动----------------------------->
+
+        <!------------------二手房价格 只支持总价一级----------------------------->
+        <scroll-view wx:else scroll-y='true'>
+          <van-radio-group value="{{confirm_Value.price.id}}">
+            <van-cell-group>
+              <van-cell data-key='{{item}}' bindtap='price_change' title="{{item.name}}" clickable wx:for='{{condition.data_Price.list}}' wx:key='{{item.id}}'>
+                <van-radio slot="right-icon" name="{{item.id}}"></van-radio>
+              </van-cell>
+            </van-cell-group>
+          </van-radio-group>
+        </scroll-view>
+        <!------------------二手房价格 只支持总价一级----------------------------->
         <view class="footer">
           <van-button type="default" size="small" bindtap='search_Clear' data-key='price'>清空</van-button>
           <van-button type="info" size="small" bindtap='search_Confirm' data-key='price'>搜索</van-button>

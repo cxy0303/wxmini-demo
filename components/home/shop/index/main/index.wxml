@@ -3,14 +3,15 @@
     <view class="search">
       <search-bar bindsearch='key_Search'></search-bar>
     </view>
-    <!-- <view class="category">
-      <category-bar></category-bar>
-    </view> -->
+    <view class="category">
+      <category-bar bindchange='category_change_handler'></category-bar>
+    </view>
     <view class="filter">
-      <filter-bar bindsearch='filter_Search'></filter-bar>
+      <filter-bar wx:if='{{searchType==1}}' searchType='{{1}}' bindsearch='filter_Search'></filter-bar>
+      <filter-bar wx:else searchType='{{2}}' bindsearch='filter_Search'></filter-bar>
     </view>
   </view>
   <view class="shop-index-content" bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd'>
-    <building-full-item buildingInfo='{{item}}' wx:key='{{item.id}}' wx:for='{{list}}'></building-full-item>
+    <building-full-item type='{{searchType==2?"second":"new"}}' buildingInfo='{{item}}' wx:key='{{item.id}}' wx:for='{{list}}'></building-full-item>
   </view>
 </view>

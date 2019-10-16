@@ -1,0 +1,66 @@
+<wxs src='../../../../../../utils/tools.wxs' module="tools" />
+<view class="house-detail">
+  <view class="silder">
+    <swiper bindtap='goablum' indicator-color="white" indicator-active-color="blue" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" circular="{{true}}" bindchange='sidechange' bindtap='goAlbum'>
+      <block>
+        <swiper-item wx:for='{{housePic}}'>
+          <image class="slide-image" src='{{item.picPath}}' />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="box box-top">
+    <p class='subject'>{{house.estateName}}</p>
+    <view class='subtitle'>{{house.areaAddress}}</view>
+    <view class="flex-row">
+      <a>均价</a>
+      <a>总价</a>
+      <a>面积</a>
+    </view>
+    <view class="flex-row price">
+      <a>{{house.price}}</a>
+      <a>{{house.totalPrice}}</a>
+      <a>未绑定㎡</a>
+    </view>
+    <view class="news flex-row">
+      <image src='http://img.jrfw360.com/1571208526860..png'></image>
+      <p>首付52万，月供8999元首付52万，月供8999元首付52万，月供8999元首付52万，月供8999元首付52万，月供8999元</p>
+      <a>查看更多 ></a>
+    </view>
+    <view class="grid">
+      <label>户型</label>
+      <span>{{house.buildingModelType}}</span>
+      <label>楼层</label>
+      <span>{{house.floor}}</span>
+    </view>
+    <view class="grid">
+      <label>装修</label>
+      <span>{{house.renovationName}}</span>
+      <label>朝向</label>
+      <span>未绑定</span>
+    </view>
+    <view class="grid">
+      <label>区域</label>
+      <span>{{house.houseArea}}㎡</span>
+      <label>房龄</label>
+      <span>{{house.houseYear}}</span>
+    </view>
+    <view class="grid">
+      <label>看房时间</label>
+      <span>带绑定</span>
+    </view>
+  </view>
+  <view class="box">
+    <p class='subject'>房源特色</p>
+    <view class="grid">
+      <a wx:for='{{tools.split(house.characteristic,",")}}'>{{item}}</a>
+    </view>
+  </view>
+  <view class="box area">
+    <p class='subject'>小区信息</p>
+    <image src='{{house.peripheryPic}}' bindtap='gomap'></image>
+    <p class='subsubject'>房源动态</p>
+    <van-steps direction="vertical">
+    </van-steps>
+  </view>
+</view>

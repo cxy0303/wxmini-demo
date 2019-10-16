@@ -9,6 +9,10 @@ Component({
       type: String,
       value: ''
     },
+    searchType: {
+      type: Number,
+      value: 1
+    },
     value: {
       type: Object,
       value: {
@@ -196,6 +200,14 @@ Component({
         'confirm_Value.price.type': this.data.condition.data_Price.list[this.data.confirm_Value.price.activeIndex].type
       })
     },
+    price_change(e) {
+      var key = e.currentTarget.dataset.key;
+      this.setData({
+        'confirm_Value.price.id': key.id+'',
+        'confirm_Value.price.text': key.name,
+        'confirm_Value.price.type': 'totalPrice'
+      })
+    },
     showdropdown(e) {
       this.setData({
         showindex: e.currentTarget.dataset.key == this.data.showindex ? '' : e.currentTarget.dataset.key
@@ -209,21 +221,40 @@ Component({
     getCondition() {
       api.getLocation().then((res) => {
         var cityid = res.originalData.result.addressComponent.adcode;
-        api.getCondition({
-          cityIds: cityid
-        }).then((res) => {
-          if (res.data.code == 1) {
-            var condition = res.data.content;
-            this.setData({
-              'condition.data_Area': this.getFormatTree(condition[0]),
-              'condition.data_Price': this.getFormatTree(condition[1]),
-              'condition.data_HouseType': condition[2],
-              'condition.data_More': condition[3],
-              'condition.data_Sort': condition[4]
-            })
-            console.log(this.data.condition.data_Area);
-          }
-        })
+        if (this.data.searchType == 1) {
+          api.getCondition({
+            cityIds: cityid,
+            type: 1
+          }).then((res) => {
+            if (res.data.code == 1) {
+              var condition = res.data.content;
+              this.setData({
+                'condition.data_Area': this.getFormatTree(condition[0]),
+                'condition.data_Price': this.getFormatTree(condition[1]),
+                'condition.data_HouseType': condition[2],
+                'condition.data_More': condition[3],
+                'condition.data_Sort': condition[4]
+              })
+            }
+          })
+        } else {
+          api.getSecondCondition({
+            cityIds: cityid,
+            type: 1
+          }).then((res) => {
+            if (res.data.code == 1) {
+              var condition = res.data.content;
+              this.setData({
+                'condition.data_Area': this.getFormatTree(condition[0]),
+                'condition.data_Price': condition[1],
+                'condition.data_HouseType': condition[2],
+                'condition.data_More': condition[3],
+                'condition.data_Sort': condition[4]
+              })
+            }
+          })
+        }
+
       })
     },
     getFormatTree(data) {

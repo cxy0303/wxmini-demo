@@ -1,0 +1,148 @@
+/* components/pages/shop/detail/second/house/index.wxss */
+
+.house-detail swiper {
+  height: 510rpx;
+  box-sizing: border-box;
+}
+
+.house-detail swiper swiper-item {
+  width: 100%;
+  height: 100%;
+}
+
+.house-detail swiper swiper-item image {
+  width: 100%;
+  height: 100%;
+}
+
+.house-detail .subject {
+  font-size: 22px;
+  font-weight: bolder;
+  color: rgba(51, 51, 51, 1);
+  width: 100%;
+  text-align: left;
+}
+
+.house-detail .box {
+  background-color: white;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+
+.house-detail .box-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-top: 0px;
+  position: relative;
+  z-index: 1;
+}
+
+.house-detail .subtitle {
+  font-size: 13px;
+  color: rgba(153, 153, 153, 1);
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.house-detail .flex-row {
+  display: flex;
+  width: 100%;
+}
+
+.house-detail .flex-row a {
+  flex: 1;
+  font-size: 13px;
+  color: rgba(51, 51, 51, 1);
+  line-height: 19px;
+}
+
+.house-detail .price {
+  margin-top: 10px;
+}
+
+.house-detail .price a {
+  font-size: 15px;
+  font-weight: bolder;
+  color: rgba(247, 61, 61, 1);
+}
+
+.house-detail .news {
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(249, 249, 249, 1);
+  margin: 20px 0px;
+  box-sizing: border-box;
+}
+
+.house-detail .news image {
+  width: 56rpx;
+  height: 56rpx;
+  flex: none;
+}
+
+.house-detail .news p {
+  flex: 1;
+  padding-left: 10px;
+  font-size: 13px;
+  color: rgba(51, 51, 51, 1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.house-detail .news a {
+  width: auto;
+  flex: none;
+  text-align: center;
+  padding: 0px 10px;
+  font-size: 13px;
+  color: rgba(102, 102, 102, 1);
+}
+
+.house-detail .grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.house-detail .grid label {
+  width: 80px;
+  text-align: justify;
+  font-size: 15px;
+  color: rgba(153, 153, 153, 1);
+}
+
+.house-detail .grid span {
+  flex: 1;
+  font-size: 15px;
+  color: rgba(51, 51, 51, 1);
+  text-align: left;
+}
+
+.house-detail .grid:last-child span {
+  text-align: left;
+}
+
+.house-detail .grid  a {
+  padding: 8px 15px;
+  background: rgba(249, 249, 249, 1);
+  color: rgba(51, 51, 51, 1);
+  font-size: 12px;
+  margin: 5px;
+  border-radius: 3px;
+}
+
+.house-detail .area image {
+  height: 296rpx;
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.house-detail .area .subsubject {
+  font-size: 16px;
+  color: rgba(51, 51, 51, 1);
+  font-weight: bolder;
+}

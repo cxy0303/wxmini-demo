@@ -21,8 +21,8 @@
 }
 
 .shop-index-content {
-  /* margin-top: 167px; */
-  margin-top: 120px;
+  margin-top: 167px;
+  /* margin-top: 120px; */
   transform: translateY(0px);
   transition: transform 0.3s ease-in-out;
   padding: 15px;
@@ -32,8 +32,8 @@
 }
 
 .shop-index-hide .shop-index-filter, .shop-index-hide .shop-index-content {
-  /* transform: translateY(-108px); */
-  transform: translateY(-76px);
+  transform: translateY(-108px);
+  /* transform: translateY(-76px); */
 }
 
 .shop-index-content .building-full-item {
