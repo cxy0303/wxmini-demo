@@ -53,11 +53,13 @@ Component({
   attached() {
     this.getdetailReport();
     const eventChannel = this.getOpenerEventChannel();
-    eventChannel.on('acceptDataFromOpenerPage', (data) => {
-      this.setData({
-        serviceData: data.data
+    if (eventChannel) {
+      eventChannel.on('acceptDataFromOpenerPage', (data) => {
+        this.setData({
+          serviceData: data.data
+        })
       })
-    })
+    }
   },
   /**
    * 组件的方法列表

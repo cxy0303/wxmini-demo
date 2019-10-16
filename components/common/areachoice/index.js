@@ -12,7 +12,7 @@ Component({
     },
     value: {
       activeIndex: 0,
-      activetype: '',
+      activeType: '',
       id: 0,
       type: 0
     }
@@ -34,7 +34,7 @@ Component({
   attached() {
     this.setData({
       'activeIndex': this.data.value.activeIndex,
-      'type': this.data.value.activetype,
+      'type': this.data.value.activeType,
       'select.type': this.data.value.type,
       'select.id': [this.data.value.id]
     })

@@ -14,6 +14,7 @@ Component({
       value: {
         area: {
           activeIndex: 0,
+          activeType: '',
           type: 0,
           id: 0
         },
@@ -55,7 +56,7 @@ Component({
     confirm_Value: {
       area: {
         activeIndex: 0,
-        activetype: '',
+        activeType: '',
         type: 0,
         id: 0
       },
@@ -96,8 +97,8 @@ Component({
     area_select_change(e) {
       this.setData({
         'confirm_Value.area': {
+          activeType: e.detail.type,
           type: e.detail.select.type,
-          activetype: e.detail.select.activetype,
           id: e.detail.select.id[0],
           activeIndex: e.detail.activeIndex
         }
@@ -122,7 +123,7 @@ Component({
             name: ''
           }
         })
-        this.data.value.housetype = this.data.confirm_Value.housetype;
+        this.data.value.houseType = this.data.confirm_Value.houseType;
       } else if ("more" == key) {
         this.setData({
           'confirm_Value.moreitems': []
@@ -209,7 +210,7 @@ Component({
       api.getLocation().then((res) => {
         var cityid = res.originalData.result.addressComponent.adcode;
         api.getCondition({
-          cityIds:cityid
+          cityIds: cityid
         }).then((res) => {
           if (res.data.code == 1) {
             var condition = res.data.content;

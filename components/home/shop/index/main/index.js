@@ -106,9 +106,9 @@ Component({
         "type": 0
       }
 
-      if (condition.area.activetype == "area") {
+      if (condition.area.activeType == "area") {
         data["streetIds"] = condition.area.id;
-      } else if (condition.area.activetype == "traffic") {
+      } else if (condition.area.activeType == "traffic") {
         data["stepIds"] = condition.area.id;
       }
 
