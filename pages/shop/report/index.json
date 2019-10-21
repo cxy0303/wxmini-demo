@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "举报",
+  "usingComponents": {
+    "main": "../../../../../components/pages/shop/report/index"
+  }
+}

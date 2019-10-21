@@ -23,7 +23,8 @@
         "address/index",
         "shop/order/success/index",
         "shop/estate/detail/index",
-        "shop/estate/detail/list/index"
+        "shop/estate/detail/list/index",
+        "shop/report/index"
       ]
     }
   ],
