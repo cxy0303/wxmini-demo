@@ -28,7 +28,8 @@ Component({
     sideindex: 0,
     news: [],
     newhouselist: [],
-    shareInfo:{}
+    secondList: [],
+    shareInfo: {}
   },
   attached() {
     var userinfo = app.appData.userInfo;
@@ -44,7 +45,6 @@ Component({
       })
     },
     sidechange(e) {
-      console.log(e.detail.current);
       this.setData({
         sideindex: e.detail.current
       })
@@ -58,7 +58,7 @@ Component({
         "content": "",
         "lat": "",
         "lng": "",
-        "loginToken": userinfo.loginToken,
+        "loginToken": userinfo ? userinfo.loginToken : '',
         "pageNo": 1,
         "pageSize": 10,
         "platform": 0,
@@ -77,7 +77,8 @@ Component({
             message: account.message,
             news: content.news,
             newhouselist: content.list,
-            shareInfo:content.shareInfo
+            secondList: content.secondList,
+            shareInfo: content.shareInfo
           });
           if (company) {
             this.setData({

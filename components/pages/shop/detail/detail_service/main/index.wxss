@@ -1,6 +1,7 @@
 .detial_service {
   min-height: 90vh;
   background-color: white;
+  padding-bottom: 54px;
 }
 
 .detial_service .van-tabs {

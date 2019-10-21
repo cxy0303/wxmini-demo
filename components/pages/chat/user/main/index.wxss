@@ -1,11 +1,7 @@
 /* components/pages/chat/user/main/index.wxss */
-
-page {
-  padding-bottom: 110rpx;
-}
-
 .message {
   width: 100%;
+  padding-bottom: 110px;
 }
 
 .message-bottom {

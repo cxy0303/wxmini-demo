@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    houseType: 0, //0:一手房；1：二手房
     buildingGroupId: 1,
     type: 1,
     picIndex: 0,
@@ -26,60 +27,12 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      buildingGroupId: options.buildingGroupId
+      buildingGroupId: options.buildingGroupId,
+      houseType: options.houseType
     })
 
     this.getBuildingAttch(1);
     this.getBuildingAttch(2);
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
   },
   getBuildingAttch(type) {
     var data = {
@@ -87,7 +40,18 @@ Page({
       type: type
     }
 
-    api.getbuildingattch(data).then((res) => {
+    var func = api.getbuildingattch;
+    if (this.data.houseType == 1) {
+      func = api.getHousePicList;
+      data = {
+        id: this.data.buildingGroupId,
+        pageNo: 1,
+        pageSize: 30,
+        type: type
+      }
+    }
+
+    func(data).then((res) => {
       if (res.data.code == 1) {
         var typelist = {};
         res.data.content.list.forEach((item) => {

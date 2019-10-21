@@ -1,0 +1,8 @@
+<view class="estate-list-item" bindtap='godetail'>
+  <image src='{{detail.logo}}'></image>
+  <view class="content">
+    <view class="name">{{detail.name}}</view>
+    <view class="address">{{detail.address}}</view>
+    <view class="news">在售二手房{{detail.houseNum}}套</view>
+  </view>
+</view>

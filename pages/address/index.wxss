@@ -1,0 +1,89 @@
+/* pages/address/index.wxss */
+
+.address {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-map {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.address image {
+  position: relative;
+  z-index: 100;
+  width: 50px;
+  height: 50px;
+  margin-top: -50px;
+}
+
+.address .top {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 120rpx;
+  background-color: white;
+  z-index: 200;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.address .top input {
+  background-color: #eee;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  flex: 1;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.address .bottom {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  background: none;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.address .bottom button {
+  background: linear-gradient(90deg, rgba(90, 143, 253, 1) 0%, rgba(44, 103, 224, 1) 100%);
+  color: white;
+}
+
+.address .top .drop-down {
+  position: absolute;
+  top: 100%;
+  left: 0px;
+  width: 100%;
+  height: 50vh;
+  background-color: white;
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.address .top .drop-down a {
+  display: block;
+  padding: 10px;
+  border-bottom: 1px solid rgba(246, 246, 246, 1);
+  font-size: 12px;
+}
+
+.address .top .drop-down a span {
+  color: #999;
+}

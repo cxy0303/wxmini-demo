@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "看房预约",
+  "usingComponents": {
+    "main": "../../../../components/pages/shop/order/house/index"
+  }
+}

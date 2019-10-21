@@ -9,21 +9,24 @@ App({
     if (options.query["shopAccountId"] != this.appData.shopInfo.accountId) {
       this.init(options);
     }
-    wx.navigateTo({
-      url: '/pages/shop/detail/second/house/index?id=3',
-    })
+    // wx.navigateTo({
+    //   url: '/pages/shop/estate/detail/list/index?buildingId=2',
+    // })
   },
   init(options) {
     if (options.query["shopAccountId"]) {
       this.appData.shopInfo.accountId = options.query.shopAccountId;
+    } else {
+      this.appData.shopInfo.accountId = 773;
     }
+
     var userinfo = wx.getStorageSync(storage.keys.userInfo) || null;
     if (userinfo)
       this.setLogin(userinfo);
     this.getlocation();
   },
   getlocation() {
-    api.getLocation((data) => {
+    return api.getLocation((data) => {
       var addressobj = data.originalData.result.addressComponent;
       var location = data.originalData.result.location;
       this.appData.location = {
@@ -35,6 +38,7 @@ App({
         lat: location.lat,
         lng: location.lng
       }
+      return data;
     })
   },
   setLogin(userinfo) {
@@ -42,6 +46,7 @@ App({
     if (!this.appData.shopInfo.accountId) {
       this.appData.shopInfo.accountId = userinfo.id;
     }
+    
     wx.setStorageSync(storage.keys.userInfo, this.appData.userInfo)
   },
   //websocket
@@ -147,6 +152,9 @@ App({
     })
   },
   appData: {
+    appId: 'wxad1973038b18c4c3',
+    bMap_Key: "uP9sskI3WPQEW7MglaOLTosK4k12rG7h",
+    sync: false,
     userInfo: null,
     shopInfo: {
       accountId: 0,

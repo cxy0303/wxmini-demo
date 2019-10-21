@@ -1,0 +1,12 @@
+{
+  "component": true,
+  "usingComponents": {
+    "building-full-item": "../../../../common/buildingfullitem",
+    "van-cell": "vant-weapp/cell",
+    "van-icon": "vant-weapp/icon",
+    "van-checkbox": "vant-weapp/checkbox",
+    "van-popup": "vant-weapp/popup",
+    "van-datetime-picker": "vant-weapp/datetime-picker",
+    "van-stepper":"vant-weapp/stepper"
+  }
+}

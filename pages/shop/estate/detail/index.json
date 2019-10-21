@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "小区详情",
+  "usingComponents": {
+    "main": "../../../../components/pages/shop/estate/detail/index"
+  }
+}

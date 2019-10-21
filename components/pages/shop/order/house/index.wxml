@@ -1,0 +1,75 @@
+<wxs src='../../../../../utils/tools.wxs' module="tools" />
+<view class='house-order'>
+  <image class="steps-bg" src='./images/bg.png'></image>
+  <view class="steps">
+    <view class="step active">
+      <view>
+        <a></a>
+        <span></span>
+        <a></a>
+      </view>
+      <p>看房预约</p>
+    </view>
+    <view class="step">
+      <view>
+        <a></a>
+        <span></span>
+        <a></a>
+      </view>
+      <p>预约确认</p>
+    </view>
+    <view class="step">
+      <view>
+        <a></a>
+        <span></span>
+        <a></a>
+      </view>
+      <p>看房确认</p>
+    </view>
+    <view class="step">
+      <view>
+        <a></a>
+        <span></span>
+        <a></a>
+      </view>
+      <p>客户意见</p>
+    </view>
+    <view class="step">
+      <view>
+        <a></a>
+        <span></span>
+        <a></a>
+      </view>
+      <p>合同签订</p>
+    </view>
+  </view>
+  <view class="top">
+    <building-full-item type='second' buildingInfo='{{item}}'></building-full-item>
+  </view>
+  <view class="cells">
+    <van-cell title-class='{{error[0]?"":"error"}}' title='*预约时间' placeholder='请选择预约时间' is-link value='{{tools.formattime(visitTime)}}' bindtap='showtime'></van-cell>
+    <van-cell title-class='{{error[1]?"":"error"}}' title='*预约地点' bindtap='gomap' value='{{address}}'>
+      <van-icon slot="right-icon" name="location" color='#2F71F6' />
+    </van-cell>
+    <van-cell title-class='{{error[2]?"":"error"}}' title='*看房人数'>
+      <van-stepper slot="right-icon" button-size='30px' bindchange='visitNum_Change'></van-stepper>
+    </van-cell>
+  </view>
+  <view class="remark">
+    <p>备注</p>
+    <view class="content">
+      <textarea value='{{remark}}' class="textarea" focus="{{focusRemark}}" wx:if='{{focusRemark}}' bindblur="remark_blur" bindinput='remark_input'></textarea>
+      <view wx:else class="textarea" bindtap='ShowKeyBorad'>{{remark?remark:"您可以在此给经纪人留言"}}</view>
+    </view>
+  </view>
+  <view class="foot">
+    <van-checkbox value='{{agree}}' shape="square" bindtap='agree'>同意
+      <a>《诚信协议》</a>
+    </van-checkbox>
+    <button bindtap='submit'>发送预约</button>
+  </view>
+</view>
+
+<van-popup show='{{timevisible}}' position='bottom' bind:close='close_time_popup'>
+  <van-datetime-picker value='{{visitTime}}' type="datetime" minDate='{{minDate}}' bindconfirm='time_confirm' bind:cancel='close_time_popup'></van-datetime-picker>
+</van-popup>

@@ -1,0 +1,3 @@
+<view class="estate-detail-list">
+  <building-full-item type='second' wx:for='{{list}}' buildingInfo='{{item}}' wx:key='{{item.id}}'></building-full-item>
+</view>

@@ -10,7 +10,7 @@
 
         </van-tree-select>
       </view>
-      <view wx:if='{{activeIndex==1}}&&items.list.length>=2'>
+      <view wx:if='{{activeIndex==1&&items.list.length>=2}}'>
         <van-tree-select bindclickitem='traffic_nav_item' bindclicknav='traffic_nav_change' active-id='{{select.id}}' main-active-index='{{select.type}}' max='1' items='{{items.list[1].children}}'>
 
         </van-tree-select>

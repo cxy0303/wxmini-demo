@@ -1,7 +1,8 @@
 {
   "pages": [
     "home/index/index/index",
-    "home/index/shop/index"
+    "home/index/shop/index",
+    "components/pages/shop/estate/detail/list/index"
   ],
   "subpackages": [
     {
@@ -17,7 +18,12 @@
         "shop/detail/detail_report/index",
         "map/index/index",
         "webview/index",
-        "chat/user/index"
+        "chat/user/index",
+        "shop/order/house/index",
+        "address/index",
+        "shop/order/success/index",
+        "shop/estate/detail/index",
+        "shop/estate/detail/list/index"
       ]
     }
   ],

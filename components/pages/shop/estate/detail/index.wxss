@@ -1,0 +1,115 @@
+/* components/pages/shop/estate/detail/index.wxss */
+
+.estate-detail {
+  padding-bottom: 100px;
+}
+
+.estate-detail swiper {
+  height: 510rpx;
+  box-sizing: border-box;
+}
+
+.estate-detail swiper swiper-item {
+  width: 100%;
+  height: 100%;
+}
+
+.estate-detail swiper swiper-item image {
+  width: 100%;
+  height: 100%;
+}
+
+.estate-detail .top {
+  padding: 10px;
+  background-color: white;
+}
+
+.estate-detail .top p {
+  font-size: 22px;
+  color: rgba(51, 51, 51, 1);
+  font-weight: bolder;
+}
+
+.estate-detail .top .address {
+  color: rgba(153, 153, 153, 1);
+  font-size: 15px;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 20px;
+}
+
+.estate-detail .top .address a {
+  color: #356699;
+  font-size: 14px;
+}
+
+.estate-detail .top .flex-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0px;
+  margin-top: 10px;
+}
+
+.estate-detail .top .flex-row  label {
+  flex: 1;
+  text-align: justify;
+  font-size: 15px;
+  color: rgba(153, 153, 153, 1);
+}
+
+.estate-detail .top .flex-row  span {
+  color: #333;
+  font-size: 15px;
+  flex: 1;
+  text-align: left;
+}
+
+.estate-detail .box {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: white;
+}
+
+.estate-detail .h1 {
+  color: rgba(51, 51, 51, 1);
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.estate-detail .box .silde-image {
+  height: 296rpx;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.estate-detail  .map-item {
+  padding: 5px 0px;
+}
+
+.estate-detail .map-item image {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.estate-detail  .map-item  label {
+  font-size: 14px;
+  color: #999;
+  margin-right: 5px;
+}
+
+.estate-detail  .map-item span {
+  font-size: 14px;
+  color: #333;
+  margin-right: 5px;
+}
+
+.estate-detail .box button {
+  font-size: 16px;
+  color: rgba(47, 113, 246, 1);
+  font-weight: bolder;
+  background: rgba(244, 248, 251, 1);
+  margin-top: 10px;
+  margin-bottom: 20px;
+}

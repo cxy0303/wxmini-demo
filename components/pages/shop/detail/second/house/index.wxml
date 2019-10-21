@@ -1,7 +1,7 @@
 <wxs src='../../../../../../utils/tools.wxs' module="tools" />
 <view class="house-detail">
   <view class="silder">
-    <swiper bindtap='goablum' indicator-color="white" indicator-active-color="blue" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" circular="{{true}}" bindchange='sidechange' bindtap='goAlbum'>
+    <swiper bindtap='goAblum' indicator-color="white" indicator-active-color="blue" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" circular="{{true}}" bindchange='sidechange'>
       <block>
         <swiper-item wx:for='{{housePic}}'>
           <image class="slide-image" src='{{item.picPath}}' />
@@ -20,11 +20,11 @@
     <view class="flex-row price">
       <a>{{house.price}}</a>
       <a>{{house.totalPrice}}</a>
-      <a>未绑定㎡</a>
+      <a>{{house.houseArea}}㎡</a>
     </view>
-    <view class="news flex-row">
+    <view class="news flex-row" bindtap='gocal'>
       <image src='http://img.jrfw360.com/1571208526860..png'></image>
-      <p>首付52万，月供8999元首付52万，月供8999元首付52万，月供8999元首付52万，月供8999元首付52万，月供8999元</p>
+      <p>{{loan}}</p>
       <a>查看更多 ></a>
     </view>
     <view class="grid">
@@ -37,7 +37,7 @@
       <label>装修</label>
       <span>{{house.renovationName}}</span>
       <label>朝向</label>
-      <span>未绑定</span>
+      <span>{{house.orientationName}}</span>
     </view>
     <view class="grid">
       <label>区域</label>
@@ -58,7 +58,7 @@
   </view>
   <view class="box area">
     <p class='subject'>小区信息</p>
-    <image src='{{house.peripheryPic}}' bindtap='gomap'></image>
+    <image src='{{house.peripheryPic}}' bindtap='goEstate'></image>
     <p class='subsubject'>房源动态</p>
     <view class="steps" wx:if='{{news}}'>
       <view class="step">
@@ -74,11 +74,11 @@
       <view class="right">
         <p>{{account.userName}}</p>
         <view class="flex-row">
-          <view>
+          <view wx:if='{{account.authenticationFlag>=1}}'>
             <image src='./images/idcard.png'></image>实名认证</view>
-          <view>
+          <view wx:if='{{account.authenticationFlag>=2}}'>
             <image src='./images/idcard.png'></image>公司认证</view>
-          <view>
+          <view wx:if='{{account.authenticationFlag>=3}}'>
             <image src='./images/idcard.png'></image>经纪认证</view>
         </view>
         <div>{{account.companyName}}</div>
@@ -90,6 +90,37 @@
       <p class="subsubject">业主心态</p>
       <view>{{house.remark}}</view>
     </view>
-    <view class="more">查看更多 <van-icon name="arrow-down" /></view>
+    <view class="more">查看更多
+      <van-icon name="arrow-down" />
+    </view>
+  </view>
+  <view class="cells">
+    <van-cell size='large' title="房源不真实？投诉举报" is-link to="index" />
+    <van-cell size='large' title="同小区" is-link to="index" />
+  </view>
+  <view class="box">
+    <p class='subject'>猜你喜欢</p>
+    <building-full-item type='second' buildingInfo='{{item}}' wx:for='{{commentList}}' wx:key='{{item.id}}'></building-full-item>
+    <view class="btnmore">查看更多</view>
+  </view>
+  <view class="ad">
+    <p class='subject'>要买房？先来查房价看看行情</p>
+    <p class='subtitle'>为您提供专业的房源定价及卖房服务</p>
+    <a class='btn'>帮你卖房</a>
+  </view>
+  <view class="foot">
+    <view class="flex-row">
+      <image class="logo" src='{{account.avatar}}'></image>
+      <view class="title">
+        <view>{{account.userName}}</view>
+        <view>{{account.companyName}}</view>
+      </view>
+    </view>
+    <view class="btn-chat" bindtap='gochat'>
+      <a>房聊</a>
+    </view>
+    <view class="btn-order" bindtap='goorder'>
+      <a>预约看房</a>
+    </view>
   </view>
 </view>

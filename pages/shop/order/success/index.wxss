@@ -1,0 +1,51 @@
+/* pages/shop/order/success/index.wxss */
+
+.ordersuccess {
+}
+
+.ordersuccess .top {
+  background-color: white;
+  padding-top: 100rpx;
+  text-align: center;
+  padding-bottom: 10px; 
+}
+
+.ordersuccess .top  p {
+  display: block;
+  font-size: 19px;
+  font-weight: bolder;
+  color: rgba(0, 0, 0, 1);
+  width: 100%;
+  text-align: center;
+}
+
+.ordersuccess .top div {
+  display: block;
+  color: rgba(153, 153, 153, 1);
+  font-size: 14px;
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.ordersuccess .top image {
+  width: 240rpx;
+  height: 220rpx;
+  margin: 40rpx auto;
+}
+
+.ordersuccess .top .tip {
+  color: rgba(0, 0, 0, 1);
+  font-size: 14px;
+}
+
+.ordersuccess .top .bar {
+  padding: 10px;
+  margin-top: 30px;
+}
+
+.ordersuccess .top .bar button {
+  background: linear-gradient(90deg, rgba(90, 143, 253, 1) 0%, rgba(44, 103, 224, 1) 100%);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 1);
+  font-size: 16px;
+}

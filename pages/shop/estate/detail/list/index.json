@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "同小区房源",
+  "usingComponents": {
+    "main": "../../../../components/pages/shop/estate/detail/list/index"
+  }
+}

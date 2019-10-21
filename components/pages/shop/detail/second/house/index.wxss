@@ -1,5 +1,9 @@
 /* components/pages/shop/detail/second/house/index.wxss */
 
+.house-detail {
+  padding-bottom: 228rpx;
+}
+
 .house-detail swiper {
   height: 510rpx;
   box-sizing: border-box;
@@ -202,7 +206,7 @@
 }
 
 .house-detail .card .flex-row image {
-  width: 22px;
+  width: 25px;
   height: 17px;
   margin-right: 5px;
 }
@@ -259,4 +263,138 @@
   padding: 10px;
   padding-bottom: 5px;
   padding-top: 15px;
+}
+
+.house-detail .cells {
+  margin-top: 20px;
+}
+
+.house-detail .btnmore {
+  margin-top: 20px;
+  text-align: center;
+  color: rgba(47, 113, 246, 1);
+  font-size: 16px;
+  background: rgba(244, 248, 251, 1);
+  display: block;
+  line-height: 88rpx;
+  height: 88rpx;
+  font-weight: bolder;
+  border-radius: 3px;
+}
+
+.house-detail .ad {
+  padding-top: 30px;
+}
+
+.house-detail .ad p {
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+.house-detail .ad .subject {
+  color: #333;
+}
+
+.house-detail .ad .btn {
+  display: block;
+  width: 230rpx;
+  height: 80rpx;
+  margin: auto;
+  border: 1px solid #979797;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 20px;
+}
+
+.house-detail .foot {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 128rpx;
+  background-color: white;
+  display: flex;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(229, 229, 229, 1);
+  box-sizing: border-box;
+}
+
+.house-detail .foot view {
+  flex: 1;
+}
+
+.house-detail .foot .flex-row {
+  align-items: center;
+  justify-content: center;
+  flex-basis: auto;
+  flex-shrink: 0;
+  flex-grow: 0;
+  max-width: 160px;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.house-detail .foot .flex-row  image {
+  width: 108rpx;
+  height: 108rpx;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.house-detail .foot .flex-row .title {
+  width: 0;
+  flex: 1;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-right: 1px solid rgba(215, 215, 215, 1);
+}
+
+.house-detail .foot .flex-row .title view:first-child {
+  font-size: 16px;
+  color: rgba(51, 51, 51, 1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.house-detail .foot .flex-row .title view:last-child {
+  font-size: 12px;
+  color: rgba(102, 102, 102, 1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.house-detail .foot .btn-chat, .house-detail .foot .btn-order {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 10px;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+.house-detail .foot .btn-chat a {
+  width: 100%;
+  height: 88rpx;
+  background: linear-gradient(90deg, rgba(254, 118, 79, 1) 0%, rgba(249, 86, 64, 1) 100%);
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.house-detail .foot .btn-order a {
+  width: 100%;
+  height: 88rpx;
+  background: linear-gradient(90deg, rgba(90, 143, 253, 1) 0%, rgba(44, 103, 224, 1) 100%);
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }

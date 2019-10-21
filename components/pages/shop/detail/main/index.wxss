@@ -2,6 +2,7 @@
 
 .shop-detail {
   width: 100%;
+  padding-bottom: 54px;
 }
 
 .shop-detail .border-bottom {

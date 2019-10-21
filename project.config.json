@@ -50,13 +50,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "home/index/index/index",
 					"pathName": "home/index/index/index",
-					"query": "shopAccountId=146",
+					"query": "shopAccountId=773",
 					"scene": null
 				},
 				{

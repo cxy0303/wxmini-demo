@@ -94,6 +94,18 @@ var getSecondHouseDetail = function(data) {
   return post("/house/detail", data);
 }
 
+var getEstateDetail = function(data) {
+  return post("/estate/detail", data);
+}
+
+var getSameEstate = function(data) {
+  return post("/house/sameEstate", data);
+}
+
+var bindPhone = function(data) {
+  return post("/account/bindPhone", data);
+}
+
 var getLocation = function(data) {
   return new Promise((resolve, reject) => {
     var BMap = new bmap.BMapWX({
@@ -143,5 +155,8 @@ export default {
   getHouseDetail: getHouseDetail,
   getSecondCondition: getSecondCondition,
   getSecondBuilding: getSecondBuilding,
-  getSecondHouseDetail: getSecondHouseDetail
+  getSecondHouseDetail: getSecondHouseDetail,
+  getEstateDetail: getEstateDetail,
+  getSameEstate: getSameEstate,
+  bindPhone: bindPhone
 }

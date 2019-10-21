@@ -19,6 +19,7 @@ page {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
 
 .location-map-bar view {

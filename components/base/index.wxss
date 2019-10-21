@@ -1,19 +1,38 @@
 @import "../../app.wxss";
 
+page {
+  height: 100%;
+}
+
 .base {
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: 0px;
   width: 100%;
+  height: 100%;
 }
 
 .base-auth {
+  text-align: center;
   padding: 10px;
+  height: 100%;
+  background: linear-gradient(222deg, rgba(250, 217, 97, 1) 0%, rgba(247, 107, 28, 1) 100%);
 }
 
 .base-auth button {
-  background: linear-gradient(90deg, rgba(94, 150, 248, 1) 0%, rgba(78, 140, 248, 1) 100%);
   color: white;
+}
+
+.base-auth image {
+  width: 200rpx;
+  height: 200rpx;
+  margin: 100rpx auto;
+}
+
+.base-auth .title {
+  color: white;
+  font-weight: bolder;
+  margin-bottom: 50rpx;
 }
 
 .base-load {
@@ -128,6 +147,24 @@
 
 .dot5 {
   animation-delay: 400ms;
+}
+
+.flex-row {
+  text-align: center;
+}
+
+.flex-row .cancel {
+  display: inline-block;
+  width: 150px;
+  background-color: rgba(202, 199, 199, 0.699);
+  margin: 0px 5px;
+}
+
+.flex-row .sure {
+  display: inline-block;
+  width: 150px;
+  margin: 0px 5px;
+  background: linear-gradient(90deg, rgba(254, 118, 79, 1) 0%, rgba(249, 86, 64, 1) 100%);
 }
 
 @keyframes colorchange {

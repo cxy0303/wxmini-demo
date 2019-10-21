@@ -9,7 +9,8 @@
           <area-choice value='{{confirm_Value.area}}' bindchange='area_select_change' items='{{condition.data_Area}}'></area-choice>
         </scroll-view>
         <view class="footer">
-          <van-button type="default" size="small" bindtap='search_Clear' data-key='area'>清空</van-button>
+          <van-button type="default" size="small" bindtap='close' data-key='area'>取消</van-button>
+          <van-button type="danger" size="small" bindtap='search_Clear' data-key='area'>清空</van-button>
           <van-button type="info" size="small" bindtap='search_Confirm' data-key='area'>搜索</van-button>
         </view>
       </view>
@@ -32,7 +33,8 @@
           </van-radio-group>
         </scroll-view>
         <view class="footer">
-          <van-button type="default" size="small" bindtap='search_Clear' data-key='housetype'>清空</van-button>
+          <van-button type="default" size="small" bindtap='close' data-key='area'>取消</van-button>
+          <van-button type="danger" size="small" bindtap='search_Clear' data-key='housetype'>清空</van-button>
           <van-button type="info" size="small" bindtap='search_Confirm' data-key='housetype'>搜索</van-button>
         </view>
       </view>
@@ -63,7 +65,8 @@
         </scroll-view>
         <!------------------二手房价格 只支持总价一级----------------------------->
         <view class="footer">
-          <van-button type="default" size="small" bindtap='search_Clear' data-key='price'>清空</van-button>
+          <van-button type="default" size="small" bindtap='close' data-key='area'>取消</van-button>
+          <van-button type="danger" size="small" bindtap='search_Clear' data-key='price'>清空</van-button>
           <van-button type="info" size="small" bindtap='search_Confirm' data-key='price'>搜索</van-button>
         </view>
       </view>
@@ -80,7 +83,8 @@
           <more-item bindchange='more_Change' value='{{confirm_Value.moreitems}}' items='{{condition.data_More}}'></more-item>
         </scroll-view>
         <view class="footer">
-          <van-button type="default" size="small" bindtap='search_Clear' data-key='more'>清空</van-button>
+          <van-button type="default" size="small" bindtap='close' data-key='area'>取消</van-button>
+          <van-button type="danger" size="small" bindtap='search_Clear' data-key='more'>清空</van-button>
           <van-button type="info" size="small" bindtap='search_Confirm' data-key='more'>搜索</van-button>
         </view>
       </view>

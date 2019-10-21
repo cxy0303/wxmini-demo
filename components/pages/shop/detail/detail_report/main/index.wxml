@@ -43,7 +43,7 @@
     </view>
     <view class="form-item flex-box custome-phone">
       <span>*</span>
-      <label>客户电话{{!mustFull&&isHidden?"ishidden":""}}</label>
+      <label>客户电话</label>
       <view class='{{isHidden?"ishidden":""}}' wx:if='{{!mustFull}}' bindtap='switch_handle'>
         <van-switch checked='{{isHidden}}' size='20px'></van-switch>
         <div>隐号报备</div>
@@ -74,9 +74,10 @@
       <textarea value='{{remark}}' placeholder="请输入备注" bindinput='remark_input_handel'></textarea>
     </view>
   </view>
-  <cover-view class="submit">
-    <button bindtap='submit_handle'>确定</button>
-  </cover-view>
+  <view class="submit">
+    <button wx:if='{{isBindPhone}}' bindtap='submit_handle'>确定</button>
+    <button wx:else bindgetphonenumber='gephone' open-type='getPhoneNumber'>确定</button>
+  </view>
 </view>
 
 <van-popup show='{{timevisible}}' position='bottom' bind:close='close_time_popup'>

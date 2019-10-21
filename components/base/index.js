@@ -6,7 +6,7 @@ Component({
     // 是否必须登录
     mustLogin: {
       type: Boolean,
-      value: false,
+      value: true,
     },
     loading: {
       type: String,
@@ -14,7 +14,6 @@ Component({
     }
   },
   data: {
-    pageloaded: false,
     msg: '',
     wxauthed: -1,
     userinfo: {}
@@ -25,35 +24,32 @@ Component({
         this.setData({
           wxauthed: 1
         })
+      } else {
+        this.setData({
+          wxauthed: 0,
+        })
+      }
+
+      if (authed || !this.data.mustLogin) {
         var tabbar = this.getTabBar();
         if (tabbar) {
           tabbar.setData({
             show: true
           })
         }
-
         this.checklogin();
-      } else {
-        this.setData({
-          wxauthed: 0
-        })
+        this.triggerEvent('pageloaded', "");
       }
     });
   },
   methods: {
+    back() {
+      wx.navigateBack();
+    },
     async checklogin() {
-      if (app.appData.userInfo) {
-        if (!app.appData.userInfo["sync"]) {
-          var userinfores = await this.getuserinfo(app.appData.userInfo);
-          if (userinfores && userinfores.data.code == 1) {
-            this.setLogin(userinfores.data.content.account);
-            this.triggerEvent('pageloaded', "");
-            app.connect();
-          }
-        } else {
-          this.triggerEvent('pageloaded', "");
-          app.connect();
-        }
+      if (app.appData.userInfo && app.appData.userInfo.sessionKey) {
+        this.triggerEvent('pageloaded', "");
+        app.connect();
         return;
       }
       var wxloginres = await this.wxlogin();
@@ -70,27 +66,30 @@ Component({
             inviteId: 0
           });
           if (loginres && loginres.data && loginres.data.code) { //登录成功
-            this.setLogin(loginres.data.content.yyAccount);
+            loginres.data.content.yyAccount["isBindPhone"] = loginres.data.content.isBindPhone;
+            this.setLogin(loginres.data.content.yyAccount, loginres.data.content["sessionKey"]);
             app.connect();
             this.triggerEvent('pageloaded', "");
           }
         }
       }
     },
-    setLogin(userinfo) {
+    setLogin(userinfo, sessionKey) {
       var logininfo = {
         id: userinfo.id,
         name: userinfo.yyUser.userName,
         avatar: userinfo.yyUser.avatar,
         loginToken: userinfo.loginToken,
+        sessionKey: sessionKey,
         roles: userinfo.roles,
         type: userinfo.type,
         inviteId: userinfo.inviteId,
         inviteImg: userinfo.inviteImg,
         phone: userinfo.hiddenPhone,
-        wxAccount: '',
-        sync: true
+        isBindPhone: userinfo.isBindPhone,
+        wxAccount: ''
       }
+      app.appData.sync = true;
       if (userinfo.company) {
         this.setData({
           companyName: userinfo.company.companyname,

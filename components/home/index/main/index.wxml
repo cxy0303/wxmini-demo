@@ -32,14 +32,14 @@
       </button>
     </view>
   </view>
-  <view class="index-group">
+  <view class="index-group" wx:if='{{newhouselist.length>0}}'>
     <view class="title">推荐新房</view>
     <scroll-sider items='{{newhouselist}}'></scroll-sider>
   </view>
-  <!-- <view class="index-group">
+  <view class="index-group" wx:if='{{secondList.length>0}}'>
     <view class="title">推荐二手房</view>
-    <scroll-sider></scroll-sider>
-  </view> -->
+    <scroll-sider type='second' items='{{secondList}}'></scroll-sider>
+  </view>
   <view class="index-group">
     <view class="title">个人简介</view>
     <view class="content">{{message}}</view>

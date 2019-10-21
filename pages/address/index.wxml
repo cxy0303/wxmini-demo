@@ -1,0 +1,15 @@
+<view class="address">
+  <view class="top">
+    <input type="text" value="{{address}}" bindchange='address_change' bindfocus='focus_handler'></input>
+    <scroll-view scroll-y='true' class="drop-down" wx:if='{{showDrop&&pois.length>0}}'>
+      <a wx:for='{{pois}}' data-key='{{item}}' bindtap='set_addr' wx:if='{{item.addr}}'>{{item.addr}}
+        <span>{{item.name}}</span>
+      </a>
+    </scroll-view>
+  </view>
+  <map bindtap='blur_handler' class="location-map" id="map" longitude="{{lng}}" latitude="{{lat}}" scale="14" bindregionchange='region_change' markers='{{markers}}'></map>
+  <image class='location' src="../../assets/images/location.png"></image>
+  <view class="bottom">
+    <button bindtap='sure'>确定</button>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+<view class="ordersuccess">
+  <view class="top">
+    <p>恭喜您预约成功！</p>
+    <div>业主会尽快与您联系确认看房时间</div>
+    <image src='./images/success.png'></image>
+    <view class="tip">请下载今日房网APP以便我们及时地通知您</view>
+    <view class="tip">如未下载APP，后续流程无法及时通知您</view>
+    <view class="bar">
+      <button bindtap='goapp'>下载APP</button>
+    </view>
+  </view>
+</view>

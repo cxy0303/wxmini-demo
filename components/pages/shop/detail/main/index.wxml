@@ -24,7 +24,7 @@
   <view class="silder">
     <swiper bindtap='goablum' indicator-color="white" indicator-active-color="blue" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" circular="{{true}}" bindchange='sidechange' bindtap='goAlbum'>
       <block>
-        <swiper-item wx:for='{{buildingInfo.attachment}}'>
+        <swiper-item wx:for='{{buildingInfo.attachment}}' wx:key='{{index}}'>
           <image class="slide-image" src='{{item.picPath}}' />
         </swiper-item>
       </block>
@@ -37,7 +37,7 @@
     <view class="name">
       <view class="container">
         {{buildingInfo.name}}
-        <block wx:for="{{tools.split(buildingInfo.buildingType,'-')}}">
+        <block wx:for="{{tools.split(buildingInfo.buildingType,'-')}}" wx:key='{{index}}'>
           <span class='blue' wx:if='{{item=="住宅"}}'>住宅</span>
           <span class='red' wx:elif='{{item=="别墅"}}'>别墅</span>
           <span class='yellow' wx:elif='{{item=="商铺"}}'>商铺</span>
@@ -46,7 +46,7 @@
       </view>
     </view>
     <view class="prices">
-      <view class="price-item {{util.getbuildingtypeclass(item.typeName)}}" wx:for='{{buildTypeList}}'>
+      <view class="price-item {{util.getbuildingtypeclass(item.typeName)}}" wx:for='{{buildTypeList}}' wx:key='{{index}}'>
         <view class="price-item-cell">
           <span>{{item.typeName}}均价</span>
           <label>2.4万元/㎡</label>
@@ -83,7 +83,7 @@
         <p>{{buildingInfo.cityName+buildingInfo.districtName}}</p>
       </view>
       <view class="detail-tag">
-        <a wx:for="{{tools.split(buildingInfo.tags,'-')}}">{{item}}</a>
+        <a wx:for="{{tools.split(buildingInfo.tags,'-')}}" wx:key='{{index}}'>{{item}}</a>
       </view>
       <view class="detail-more" bindtap="gomore">
         更多详情
@@ -125,9 +125,9 @@
       <view class="header">
         看房服务
       </view>
-      <image src='./images/self.png' class="service-img" bindtap='goservice' wx:if="{{tools.indexOf(buildingInfo.houseServiceIds,113)>=0}}"></image>
-      <image src='./images/freebus.png' class="service-img" bindtap='goservice' wx:if="{{tools.indexOf(buildingInfo.houseServiceIds,114)>=0}}"></image>
-      <image src='./images/freespecial.png' class="service-img" bindtap='goservice' wx:if="{{tools.indexOf(buildingInfo.houseServiceIds,115)>=0}}"></image>
+      <image src='https://h5.jrfw360.com/static/img/selfCar.b3c7f32.png' class="service-img" bindtap='goservice' wx:if="{{tools.indexOf(buildingInfo.houseServiceIds,113)>=0}}"></image>
+      <image src='https://h5.jrfw360.com/static/img/regularCar.33e1510.png' class="service-img" bindtap='goservice' wx:if="{{tools.indexOf(buildingInfo.houseServiceIds,114)>=0}}"></image>
+      <image src='https://h5.jrfw360.com/static/img/specialCar.7706553.png' class="service-img" bindtap='goservice' wx:if="{{tools.indexOf(buildingInfo.houseServiceIds,115)>=0}}"></image>
     </view>
     <view class="content-block border-bottom " wx:if='{{buildingNews&&buildingNews.length>0}}'>
       <view class="header ">
@@ -146,8 +146,8 @@
       <view class="header ">
         全部户型
       </view>
-      <view class="apartment-item " wx:for='{{buildingModelType}}'>
-        <apartment-item item='{{item}}' bindclick='apartment_click_handler'></apartment-item>
+      <view class="apartment-item " wx:for='{{buildingModelType}}' wx:key='{{item.id}}'>
+        <apartment-item item='{{item}}' bindclick='apartment_click_handler' ></apartment-item>
       </view>
     </view>
     <view class="content-block" bindtap='goHouseTypeDetail'>
@@ -241,7 +241,7 @@
     <button open-type="share" data-key='{{shareInfo}}'>
       <cover-image src='./images/share.png'></cover-image>
     </button>
-    <button class="text"  open-type="share" data-key='{{shareInfo}}' class="text">微信分享</button>
+    <button class="text" open-type="share" data-key='{{shareInfo}}' class="text">微信分享</button>
   </cover-view>
   <cover-view class="flex-box" bindtap='togglecoupon'>
     <cover-image src='./images/sub.png'></cover-image>
@@ -255,7 +255,7 @@
     <cover-view class="text">在线咨询</cover-view>
   </cover-view>
   <cover-view class="flex-box report" bindtap='report_handle'>
-    <cover-view class="text">报备客户</cover-view>
+    <cover-view class="text">{{btntext}}</cover-view>
   </cover-view>
 </cover-view>
 <vant-popup show='{{showcoupon}}' position='bottom' bind:close='close_coupon_popup'>

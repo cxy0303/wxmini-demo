@@ -141,7 +141,7 @@ Page({
   getBMap() {
     if (this.data.bMap == null) {
       this.data.bMap = new bmap.BMapWX({
-        ak: app.bMap_Key
+        ak: app.appData.bMap_Key
       });
     }
     return this.data.bMap;

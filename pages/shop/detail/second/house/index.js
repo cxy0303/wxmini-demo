@@ -20,7 +20,7 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      buildingId:options.id
+      buildingId: options.buildingId
     })
   },
 

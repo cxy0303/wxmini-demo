@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "building-full-item": "../../../../common/buildingfullitem/index",
+    "estate-item": "../../../../common/estateitem/index",
+    "pic-view": "../../../../common/picView/index"
+  }
+}

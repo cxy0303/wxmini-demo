@@ -1,5 +1,6 @@
 // components/pages/shop/detail/detail_report/main/index.js
 import api from '../../../../../../utils/api.js'
+var wxcrypto = require('../../../../../../utils/cropto/wx.js');
 var app = getApp();
 Component({
   /**
@@ -47,11 +48,15 @@ Component({
     timeindex: 0,
     minDate: new Date().getTime(),
     visitTime: new Date().getTime(),
-    focusIndex: -1
+    focusIndex: -1,
+    isBindPhone: false
   },
 
   attached() {
     this.getdetailReport();
+    this.setData({
+      isBindPhone: app.appData.userInfo.isBindPhone
+    })
     const eventChannel = this.getOpenerEventChannel();
     if (eventChannel) {
       eventChannel.on('acceptDataFromOpenerPage', (data) => {
@@ -60,11 +65,27 @@ Component({
         })
       })
     }
+    if (app.appData.userInfo.type <= 2) {
+      wx.setNavigationBarTitle({
+        title: "我要看房"
+      })
+    }
   },
   /**
    * 组件的方法列表
    */
   methods: {
+    gephone(e) {
+      if (!app.appData.userInfo || !app.appData.userInfo.sessionKey) {
+        wx.showToast({
+          title: '登录过期，请重新登录！',
+        })
+        return;
+      }
+      var cropt = new wxcrypto(app.appData.appId, app.appData.userInfo.sessionKey);
+      var phone = cropt.decryptData(e.detail.encryptedData, e.detail.iv).phoneNumber;
+      console.log(phone);
+    },
     remark_input_handel(e) {
       this.setData({
         remark: e.detail.value

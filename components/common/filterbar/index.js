@@ -92,12 +92,32 @@ Component({
       this.setData({
         confirm_Value: Object.assign({}, this.data.value)
       })
+
+      var tab = this.getTabBar();
+      if (this.data.showindex) {
+        if (tab && tab.data.show) {
+          tab.setData({
+            show: false
+          })
+        }
+      } else {
+        if (tab && !tab.data.show) {
+          tab.setData({
+            show: true
+          })
+        }
+      }
     }
   },
   /**
    * 组件的方法列表
    */
   methods: {
+    close(e) {
+      this.setData({
+        showindex: ''
+      })
+    },
     area_select_change(e) {
       this.setData({
         'confirm_Value.area': {
@@ -203,7 +223,7 @@ Component({
     price_change(e) {
       var key = e.currentTarget.dataset.key;
       this.setData({
-        'confirm_Value.price.id': key.id+'',
+        'confirm_Value.price.id': key.id + '',
         'confirm_Value.price.text': key.name,
         'confirm_Value.price.type': 'totalPrice'
       })
@@ -220,10 +240,11 @@ Component({
     },
     getCondition() {
       api.getLocation().then((res) => {
-        var cityid = res.originalData.result.addressComponent.adcode;
+
+        var city = res.originalData.result.addressComponent.city;
         if (this.data.searchType == 1) {
           api.getCondition({
-            cityIds: cityid,
+            cityName: city,
             type: 1
           }).then((res) => {
             if (res.data.code == 1) {
@@ -239,7 +260,7 @@ Component({
           })
         } else {
           api.getSecondCondition({
-            cityIds: cityid,
+            cityName: city,
             type: 1
           }).then((res) => {
             if (res.data.code == 1) {

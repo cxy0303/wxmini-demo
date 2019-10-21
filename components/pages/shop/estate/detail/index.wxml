@@ -1,0 +1,94 @@
+<view class="estate-detail">
+  <view class="silder">
+    <swiper  indicator-color="white" indicator-active-color="blue" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" circular="{{true}}" bindchange='sidechange'>
+      <block>
+        <swiper-item wx:for='{{detail.picList}}'  wx:key='{{index}}'>
+          <image class="slide-image" src='{{item}}' bindtap='viewPic' data-key='{{item}}' />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="top">
+    <p>{{detail.name}}</p>
+    <view class="address">
+      地址：
+      <a>{{detail.address}}</a>
+    </view>
+    <view class="flex-row">
+      <label>区域</label>
+      <span>未绑定</span>
+      <label>物业费</label>
+      <span>{{detail.propertyPrice}}</span>
+    </view>
+    <view class="flex-row">
+      <label>产权</label>
+      <span>{{detail.propertyRightYears}}</span>
+      <label>建筑年代</label>
+      <span>{{detail.estateYear}}</span>
+    </view>
+    <view class="flex-row">
+      <label>绿化率</label>
+      <span>{{detail.greenRatio}}</span>
+      <label>容积率</label>
+      <span></span>
+    </view>
+    <view class="flex-row">
+      <label>物业类型</label>
+      <span>{{detail.propertyType}}</span>
+      <label>建筑类型</label>
+      <span>{{detail.buildingType}}</span>
+    </view>
+    <view class="flex-row">
+      <label>停车位</label>
+      <span>{{detail.parkingNum}}</span>
+      <span></span>
+      <span></span>
+    </view>
+    <view class="flex-row">
+      <label>物业公司</label>
+      <span>{{detail.propertyCompany}}</span>
+      <span></span>
+      <span></span>
+    </view>
+    <view class="flex-row">
+      <label>开发商</label>
+      <span></span>
+      <span></span>
+      <span></span>
+    </view>
+  </view>
+  <view class=' box '>
+    <p class='h1 '>小区周边信息</p>
+    <image class="silde-image" src='{{detail.peripheryPic}}' bindtap='gomap'></image>
+    <view class="map-item ">
+      <image src="../../detail/main/images/train.png"></image>
+      <label>地铁：</label>
+      <span>{{detail.metro||'无 '}}</span>
+    </view>
+    <view class="map-item ">
+      <image src="../../detail/main/images/bus.png"></image>
+      <label>公交：</label>
+      <span>{{detail.bus||'无 '}}</span>
+    </view>
+    <view class="map-item ">
+      <image src="../../detail/main/images/food.png"></image>
+      <label>餐饮：</label>
+      <span>{{detail.restaurant||'无 '}}</span>
+    </view>
+    <view class="map-item ">
+      <image src="../../detail/main/images/market.png"></image>
+      <label>商场：</label>
+      <span>{{detail.market||'无 '}}</span>
+    </view>
+  </view>
+  <view class="box">
+    <view class="tab">
+      <a class='h1'>同小区二手房</a>
+    </view>
+    <building-full-item wx:for='{{houseList}}' type='second' buildingInfo='{{item}}' wx:key='{{item.id}}'></building-full-item>
+    <button bindtap='gohousemore'>查看全部</button>
+    <p class='h1'>附近小区</p>
+    <estate-item wx:for='{{estateList}}' detail='{{item}}' wx:key='{{item.id}}'></estate-item>
+  </view>
+</view>
+<pic-view url='{{viewUrl}}' wx:if='{{viewUrl}}' bindclose='pic_view_close'></pic-view>

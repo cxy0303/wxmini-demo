@@ -19,7 +19,9 @@ Component({
     account: {},
     housePic: [],
     house: {},
-    news: []
+    news: [],
+    loan: '',
+    commentList: []
   },
   attached() {
     this.getHouseDetail();
@@ -28,14 +30,29 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    goablum() {
+    gocal() {
       wx.navigateTo({
-        url: "/pages/shop/detail/detail_album/index",
+        url: '/pages/webview/index?url=https://h5.jrfw360.com/calculatorMortgage',
       })
     },
-    gomap() {
+    goorder() {
       wx.navigateTo({
-        url: `/pages/map/index/index?lat=${this.data.house.lat}&lng=${this.data.house.lng}`,
+        url: '/pages/shop/order/house/index?buildingId=' + this.data.buildingId,
+      })
+    },
+    gochat() {
+      wx.navigateTo({
+        url: '/pages/chat/user/index',
+      })
+    },
+    goAblum() {
+      wx.navigateTo({
+        url: "/pages/shop/detail/detail_album/index?houseType=1&buildingGroupId=" + this.data.buildingId,
+      })
+    },
+    goEstate() {
+      wx.navigateTo({
+        url: `/pages/shop/estate/detail/index?buildingId=${this.data.house.estateId}`,
       })
     },
     getHouseDetail() {
@@ -50,7 +67,9 @@ Component({
             account: content.account,
             house: content.house,
             housePic: content.housePic,
-            news: houseNews
+            news: houseNews,
+            loan: content.loan,
+            commentList: content.commendList
           })
         }
       })

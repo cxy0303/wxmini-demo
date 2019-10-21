@@ -1,0 +1,161 @@
+/* components/pages/shop/order/house/index.wxss */
+
+.house-order {
+  box-sizing: border-box;
+  padding-bottom: 106px;
+}
+
+.house-order .steps-bg {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 97px;
+}
+
+.house-order .steps {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0px;
+}
+
+.house-order .steps .step {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: rgba(153, 153, 153, 1);
+  /* color: rgba(47, 113, 246, 1); */
+}
+
+.house-order .steps .step view {
+  display: flex;
+  height: 13px;
+  margin-bottom: 10px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.house-order .steps .step view span {
+  width: 13px;
+  height: 13px;
+  border-radius: 13px;
+  border: 1px dashed #ccc;
+}
+
+.house-order .steps .step view a {
+  width: 100%;
+  height: 1px;
+  border-top: 1px dashed #ccc;
+  flex: 1;
+}
+
+.house-order .steps .step:first-child view a:first-child {
+  visibility: hidden;
+}
+
+.house-order .steps .step:last-child view a:last-child {
+  visibility: hidden;
+}
+
+.house-order .steps .active view span {
+  border: 1px solid #2f71f6;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+}
+
+.house-order .steps .active p {
+  color: #2f71f6;
+}
+
+.house-order .steps .active view span::before {
+  content: ' ';
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #2f71f6;
+}
+
+.house-order .steps .active view a {
+  border-top: 1px solid #2f71f6;
+}
+
+.house-order .top {
+  background-color: white;
+  padding: 0px 10px;
+}
+
+.house-order .cells {
+  margin-top: 10px;
+}
+
+.house-order .remark {
+  margin-top: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.house-order .remark .content {
+  position: relative;
+  height: 150px;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+
+.house-order .remark .textarea {
+  width: 100%;
+  height: 100%;
+  background: rgba(246, 246, 246, 1);
+  font-size: 13px;
+  color: #999;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.house-order .foot {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 96px;
+  box-sizing: border-box;
+  background-color: white;
+  border-top: 1px solid rgba(229, 229, 229, 1);
+  padding: 10px;
+  font-size: 12px;
+}
+
+.house-order .foot  a {
+  color: #2f71f6;
+}
+
+.house-order .foot button {
+  font-size: 16px;
+  color: white;
+  margin-top: 10px;
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
+  vertical-align: middle;
+  background: linear-gradient(90deg, rgba(90, 143, 253, 1) 0%, rgba(44, 103, 224, 1) 100%);
+  border-radius: 4px;
+}
+
+.error {
+  color: red;
+}

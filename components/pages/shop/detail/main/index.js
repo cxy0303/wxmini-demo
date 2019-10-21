@@ -27,10 +27,16 @@ Component({
     buildScore: {}, //评分
     nearBuildingList: [], //同区域
     samePriceList: [], //同价格
-    shareInfo: {}
+    shareInfo: {},
+    btntext: "报备客户",
   },
   attached() {
     this.getbuildingdetail(this.data.buildingId);
+    if (app.appData.userInfo.type <= 2) {
+      this.setData({
+        btntext: "我要看房"
+      })
+    }
   },
   /**
    * 组件的方法列表
@@ -209,8 +215,12 @@ Component({
             nearBuildingList: res.data.content.nearBuildingList,
             samePriceList: res.data.content.samePriceList,
             isFavorite: res.data.content.isFavorite,
-            shareInfo: res.data.content.shareInfo
+            shareInfo: res.data.content.shareInfo,
+            'couponcheck[0]': res.data.content.booking.discount,
+            'couponcheck[1]': res.data.content.booking.sale,
+            'couponcheck[2]': res.data.content.booking.news
           })
+
           this.drawCircle(this.data.buildScore.scoreNum / 5);
         }
       })

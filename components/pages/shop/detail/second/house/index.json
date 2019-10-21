@@ -1,6 +1,8 @@
 {
   "component": true,
   "usingComponents": {
-    "van-icon": "vant-weapp/icon"
+    "van-icon": "vant-weapp/icon",
+    "van-cell": "vant-weapp/cell",
+    "building-full-item": "../../../../common/buildingfullitem/index"
   }
 }

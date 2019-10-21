@@ -34,34 +34,42 @@ Component({
 
     }
   },
-  attached() {
-    var item = {};
-    var info = this.data.buildingInfo;
-    if (this.data.type == "second") {
-      item = {
-        id: info.id,
-        name: info.estateName,
-        logo: info.logo,
-        buildingType: info.buildingType,
-        roomType: '',
-        roomArea: info.content,
-        tags: info.characteristic,
-        totalPrice: info.totalPrice + "万",
-        price: info.price + "万",
-        address: info.address,
-        saying: info.saying
-      }
-    } else {
-      item = info;
+  observers: {
+    buildingInfo() {
+      this.init();
     }
-    this.setData({
-      item: item
-    })
+  },
+  attached() {
+    this.init();
   },
   /**
    * 组件的方法列表
    */
   methods: {
+    init() {
+      var item = {};
+      var info = this.data.buildingInfo;
+      if (this.data.type == "second") {
+        item = {
+          id: info.id,
+          name: info.estateName,
+          logo: info.logo,
+          buildingType: info.buildingType,
+          roomType: '',
+          roomArea: info.content,
+          tags: info.characteristic,
+          totalPrice: info.totalPrice + "万",
+          price: info.price + "万",
+          address: info.address,
+          saying: info.saying
+        }
+      } else {
+        item = info;
+      }
+      this.setData({
+        item: item
+      })
+    },
     clickhandle(e) {
       if (this.data.defaultClickHandler) {
         if (this.data.type == "new") {

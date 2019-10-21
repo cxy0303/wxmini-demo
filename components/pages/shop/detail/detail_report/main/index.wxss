@@ -2,6 +2,7 @@
   background-color: white;
   box-sizing: border-box;
   padding-top: 20px;
+  padding-bottom: 64px;
 }
 
 .detail_report .num {
@@ -157,8 +158,6 @@
 }
 
 .detail_report .submit {
-  height: 45px;
-  line-height: 45px;
   vertical-align: middle;
   width: 100%;
   position: fixed;
@@ -170,11 +169,16 @@
   font-weight: bolder;
   border: none;
   font-size: 15px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-top: 1px solid #ddd;
 }
 
 .detail_report .submit button {
-  color: #3347d1;
+  color: white;
   border-top: 1px solid #ddd;
+  background: linear-gradient(90deg, rgba(90, 143, 253, 1) 0%, rgba(44, 103, 224, 1) 100%);
+  border-radius: 4px;
 }
 
 .detail_report .cutome-phone-input {

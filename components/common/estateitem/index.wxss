@@ -1,0 +1,39 @@
+.estate-list-item {
+  display: flex;
+  padding: 10px 0px;
+}
+
+.estate-list-item image {
+  width: 105px;
+  height: 80px;
+  background-color: #eee;
+}
+
+.estate-list-item .content {
+  height: 80px;
+  flex: 1;
+  padding: 0px 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  box-lines: border-box;
+  flex-wrap: wrap;
+}
+
+.estate-list-item .content .name {
+  color: rgba(51, 51, 51, 1);
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.estate-list-item .content .address {
+  color: rgba(153, 153, 153, 1);
+  font-size: 12px;
+}
+
+.estate-list-item .content .news {
+  background: rgba(244, 248, 251, 1);
+  color: rgba(51, 51, 51, 1);
+  font-size: 13px;
+  align-self: flex-end;
+}
