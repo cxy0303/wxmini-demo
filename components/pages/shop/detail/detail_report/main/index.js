@@ -111,6 +111,12 @@ Component({
         "phone": phone
       }).then((res) => {
         if (res.data.code == 1) {
+          this.setData({
+            isBindPhone: true
+          })
+          //刷新登陆数据
+          app.appData.userInfo.isBindPhone = true;
+          app.setLogin(app.appData.userInfo);
           this.submit_handle();
         } else {
           wx.showModal({

@@ -240,7 +240,7 @@ Component({
     },
     getCondition() {
       api.getLocation().then((res) => {
-
+ 
         var city = res.originalData.result.addressComponent.city;
         if (this.data.searchType == 1) {
           api.getCondition({

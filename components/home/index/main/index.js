@@ -62,7 +62,7 @@ Component({
     },
     godetail(e) {
       wx.navigateTo({
-        url: '/pages/webview/index?title=文章详情&url=http://h5.jrfw360.com/newsDetail/' + e.currentTarget.dataset.key,
+        url: '/pages/webview/index?title=文章详情&url=https://h5.jrfw360.com/newsDetail/' + e.currentTarget.dataset.key,
       })
     },
     sidechange(e) {

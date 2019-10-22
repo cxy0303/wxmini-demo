@@ -139,10 +139,12 @@ var addStar = function(data) {
 
 var getLocation = function(data) {
   return new Promise((resolve, reject) => {
+
     var BMap = new bmap.BMapWX({
       ak: "uP9sskI3WPQEW7MglaOLTosK4k12rG7h"
     });
-    var fail = function(data) {
+    var fail = function (data) {
+      debugger
       reject(data);
     };
     var success = function(data) {
