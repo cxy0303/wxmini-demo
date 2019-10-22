@@ -111,6 +111,7 @@ Component({
             app.appData.shopInfo.companyName = this.data.companyName;
           }
           app.appData.shopInfo.name = this.data.username;
+          app.appData.tabBarInfo.qty = content.msnNum;
         }
       })
     }

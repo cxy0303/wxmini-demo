@@ -9,9 +9,33 @@ App({
     if (options.query["shopAccountId"] != this.appData.shopInfo.accountId) {
       this.init(options);
     }
+    this.checkupdate();
+    
     // wx.navigateTo({
     //   url: '/pages/shop/dynamic/index?buildingId=414',
     // })
+  },
+  checkupdate() {
+    const updateManager = wx.getUpdateManager()
+
+    updateManager.onCheckForUpdate(function(res) {
+      // 请求完新版本信息的回调
+      console.log(res.hasUpdate)
+    })
+
+    updateManager.onUpdateReady(function() {
+      wx.showModal({
+        title: '更新提示',
+        content: '新版本已经准备好，是否重启应用？',
+        success(res) {
+          if (res.confirm) {
+            // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+            updateManager.applyUpdate()
+          }
+        }
+      })
+    })
+
   },
   init(options) {
     if (options.query["shopAccountId"]) {
@@ -46,8 +70,20 @@ App({
     if (!this.appData.shopInfo.accountId) {
       this.appData.shopInfo.accountId = userinfo.id;
     }
-    
+
     wx.setStorageSync(storage.keys.userInfo, this.appData.userInfo)
+  },
+  refreshQty() {
+    var pages = getCurrentPages();
+    if (pages && pages.length > 0) {
+      var page = pages[0];
+      var tab = page.getTabBar();
+      if (tab) {
+        tab.getTabBar().setData({
+          qty: this.appData.tabBarInfo.qty
+        })
+      }
+    }
   },
   //websocket
   connect() {
@@ -68,12 +104,20 @@ App({
               if (this.appData.chat.onConnected) {
                 this.appData.chat.onConnected(this.appData.chat.msglist)
               }
+              setInterval(() => {
+                this.keepAlive()
+              }, 300000);
               reslove(res);
             })
             wx.onSocketMessage((evt) => {
               if (evt.data) {
                 let msg = JSON.parse(evt.data);
                 this.appData.chat.msglist.push(msg);
+
+                if (msg.accountId != this.appData.userInfo.id) {
+                  this.appData.tabBarInfo.qty++;
+                  this.refreshQty();
+                }
                 if (this.appData.chat.onMessage) {
                   this.appData.chat.onMessage(msg);
                 }
@@ -95,6 +139,15 @@ App({
         })
       }
     })
+  },
+  keepAlive() {
+    if (this.appData.chat.connected) {
+      wx.sendSocketMessage({
+        data: ''
+      })
+    } else {
+      this.connect();
+    }
   },
   getChatMsnList() {
     return new Promise((resolve, reject) => {
