@@ -1,4 +1,4 @@
 <base loading='{{loading}}' bind:pageloaded='pageloaded'>
-<main id='main' buildingId="{{buildingId}}" wx:if='{{!loading||loading=="api"}}' bind:pageloaded='pageloaded'>
+<main id='main' releaseId='{{releaseId}}' buildingId="{{buildingId}}" wx:if='{{!loading||loading=="api"}}' bind:pageloaded='pageloaded'>
 </main>
 </base>

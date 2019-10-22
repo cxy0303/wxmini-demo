@@ -4,7 +4,7 @@
   </view>
   <view class="tab-bar-item chat" bindtap="goMsg">
     <view class="badge-container">
-      <view class="badge">{{qty}}</view>
+      <view class="badge" wx:if='{{qty>0}}'>{{qty}}</view>
       <image src='/assets/images/msg.png'></image>
     </view>
     <view class="tab-bar-item-text">在线咨询</view>

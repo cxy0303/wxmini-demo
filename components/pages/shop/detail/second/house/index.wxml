@@ -60,10 +60,13 @@
     <p class='subject'>小区信息</p>
     <image src='{{house.peripheryPic}}' bindtap='goEstate'></image>
     <p class='subsubject'>房源动态</p>
-    <view class="steps" wx:if='{{news}}'>
+    <view class="steps" wx:if='{{news}}' bindtap='godynamic'>
       <view class="step">
-        <view>{{news.zhaiyao}}</view>
-        <view>{{news.createDateFormat}}</view>
+        <image src='{{news.picPath}}'></image>
+        <view class="spec">
+          <view>{{news.zhaiyao}}</view>
+          <view>{{news.createDateFormat}}</view>
+        </view>
       </view>
     </view>
   </view>
@@ -90,24 +93,24 @@
       <p class="subsubject">业主心态</p>
       <view>{{house.remark}}</view>
     </view>
-    <view class="more">查看更多
+    <!-- <view class="more">查看更多
       <van-icon name="arrow-down" />
-    </view>
+    </view> -->
   </view>
   <view class="cells">
-    <van-cell size='large' title="房源不真实？投诉举报" is-link to="index" />
-    <van-cell size='large' title="同小区" is-link to="index" />
+    <van-cell size='large' title="房源不真实？投诉举报" is-link to="index" bindtap='goreport' />
+    <van-cell size='large' title="同小区" is-link to="index" bindtap='gosameestate' />
   </view>
   <view class="box">
     <p class='subject'>猜你喜欢</p>
     <building-full-item type='second' buildingInfo='{{item}}' wx:for='{{commentList}}' wx:key='{{item.id}}'></building-full-item>
     <view class="btnmore">查看更多</view>
   </view>
-  <view class="ad">
+  <!-- <view class="ad">
     <p class='subject'>要买房？先来查房价看看行情</p>
     <p class='subtitle'>为您提供专业的房源定价及卖房服务</p>
     <a class='btn'>帮你卖房</a>
-  </view>
+  </view> -->
   <view class="foot">
     <view class="flex-row">
       <image class="logo" src='{{account.avatar}}'></image>

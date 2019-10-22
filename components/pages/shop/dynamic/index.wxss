@@ -1,0 +1,84 @@
+/* components/pages/shop/dynamic/index.wxss */
+
+.dynamic {
+  padding: 10px;
+  min-height: 100vh;
+  background-color: white;
+}
+
+.dynamic .loadall {
+  font-size: 12px;
+  color: #333;
+  text-align: center;
+  padding: 20px 0px;
+}
+
+.dynamic .dynamic-item {
+  padding-left: 48px;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 48px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.dynamic .dynamic-item .logo {
+  width: 38px;
+  height: 38px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  border-radius: 3px;
+}
+
+.dynamic .dynamic-item .right {
+  width: 100%;
+  height: 100%;
+}
+
+.dynamic .dynamic-item .right  .name {
+  color: #3347d1;
+  font-size: 14px;
+  display: block;
+}
+
+.dynamic .dynamic-item .right  .content {
+  color: #333;
+  display: block;
+}
+
+.dynamic .dynamic-item .right .time {
+  display: block;
+  color: #333;
+  font-size: 13px;
+}
+
+.dynamic .dynamic-item .right .time .star {
+  position: absolute;
+  right: 0px;
+  bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.dynamic .dynamic-item .right .photos {
+  margin-left: -5px;
+  font-size: 0px;
+  padding: 10px 0px;
+}
+
+.dynamic .dynamic-item .right .photos image {
+  display: inline-block;
+  width: 90px;
+  height: 90px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+}
+
+.dynamic .dynamic-item .right video {
+  width: 260rpx;
+  height: 480rpx;
+  margin: 10px 0px;
+}

@@ -61,7 +61,8 @@ Component({
           totalPrice: info.totalPrice + "万",
           price: info.price + "万",
           address: info.address,
-          saying: info.saying
+          saying: info.saying,
+          releaseId: info.releaseId
         }
       } else {
         item = info;
@@ -74,11 +75,11 @@ Component({
       if (this.data.defaultClickHandler) {
         if (this.data.type == "new") {
           wx.navigateTo({
-            url: '/pages/shop/detail/index/index?buildingId=' + (e.currentTarget.dataset.id || 1),
+            url: '/pages/shop/detail/index/index?buildingId=' + (e.currentTarget.dataset.key.id || 1),
           })
         } else {
           wx.navigateTo({
-            url: '/pages/shop/detail/second/house/index?buildingId=' + (e.currentTarget.dataset.id || 1),
+            url: `/pages/shop/detail/second/house/index?releaseId=${e.currentTarget.dataset.key.releaseId}&buildingId=` + (e.currentTarget.dataset.key.id || 1),
           })
         }
 

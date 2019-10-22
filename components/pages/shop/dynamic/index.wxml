@@ -1,0 +1,23 @@
+<wxs src='../../../../utils/tools.wxs' module="tools" />
+<view class="dynamic">
+  <view class="dynamic-item" wx:for='{{list}}' wx:key='{{item.id}}'>
+    <image class="logo" src='{{item.userPhoto}}'></image>
+    <view class="right">
+      <p class='name'>{{item.userName}}</p>
+      <p class='content'>{{item.dynamicContent}}</p>
+      <view class="photos" wx:if='{{item.dynamicPhotos&&item.dynamicPhotos.length>0}}'>
+        <image bindtap='view' data-url='{{picitem.url}}' wx:for='{{item.dynamicPhotos}}' wx:for-item='picitem' wx:key='{{picitem.id}}' src='{{picitem.url}}'></image>
+      </view>
+      <video src='{{item.dynamicVideoUrl}}' wx:if='{{item.dynamicVideoUrl}}'></video>
+      <p class='time'>
+        {{tools.formattime(item.createTime)}}
+        <view class="star" bindtap='star' data-key='{{item}}' data-index='{{index}}'>
+          <van-icon color='{{item.likeStatus?"red":"#333"}}' name="{{item.likeStatus?'good-job':'good-job-o'}}" size="20px" />
+          <label>({{item.likeNum}})</label>
+        </view>
+      </p>
+    </view>
+  </view>
+  <view class="loadall" wx:if='{{loadAll}}'>已加载所有数据</view>
+  <pic-view url='{{url}}' wx:if='{{url}}' bindclose='close_view'></pic-view>
+</view>

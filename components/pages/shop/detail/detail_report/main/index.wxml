@@ -70,8 +70,9 @@
       <label>看房服务</label>
       <a>{{serviceData.visitDetailId?serviceData.visitText:'请选择看房服务'}}</a>
     </view>
-    <view class="form-item">
-      <textarea value='{{remark}}' placeholder="请输入备注" bindinput='remark_input_handel'></textarea>
+    <view class="form-item remark">
+      <textarea value='{{remark}}' focus="{{focusRemark}}" wx:if='{{focusRemark}}' bindblur="remark_blur" bindinput='remark_input' placeholder="请输入备注"></textarea>
+      <view wx:else class="textarea" bindtap='ShowKeyBorad'>{{remark?remark:"请输入备注"}}</view>
     </view>
   </view>
   <view class="submit">

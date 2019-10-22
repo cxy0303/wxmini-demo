@@ -39,6 +39,27 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    call(e) {
+      wx.makePhoneCall({
+        phoneNumber: e.currentTarget.dataset.key, //此号码并非真实电话号码，仅用于测试  
+        success: function() {
+          console.log("拨打电话成功！")
+        },
+        fail: function() {
+          console.log("拨打电话失败！")
+        }
+      })
+    },
+    copy(e) {
+      wx.setClipboardData({
+        data: e.currentTarget.dataset.key,
+        success: function(res) {
+          wx.showToast({
+            title: '已复制',
+          })
+        }
+      })
+    },
     godetail(e) {
       wx.navigateTo({
         url: '/pages/webview/index?title=文章详情&url=http://h5.jrfw360.com/newsDetail/' + e.currentTarget.dataset.key,
@@ -73,7 +94,7 @@ Component({
             type: parseInt(content.account.type),
             username: account.userName,
             avatar: account.avatar,
-            wx: '',
+            wx: account.weixin,
             message: account.message,
             news: content.news,
             newhouselist: content.list,

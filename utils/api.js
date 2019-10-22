@@ -21,6 +21,21 @@ var post = function(url, data) {
   });
 }
 
+var http_get = function(url) {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: remote + url,
+      method: "GET",
+      success: (res) => {
+        resolve(res);
+      },
+      fail: (error) => {
+        reject(error);
+      }
+    })
+  });
+}
+
 
 var getbuildingdetail = function(data) {
   return post("/buildingGroup/detail", data);
@@ -102,8 +117,24 @@ var getSameEstate = function(data) {
   return post("/house/sameEstate", data);
 }
 
-var bindPhone = function(data) {
-  return post("/account/bindPhone", data);
+var wxBindPhone = function(data) {
+  return post("/account/wxBindPhone", data);
+}
+
+var getInfoType = function(data) {
+  return http_get("/infrom/getInformType", data);
+}
+
+var addInform = function(data) {
+  return post("/infrom/addInform", data);
+}
+
+var getDynamicList = function(data) {
+  return post("/userDynamic/getDynamicById", data);
+}
+
+var addStar = function(data) {
+  return post("/like/addLikes", data);
 }
 
 var getLocation = function(data) {
@@ -158,5 +189,9 @@ export default {
   getSecondHouseDetail: getSecondHouseDetail,
   getEstateDetail: getEstateDetail,
   getSameEstate: getSameEstate,
-  bindPhone: bindPhone
+  wxBindPhone: wxBindPhone,
+  getInfoType: getInfoType,
+  addInform: addInform,
+  getDynamicList: getDynamicList,
+  addStar: addStar
 }

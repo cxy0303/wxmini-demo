@@ -1,2 +1,14 @@
-<!--components/pages/shop/report/index.wxml-->
-<text>components/pages/shop/report/index.wxml</text>
+<view class="report">
+  <view class="top">
+    <van-radio-group value='{{type}}'>
+      <view class="radio-bar" wx:for='{{typeList}}' wx:key='{{index}}' bindtap="check_change" data-key='{{item.informType}}'>
+        <van-radio name="{{item.informType}}">{{item.desc}}</van-radio>
+      </view>
+    </van-radio-group>
+  </view>
+  <view class="remark">
+    <p>理由说明</p>
+    <textarea placeholder="请填写举报理由" bindblur='remark_change'></textarea>
+    <button bindtap='add'>提交举报</button>
+  </view>
+</view>

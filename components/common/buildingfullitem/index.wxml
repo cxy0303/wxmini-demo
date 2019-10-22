@@ -1,5 +1,5 @@
 <wxs src='../../../utils/tools.wxs' module="tools" />
-<view class="building-full-item" bindtap="clickhandle" data-id='{{item.id}}'>
+<view class="building-full-item" bindtap="clickhandle" data-key='{{item}}'>
   <view class="content">
     <image src="{{item.logo}}"></image>
     <view class="word-spec">

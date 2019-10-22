@@ -22,7 +22,7 @@ Component({
     isFavorite: false,
     buildingInfo: {},
     buildTypeList: [],
-    buildingNews: [],
+    buildingNews: null,
     buildingModelType: [], //房型
     buildScore: {}, //评分
     nearBuildingList: [], //同区域
@@ -42,6 +42,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    godynamic() {
+      wx.navigateTo({
+        url: '/pages/shop/dynamic/index?buildingId=' + this.data.buildingId,
+      })
+    },
     goHouseTypeDetail() {
       wx.navigateTo({
         url: '/pages/webview/index?url=https://h5.jrfw360.com/building/' + this.data.buildingId,

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "房源动态",
+  "usingComponents": {
+    "main": "../../../../../components/pages/shop/dynamic/index"
+  }
+}

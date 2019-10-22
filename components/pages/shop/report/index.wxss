@@ -1,1 +1,48 @@
 /* components/pages/shop/report/index.wxss */
+
+.report {
+  min-height: 100vh;
+}
+
+.report .top {
+  padding: 10px;
+  background-color: white;
+}
+
+.report .radio-bar {
+  background-color: white;
+  padding: 15px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.report .radio-bar:last-child {
+  border-bottom: none;
+}
+
+.report .remark {
+  padding: 10px;
+  background-color: white;
+  margin-top: 10px;
+  padding-bottom: 100px;
+}
+
+.report .remark p {
+  color: rgba(0, 0, 0, 1);
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.report .remark textarea {
+  background: rgba(246, 246, 246, 1);
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.report .remark button {
+  margin-top: 30px;
+  background: linear-gradient(90deg, rgba(90, 143, 253, 1) 0%, rgba(44, 103, 224, 1) 100%);
+  border-radius: 4px;
+  color: white;
+}

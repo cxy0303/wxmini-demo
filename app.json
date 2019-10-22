@@ -24,7 +24,8 @@
         "shop/order/success/index",
         "shop/estate/detail/index",
         "shop/estate/detail/list/index",
-        "shop/report/index"
+        "shop/report/index",
+        "shop/dynamic/index"
       ]
     }
   ],

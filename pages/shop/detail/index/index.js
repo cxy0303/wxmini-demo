@@ -5,6 +5,7 @@ Page({
    */
   data: {
     buildingId: 1,
+    releaseId: 1,
     loading: 'page'
   },
   pageloaded(e) {
@@ -17,7 +18,8 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      buildingId: options.buildingId
+      buildingId: options.buildingId,
+      releaseId: options.releaseId
     })
   },
 

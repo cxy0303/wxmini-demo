@@ -22,11 +22,11 @@
     </view>
     <view class="address">{{address}}</view>
     <view class="link">
-      <button>
+      <button wx:if='{{wx}}' bindtap='copy' data-key='{{wx}}'>
         <view class="name">微信</view>
-        <view class="subname" wx:if='{{wx}}'>({{wx}})</view>
+        <view class="subname">({{wx}})</view>
       </button>
-      <button>
+      <button wx:if='{{phone}}' bindtap='call' data-key='{{phone}}'>
         <view class="name">电话</view>
         <view class="subname">({{phone}})</view>
       </button>

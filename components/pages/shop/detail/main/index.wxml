@@ -96,6 +96,18 @@
       <view bindtap='togglecoupon'>
         <image src='../../../../../assets/images/bell.png'></image>开盘通知我</view>
     </view>
+    <view class="content-block" wx:if='{{buildingNews}}'>
+      <view class="header">
+        房源动态
+      </view>
+      <view class="dynamic" bindtap='godynamic'>
+        <image src='{{buildingNews.picPath}}'></image>
+        <view class="content">
+          {{buildingNews.content}}
+        </view>
+      </view>
+      <button class="dynamic_sub" bindtap='togglecoupon'>订阅动态</button>
+    </view>
     <!-- <view class="content-block border-bottom">
       <view class="header">
         优惠活动
@@ -147,7 +159,7 @@
         全部户型
       </view>
       <view class="apartment-item " wx:for='{{buildingModelType}}' wx:key='{{item.id}}'>
-        <apartment-item item='{{item}}' bindclick='apartment_click_handler' ></apartment-item>
+        <apartment-item item='{{item}}' bindclick='apartment_click_handler'></apartment-item>
       </view>
     </view>
     <view class="content-block" bindtap='goHouseTypeDetail'>

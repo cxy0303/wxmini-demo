@@ -9,9 +9,9 @@ App({
     if (options.query["shopAccountId"] != this.appData.shopInfo.accountId) {
       this.init(options);
     }
-    wx.navigateTo({
-      url: '/pages/shop/report/index?buildingId=2',
-    })
+    // wx.navigateTo({
+    //   url: '/pages/shop/dynamic/index?buildingId=414',
+    // })
   },
   init(options) {
     if (options.query["shopAccountId"]) {

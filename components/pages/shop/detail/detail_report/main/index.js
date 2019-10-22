@@ -49,14 +49,15 @@ Component({
     minDate: new Date().getTime(),
     visitTime: new Date().getTime(),
     focusIndex: -1,
-    isBindPhone: false
+    isBindPhone: false,
+    focusRemark: false,
   },
 
   attached() {
     this.getdetailReport();
-    this.setData({
-      isBindPhone: app.appData.userInfo.isBindPhone
-    })
+    // this.setData({
+    //   isBindPhone: app.appData.userInfo.isBindPhone
+    // })
     const eventChannel = this.getOpenerEventChannel();
     if (eventChannel) {
       eventChannel.on('acceptDataFromOpenerPage', (data) => {
@@ -75,6 +76,21 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    remark_blur(e) {
+      this.setData({
+        focusRemark: false
+      })
+    },
+    remark_input(e) {
+      this.setData({
+        remark: e.detail.value
+      })
+    },
+    ShowKeyBorad() {
+      this.setData({
+        focusRemark: true
+      })
+    },
     gephone(e) {
       if (!app.appData.userInfo || !app.appData.userInfo.sessionKey) {
         wx.showToast({
@@ -82,9 +98,27 @@ Component({
         })
         return;
       }
+      console.log(app.appData.userInfo.sessionKey + "===================");
+
       var cropt = new wxcrypto(app.appData.appId, app.appData.userInfo.sessionKey);
       var phone = cropt.decryptData(e.detail.encryptedData, e.detail.iv).phoneNumber;
-      console.log(phone);
+      var userInfo = app.appData.userInfo;
+
+      api.wxBindPhone({
+        "appType": 5,
+        "id": userInfo.id,
+        "loginToken": userInfo.loginToken,
+        "phone": phone
+      }).then((res) => {
+        if (res.data.code == 1) {
+          this.submit_handle();
+        } else {
+          wx.showModal({
+            title: '消息',
+            content: res.data.msg,
+          })
+        }
+      })
     },
     remark_input_handel(e) {
       this.setData({
