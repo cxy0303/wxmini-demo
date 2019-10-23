@@ -176,8 +176,6 @@ Component({
             },
             houseServiceIds: content.houseServiceIds
           })
-        } else {
-          this.triggerEvent("pageloaded", "error", res.data.msg);
         }
         this.checkMustFull();
       })

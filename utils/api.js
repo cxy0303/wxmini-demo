@@ -6,15 +6,21 @@ const socketUrl = 'wss://api.jrfw360.com/websocket/';
 
 
 var post = function(url, data) {
+  wx.showLoading({
+    title: '正在努力加载...',
+    mask: true
+  });
   return new Promise((resolve, reject) => {
     wx.request({
       url: remote + url,
       data: data,
       method: "POST",
       success: (res) => {
+        wx.hideLoading();
         resolve(res);
       },
       fail: (error) => {
+        wx.hideLoading();
         reject(error);
       }
     })
@@ -22,14 +28,20 @@ var post = function(url, data) {
 }
 
 var http_get = function(url) {
+  wx.showLoading({
+    title: '正在努力加载...',
+    mask: true
+  });
   return new Promise((resolve, reject) => {
     wx.request({
       url: remote + url,
       method: "GET",
       success: (res) => {
+        wx.hideLoading();
         resolve(res);
       },
       fail: (error) => {
+        wx.hideLoading();
         reject(error);
       }
     })
@@ -143,8 +155,7 @@ var getLocation = function(data) {
     var BMap = new bmap.BMapWX({
       ak: "uP9sskI3WPQEW7MglaOLTosK4k12rG7h"
     });
-    var fail = function (data) {
-      debugger
+    var fail = function(data) {
       reject(data);
     };
     var success = function(data) {

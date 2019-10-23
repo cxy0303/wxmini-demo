@@ -1,82 +1,175 @@
 <wxs src='../../../../../../utils/tools.wxs' module="tools" />
 <view class="house-detail">
+  <cover-view class="topbar">
+    <cover-image src='{{isFavorite?"../../../../../../assets/images/stared.png":"../../../../../../assets/images/star.png"}}' bindtap='addstar'></cover-image>
+    <button open-type="share">
+      <cover-image src='../../../../../../assets/images/share.png'></cover-image>
+    </button>
+  </cover-view>
   <view class="silder">
-    <swiper bindtap='goAblum' indicator-color="white" indicator-active-color="blue" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" circular="{{true}}" bindchange='sidechange'>
+    <swiper bindtap='goAblum' indicator-color="white " indicator-active-color="blue " indicator-dots="{{true}} " autoplay="{{true}} " interval="{{3000}}" circular="{{true}} " bindchange='sidechange'>
       <block>
         <swiper-item wx:for='{{housePic}}'>
-          <image class="slide-image" src='{{item.picPath}}' />
+          <image class="slide-image " src='{{item.picPath}}' />
         </swiper-item>
       </block>
     </swiper>
   </view>
-  <view class="box box-top">
+  <view class="box box-top ">
     <p class='subject'>{{house.estateName}}</p>
     <view class='subtitle'>{{house.areaAddress}}</view>
-    <view class="flex-row">
+    <view class="flex-row ">
       <a>均价</a>
       <a>总价</a>
       <a>面积</a>
     </view>
-    <view class="flex-row price">
+    <view class="flex-row price ">
       <a>{{house.price}}</a>
       <a>{{house.totalPrice}}</a>
       <a>{{house.houseArea}}㎡</a>
     </view>
-    <view class="news flex-row" bindtap='gocal'>
+    <view class="news flex-row " bindtap='gocal'>
       <image src='http://img.jrfw360.com/1571208526860..png'></image>
       <p>{{loan}}</p>
       <a>查看更多 ></a>
     </view>
-    <view class="grid">
-      <label>户型</label>
-      <span>{{house.buildingModelType}}</span>
-      <label>楼层</label>
-      <span>{{house.floor}}</span>
-    </view>
-    <view class="grid">
-      <label>装修</label>
-      <span>{{house.renovationName}}</span>
-      <label>朝向</label>
-      <span>{{house.orientationName}}</span>
-    </view>
-    <view class="grid">
-      <label>区域</label>
-      <span>{{house.houseArea}}㎡</span>
-      <label>房龄</label>
-      <span>{{house.houseYear}}</span>
-    </view>
-    <view class="grid">
-      <label>看房时间</label>
-      <span>带绑定</span>
-    </view>
+    <block wx:if='{{house.type==1}}'>
+      <view class="grid ">
+        <label>户型</label>
+        <span>{{house.buildingModelType}}</span>
+        <label>楼层</label>
+        <span>{{house.floor}}</span>
+      </view>
+      <view class="grid ">
+        <label>装修</label>
+        <span>{{house.renovationName}}</span>
+        <label>朝向</label>
+        <span>{{house.orientationName}}</span>
+      </view>
+      <view class="grid ">
+        <label>区域</label>
+        <span>{{house.houseArea}}㎡</span>
+        <label>房龄</label>
+        <span>{{house.houseYear}}</span>
+      </view>
+      <view class="grid ">
+        <label>看房时间</label>
+        <span>{{house.lookType}}</span>
+      </view>
+    </block>
+    <block wx:elif='{{house.type==2}}'>
+      <view class="grid ">
+        <label>物业费</label>
+        <span>{{house.propertyPrice}}</span>
+        <label>收益回报</label>
+        <span>{{house.returnRate}}</span>
+      </view>
+      <view class="grid ">
+        <label>剩余租期</label>
+        <span>{{house.leaseMonth}}</span>
+        <label>租金收益</label>
+        <span>{{house.profitMonth}}</span>
+      </view>
+      <view class="grid ">
+        <label>房源</label>
+        <span>{{house.houseArea}}㎡</span>
+        <label>楼层</label>
+        <span>{{house.floor}}</span>
+      </view>
+      <view class="grid ">
+        <label>面宽</label>
+        <span>{{house.width}}</span>
+        <label>层高</label>
+        <span>{{house.totalFloor}}</span>
+      </view>
+      <view class="grid ">
+        <label>进深</label>
+        <span>{{house.deep}}</span>
+        <label>状态</label>
+        <span>{{house.shopStatusName}}</span>
+      </view>
+      <view class="grid ">
+        <label>可否分割</label>
+        <span>{{house.division?"可分割":"不可分割"}}</span>
+        <label>装修</label>
+        <span>{{house.renovationName}}</span>
+      </view>
+      <view class="grid ">
+        <label>营业范围</label>
+        <span>{{house.operation}}</span>
+      </view>
+    </block>
+    <block wx:elif='{{house.type==3}}'>
+      <view class="grid">
+        <label>类型</label>
+        <span></span>
+        <label>物业费</label>
+        <span>{{house.propertyPrice}}</span>
+      </view>
+      <view class="grid">
+        <label>状态</label>
+        <span>{{house.shopStatusName}}</span>
+        <label>楼层</label>
+        <span>{{house.floor}}</span>
+      </view>
+      <view class="grid">
+        <label>装修</label>
+        <span>{{house.renovationName}}㎡</span>
+        <label>建筑年代</label>
+        <span>{{house.houseYear}}</span>
+      </view>
+      <view class="grid">
+        <label>是否分割</label>
+        <span>{{house.division?"可分割":"不可分割"}}</span>
+      </view>
+    </block>
   </view>
-  <view class="box">
+  <view class="box" wx:if='{{house.type==1}}'>
     <p class='subject'>房源特色</p>
-    <view class="grid">
-      <a wx:for='{{tools.split(house.characteristic,",")}}'>{{item}}</a>
+    <view class="grid ">
+      <a wx:for='{{tools.split(house.characteristic,", ")}}'>{{item}}</a>
     </view>
   </view>
-  <view class="box area">
-    <p class='subject'>小区信息</p>
-    <image src='{{house.peripheryPic}}' bindtap='goEstate'></image>
+  <view class="box" wx:elif='{{house.type==2&&supporting.length>0}}'>
+    <p class='subject'>配套设置</p>
+    <view class="grid">
+      <view class="cell" wx:for='{{supporting}}' wx:key='{{item.id}}'>
+        <image src='{{item.logo}}'></image>
+        <view>{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="box area ">
+    <block wx:if='{{house.type==1}}'>
+      <p class='subject'>小区信息</p>
+      <image src='{{house.peripheryPic}}' bindtap='goEstate'></image>
+    </block>
+    <block wx:if='{{house.type==2}}'>
+      <p class='subject'>商铺地址</p>
+      <image src='{{house.peripheryPic}}' bindtap='gomap'></image>
+    </block>
+    <block wx:if='{{house.type==3}}'>
+      <p class='subject'>商务楼地址</p>
+      <image src='{{house.peripheryPic}}' bindtap='gomap'></image>
+    </block>
     <p class='subsubject'>房源动态</p>
-    <view class="steps" wx:if='{{news}}' bindtap='godynamic'>
-      <view class="step">
+    <view class="steps " wx:if='{{news}}' bindtap='godynamic'>
+      <view class="step ">
         <image src='{{news.picPath}}'></image>
-        <view class="spec">
+        <view class="spec ">
           <view>{{news.zhaiyao}}</view>
           <view>{{news.createDateFormat}}</view>
         </view>
       </view>
     </view>
   </view>
-  <view class="box">
+  <view class="box ">
     <p class='subject'>房源描述</p>
-    <view class="card">
-      <image class="logo" src='{{account.avatar}}'></image>
-      <view class="right">
+    <view class="card ">
+      <image class="logo " src='{{account.avatar}}'></image>
+      <view class="right ">
         <p>{{account.userName}}</p>
-        <view class="flex-row">
+        <view class="flex-row ">
           <view wx:if='{{account.authenticationFlag>=1}}'>
             <image src='./images/idcard.png'></image>实名认证</view>
           <view wx:if='{{account.authenticationFlag>=2}}'>
@@ -87,42 +180,42 @@
         <div>{{account.companyName}}</div>
       </view>
     </view>
-    <view class="desc">
-      <p class="subsubject">核心卖点</p>
+    <view class="desc ">
+      <p class="subsubject ">核心卖点</p>
       <view>{{house.saying}}</view>
-      <p class="subsubject">业主心态</p>
+      <p class="subsubject ">业主心态</p>
       <view>{{house.remark}}</view>
     </view>
-    <!-- <view class="more">查看更多
-      <van-icon name="arrow-down" />
+    <!-- <view class="more ">查看更多
+      <van-icon name="arrow-down " />
     </view> -->
   </view>
-  <view class="cells">
-    <van-cell size='large' title="房源不真实？投诉举报" is-link to="index" bindtap='goreport' />
-    <van-cell size='large' title="同小区" is-link to="index" bindtap='gosameestate' />
+  <view class="cells ">
+    <van-cell size='large' title="房源不真实？投诉举报 " is-link to="index " bindtap='goreport' />
+    <van-cell size='large' title="同小区 " is-link to="index " bindtap='gosameestate' />
   </view>
-  <view class="box">
+  <view class="box ">
     <p class='subject'>猜你喜欢</p>
     <building-full-item type='second' buildingInfo='{{item}}' wx:for='{{commentList}}' wx:key='{{item.id}}'></building-full-item>
-    <view class="btnmore">查看更多</view>
+    <view class="btnmore ">查看更多</view>
   </view>
-  <!-- <view class="ad">
+  <!-- <view class="ad ">
     <p class='subject'>要买房？先来查房价看看行情</p>
     <p class='subtitle'>为您提供专业的房源定价及卖房服务</p>
     <a class='btn'>帮你卖房</a>
   </view> -->
-  <view class="foot">
-    <view class="flex-row">
-      <image class="logo" src='{{account.avatar}}'></image>
-      <view class="title">
+  <view class="foot ">
+    <view class="flex-row ">
+      <image class="logo " src='{{account.avatar}}'></image>
+      <view class="title ">
         <view>{{account.userName}}</view>
         <view>{{account.companyName}}</view>
       </view>
     </view>
-    <view class="btn-chat" bindtap='gochat'>
+    <view class="btn-chat " bindtap='gochat'>
       <a>房聊</a>
     </view>
-    <view class="btn-order" bindtap='goorder'>
+    <view class="btn-order " bindtap='goorder'>
       <a>预约看房</a>
     </view>
   </view>

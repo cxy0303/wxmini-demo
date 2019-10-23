@@ -208,7 +208,7 @@ Component({
         lng: app.appData.location.lng,
         shareAccountId: 0
       }).then((res) => {
-        this.triggerEvent('pageloaded', "");
+        // this.triggerEvent('pageloaded', "");
         if (res.data.code === 1) {
           let info = res.data.content.buildingInfo;
           this.setData({

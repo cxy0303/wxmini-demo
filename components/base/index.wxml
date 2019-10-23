@@ -2,12 +2,6 @@
   <view wx:if='{{!loading||loading=="api"}}'>
     <slot>
     </slot>
-    <view class="base base-load-api" wx:if='{{loading=="api"}}'>
-      <view class="base-load-block">
-        <vant-loading type="spinner" color='white' vertical size='28px'></vant-loading>
-        <view class="base-load-text">接口请求...</view>
-      </view>
-    </view>
   </view>
   <view class="base base-load" wx:elif='{{loading=="page"}}'>
     <view class="base-load-page">

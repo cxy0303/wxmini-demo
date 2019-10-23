@@ -1,5 +1,5 @@
 <!--pages/map/index/index.wxml-->
-<map class="location-map" id="map" longitude="{{lng}}" latitude="{{lat}}" scale="14" markers='{{markers}}' show-location></map>
+<map class="location-map" id="map" longitude="{{lng}}" latitude="{{lat}}" scale="14" markers='{{markers}}'></map>
 <view class="location-map-bar">
   <view wx:for='{{menuList}}' wx:key='{{index}}' class="{{active==index?'active':''}}" data-key='{{index}}' bindtap='setactive'>
     <image src='{{active==index?item.img_active:item.img}}'></image>

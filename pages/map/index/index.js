@@ -12,8 +12,8 @@ Page({
     lng: 113.324520,
     bMap: null,
     markers: [{
-      id: 1,
-      iconPath: './images/location.png',
+      id: 0.1,
+      iconPath: './images/dot.png',
       latitude: 23.099994,
       longitude: 113.324520,
       label: {
@@ -77,60 +77,11 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      lat: options.lat,
-      lng: options.lng,
+      lat: parseFloat(options.lat),
+      lng: parseFloat(options.lng),
       ['markers[0].latitude']: options.lat,
       ['markers[0].longitude']: options.lng
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
   },
   setactive(e) {
     this.setData({
@@ -155,8 +106,21 @@ Page({
     };
     var success = (data) => {
       this.setData({
-        markers: [this.data.markers[0], ...data.wxMarkerData]
+        markers: [{
+          id: Math.random(),
+          iconPath: './images/dot.png',
+          latitude: this.data.lat,
+          longitude: this.data.lng,
+          label: {
+            content: '当前楼盘位置',
+            color: '#EEEEEE',
+            bgColor: '#3347d1',
+            padding: 5,
+            borderRadius: 3
+          }
+        }, ...data.wxMarkerData]
       });
+      console.log(this.data.markers);
     }
     // 发起POI检索请求 
     map.search({
@@ -165,7 +129,7 @@ Page({
       fail: fail,
       success: success,
       // 此处需要在相应路径放置图片文件 
-      iconPath: './images/dot.png'
+      iconPath: './images/location.png'
     });
   }
 })

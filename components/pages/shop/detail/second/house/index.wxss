@@ -4,6 +4,26 @@
   padding-bottom: 228rpx;
 }
 
+.house-detail .topbar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  width: 80px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.house-detail .topbar button {
+  border: none;
+  background: none;
+}
+
+.house-detail .topbar cover-image {
+  width: 30px;
+  height: 30px;
+}
+
 .house-detail swiper {
   height: 510rpx;
   box-sizing: border-box;
@@ -108,8 +128,24 @@
 .house-detail .grid {
   display: flex;
   align-items: center;
-  justify-content: center;
   margin-top: 10px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.house-detail .grid .cell {
+  padding: 5px;
+}
+
+.house-detail .grid .cell image {
+  width: 35px;
+  height: 35px;
+}
+
+.house-detail .grid .cell view {
+  font-size: 13px;
+  color: #333;
+  text-align: center;
 }
 
 .house-detail .grid label {

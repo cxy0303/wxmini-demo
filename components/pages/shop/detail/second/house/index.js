@@ -25,7 +25,9 @@ Component({
     house: {},
     news: [],
     loan: '',
-    commentList: []
+    commentList: [],
+    supporting: [],
+    isFavorite: false
   },
   attached() {
     this.getHouseDetail();
@@ -34,6 +36,30 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    gomap() {
+      wx.navigateTo({
+        url: `/pages/map/index/index?lat=${this.data.house.lat}&lng=${this.data.house.lng}`,
+      })
+    },
+    addstar() {
+      let data = {
+        'accountId': app.appData.userInfo.id,
+        'lat': app.appData.location.lat,
+        'lng': app.appData.location.lng,
+        'targetId': this.data.releaseId,
+        'targetType': 3
+      }
+      api.addstar(data).then((res) => {
+        if (res.data.code == 1) {
+          this.setData({
+            isFavorite: res.data.content == 1
+          })
+          wx.showToast({
+            title: res.data.content == 1 ? "已收藏" : "已取消收藏",
+          })
+        }
+      })
+    },
     godynamic() {
       wx.navigateTo({
         url: '/pages/shop/dynamic/index?buildingId=' + this.data.buildingId,
@@ -91,7 +117,9 @@ Component({
             housePic: content.housePic,
             news: houseNews,
             loan: content.loan,
-            commentList: content.commendList
+            commentList: content.commendList,
+            supporting: content.supporting,
+            isFavorite: content.isFavorite
           })
         }
       })
