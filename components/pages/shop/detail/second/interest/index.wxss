@@ -1,0 +1,15 @@
+/* components/pages/shop/detail/second/interest/index.wxss */
+
+.interest {
+  background-color: white;
+  min-height: 100vh;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.loadall {
+  font-size: 12px;
+  color: #333;
+  text-align: center;
+  padding: 10px;
+}

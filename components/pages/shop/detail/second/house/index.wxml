@@ -197,7 +197,7 @@
   <view class="box ">
     <p class='subject'>猜你喜欢</p>
     <building-full-item type='second' buildingInfo='{{item}}' wx:for='{{commentList}}' wx:key='{{item.id}}'></building-full-item>
-    <view class="btnmore ">查看更多</view>
+    <view class="btnmore" bindtap='gomore'>查看更多</view>
   </view>
   <!-- <view class="ad ">
     <p class='subject'>要买房？先来查房价看看行情</p>

@@ -1,12 +1,11 @@
-// pages/shop/order/house/index.js
+// pages/shop/detail/second/interest/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    buildingId: 1,
-    releaseId: 1,
+    cityId: 0,
     loading: 'page'
   },
 
@@ -15,13 +14,10 @@ Page({
       loading: e.detail
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
+
+  onLoad: function (options) {
     this.setData({
-      buildingId: options.buildingId,
-      releaseId: options.releaseId
+      cityId: options.cityId
     })
   },
 
@@ -64,7 +60,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    this.selectComponent("#main").getInterestList();
   },
 
   /**

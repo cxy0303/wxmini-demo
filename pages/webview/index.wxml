@@ -1,2 +1,2 @@
-<web-view src='{{weburl}}'>
+<web-view src='{{weburl}}' wx:if='{{weburl}}'>
 </web-view>

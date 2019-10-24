@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "猜你喜欢",
+  "usingComponents": {
+    "main": "../../components/pages/shop/detail/second/interest/index"
+  }
+}

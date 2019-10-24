@@ -5,11 +5,13 @@ const remote = 'https://api.jrfw360.com';
 const socketUrl = 'wss://api.jrfw360.com/websocket/';
 
 
-var post = function(url, data) {
-  wx.showLoading({
-    title: '正在努力加载...',
-    mask: true
-  });
+var post = function(url, data, noloading) {
+  if (!noloading) {
+    wx.showLoading({
+      title: '正在努力加载...',
+      mask: true
+    });
+  }
   return new Promise((resolve, reject) => {
     wx.request({
       url: remote + url,
@@ -27,11 +29,13 @@ var post = function(url, data) {
   });
 }
 
-var http_get = function(url) {
-  wx.showLoading({
-    title: '正在努力加载...',
-    mask: true
-  });
+var http_get = function (url, noloading) {
+  if (!noloading) {
+    wx.showLoading({
+      title: '正在努力加载...',
+      mask: true
+    });
+  }
   return new Promise((resolve, reject) => {
     wx.request({
       url: remote + url,
@@ -90,7 +94,7 @@ var getQuestionMsnList = function(data) {
 }
 
 var getChatMsnList = function(data) {
-  return post("/group/getChatMsnList", data);
+  return post("/group/getChatMsnList", data, true);
 }
 
 var getMyBuilding = function(data) {
@@ -147,6 +151,10 @@ var getDynamicList = function(data) {
 
 var addStar = function(data) {
   return post("/like/addLikes", data);
+}
+
+var houseInspectionInsert = function(data) {
+  return post("/houseInspection/insert", data);
 }
 
 var getLocation = function(data) {
@@ -206,5 +214,6 @@ export default {
   getInfoType: getInfoType,
   addInform: addInform,
   getDynamicList: getDynamicList,
-  addStar: addStar
+  addStar: addStar,
+  houseInspectionInsert: houseInspectionInsert
 }

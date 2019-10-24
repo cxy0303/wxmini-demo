@@ -10,9 +10,9 @@ App({
       this.init(options);
     }
     this.checkupdate();
-    
+
     // wx.navigateTo({
-    //   url: '/pages/shop/dynamic/index?buildingId=414',
+    //   url: '/pages/shop/order/success/index',
     // })
   },
   checkupdate() {
@@ -104,9 +104,13 @@ App({
               if (this.appData.chat.onConnected) {
                 this.appData.chat.onConnected(this.appData.chat.msglist)
               }
-              setInterval(() => {
+              if (chatInfo.timer) {
+                clearInterval(chatInfo.timer);
+              }
+              chatInfo.timer = setInterval(() => {
                 this.keepAlive()
               }, 300000);
+
               reslove(res);
             })
             wx.onSocketMessage((evt) => {
@@ -234,7 +238,8 @@ App({
       loadMore: null,
       pageIndex: 0,
       pageSize: 10,
-      loadAll: false
+      loadAll: false,
+      timer: null
     },
     // userInfo: {
     //   'id': 146,

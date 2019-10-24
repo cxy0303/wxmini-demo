@@ -36,6 +36,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    gomore() {
+      wx.navigateTo({
+        url: `/pages/shop/detail/second/interest/index?cityId=${this.data.house.cityId}`,
+      })
+    },
     gomap() {
       wx.navigateTo({
         url: `/pages/map/index/index?lat=${this.data.house.lat}&lng=${this.data.house.lng}`,
@@ -82,7 +87,7 @@ Component({
     },
     goorder() {
       wx.navigateTo({
-        url: '/pages/shop/order/house/index?buildingId=' + this.data.buildingId,
+        url: `/pages/shop/order/house/index?buildingId=${this.data.buildingId}&releaseId=${this.data.house.releaseId}`,
       })
     },
     gochat() {

@@ -1,0 +1,5 @@
+<!--components/pages/shop/detail/second/interest/index.wxml-->
+<view class="interest">
+  <building-full-item type='second' buildingInfo='{{item}}' wx:for='{{list}}' wx:key='{{item.id}}'></building-full-item>
+  <view class="loadall" wx:if='{{loadAll}}'>已经加载所有数据</view>
+</view>

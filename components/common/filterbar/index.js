@@ -208,6 +208,7 @@ Component({
       })
     },
     price_nav_change(e) {
+      debugger
       this.setData({
         'confirm_Value.price.activeIndex': e.detail.index,
         'confirm_Value.price.type': this.data.condition.data_Price.list[e.detail.index].type

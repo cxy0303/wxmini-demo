@@ -9,6 +9,10 @@ Component({
     buildingId: {
       type: Number,
       value: 1
+    },
+    releaseId: {
+      type: Number,
+      value: 1
     }
   },
 
@@ -68,7 +72,7 @@ Component({
         "appointmentAddress": this.data.address,
         "appointmentDate": this.data.visitTime,
         "appointmentRemark": this.data.remark,
-        "houseId": this.data.buildingId,
+        "houseId": this.data.releaseId,
         "loginToken": userInfo.loginToken,
         "visitorNum": this.data.visitNum
       }).then((res) => {
@@ -76,13 +80,19 @@ Component({
           wx.showToast({
             title: '已提交',
           })
-          wx.redirectTo({
+          wx.navigateTo({
             url: '/pages/shop/order/success/index',
+            success: (e) => {
+              // 通过eventChannel向被打开页面传送数据
+              e.eventChannel.emit('acceptDataFromOpenerPage', {
+                data: res.data.content.list
+              })
+            }
           });
         } else {
           wx.showModal({
             title: '预约失败',
-            content: res.msg,
+            content: res.data.msg,
           })
         }
       })

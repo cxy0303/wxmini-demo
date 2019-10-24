@@ -9,4 +9,8 @@
       <button bindtap='goapp'>下载APP</button>
     </view>
   </view>
+  <view class="recommand">
+    <p>推荐房源</p>
+    <building-full-item type='second' wx:for='{{list}}' buildingInfo='{{item}}' wx:key='{{item.Id}}'></building-full-item>
+  </view>
 </view>

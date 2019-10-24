@@ -98,7 +98,6 @@ Component({
         })
         return;
       }
-      console.log(app.appData.userInfo.sessionKey + "===================");
 
       var cropt = new wxcrypto(app.appData.appId, app.appData.userInfo.sessionKey);
       var phone = cropt.decryptData(e.detail.encryptedData, e.detail.iv).phoneNumber;
