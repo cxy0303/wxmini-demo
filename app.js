@@ -123,7 +123,7 @@ App({
                   this.refreshQty();
                 }
                 if (this.appData.chat.onMessage) {
-                  this.appData.chat.onMessage(msg);
+                  this.appData.chat.onMessage(msg, "msg");
                 }
               }
             })
@@ -166,10 +166,7 @@ App({
         });
         return;
       }
-      if (chatinfo.loadAll) {
-        if (chatinfo.onLoadAll) {
-          chatinfo.onLoadAll();
-        }
+      if (chatinfo.loadAll || chatinfo.loading) {
         resolve({
           data: {
             code: -1
@@ -181,24 +178,19 @@ App({
         'accountId': userinfo.id,
         'loginToken': userinfo.loginToken,
         'otherAccountId': shopinfo.accountId,
-        'pageNo': 1,
-        'pageSize': 10
+        'pageNo': chatinfo.pageIndex + 1,
+        'pageSize': chatinfo.pageSize
       }
-      // let data = {
-      //   'accountId': 146,
-      //   'loginToken': userinfo.loginToken,
-      //   'groupId': 452,
-      //   'pageNo': chatinfo.pageIndex + 1,
-      //   'pageSize': chatinfo.pageSize
-      // }
+      chatinfo.loading = true;
       api.getChatMsnList(data).then((res) => {
+        chatinfo.loading = false;
         if (res.data.code == 1) {
           let content = res.data.content;
           chatinfo.groupId = content.groupId;
           chatinfo.loadAll = content.msnList.length < chatinfo.pageSize;
           chatinfo.msglist.splice(0, 0, ...content.msnList);
           if (chatinfo.onMessage)
-            chatinfo.onMessage(chatinfo.msglist);
+            chatinfo.onMessage(chatinfo.msglist, "loadMore");
           if (chatinfo.loadAll && chatinfo.onLoadAll) {
             chatinfo.onLoadAll();
           }
@@ -238,6 +230,7 @@ App({
       loadMore: null,
       pageIndex: 0,
       pageSize: 10,
+      loading: false,
       loadAll: false,
       timer: null
     },

@@ -1,6 +1,5 @@
 {
   "navigationBarTitleText": "咨询",
-  "enablePullDownRefresh": true,
   "usingComponents": {
     "main": "../../components/pages/chat/user/main/index"
   }

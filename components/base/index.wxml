@@ -1,8 +1,8 @@
-<view wx:if='{{wxauthed==1||!mustLogin}}'>
-  <view wx:if='{{!loading||loading=="api"}}'>
+<block wx:if='{{wxauthed==1||!mustLogin}}' >
+  <block wx:if='{{!loading||loading=="api"}}' >
     <slot>
     </slot>
-  </view>
+  </block>
   <view class="base base-load" wx:elif='{{loading=="page"}}'>
     <view class="base-load-page">
       <!-- <view class="base-load-title font-primary">登录中</view> -->
@@ -21,7 +21,7 @@
       <view class="base-load-error-msg font-color3">{{msg}}</view>
     </view>
   </view>
-</view>
+</block>
 <view class="base-auth" wx:elif='{{wxauthed==0&&mustLogin}}'>
   <image src="http://img.jrfw360.com/fjj.png"></image>
   <view class="title">
